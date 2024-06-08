@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="main"><img src="../../assets/Images/main.jpg" alt=""></div>
+    <div class="hotels">
+        <div *ngFor="let hotel of hotels" class="hotel">
+        <p-card header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '320px' }" >
+            <ng-template pTemplate="header">
+                <img alt="Card" [src]="hotel.featuredImage" />
+            </ng-template>
+           
+            <ng-template pTemplate="footer">
+                <div class="flex gap-3 mt-1">
+                    <p-button label="სრულად ნახვა" class="w-full" styleClass="w-full" />
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+    </div>
+    <div class="description">desc</div>
+</div>

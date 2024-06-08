@@ -1,0 +1,27 @@
+
+
+<header>
+    <div class="logo">
+      <img id="logo" src="../../assets/Images/LOGO.JPG" alt="HOTEL BOOKING" (click)="goToHomePage()" />
+    </div>
+    <div class="humburger" (click)="showSideBar()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+      <ul>
+        <li><a routerLink="/home" class="active">Home</a></li>
+        <li><a routerLink="/hotels">{{"hotels" | translate}}</a></li>
+        <li><a routerLink="/rooms">{{"rooms" | translate}}</a></li>
+        <li><a routerLink="/bookings">Bookings</a></li>
+        <li><a routerLink="/Login">Login</a></li>
+        <li><a routerLink="/Register">Register</a></li>
+        <span>{{"test" | translate}}</span>
+      
+    
+      </ul>
+      <button class="p-ripple p-element p-button p-component w-full" (click)="changeLang(1)">ქართული</button> <p>OR</p>
+      <button class="p-ripple p-element p-button p-component w-full" (click)="changeLang(0)">English</button>
+    </nav>
+    </header>

@@ -1,0 +1,23 @@
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  app-header {
+    flex: 0 0 60px; /* Fixed height for the header */
+  }
+  
+  .content {
+    flex: 1;
+    overflow: auto; /* Ensure content scrolls if it overflows */
+  }
+  
+  app-footer {
+    flex: 0 0 60px; /* Fixed height for the footer */
+  }

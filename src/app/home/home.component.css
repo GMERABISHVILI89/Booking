@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    margin: auto;
+  }
+  .main img {
+    width: 100%;
+    object-fit: contain;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .hotels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px auto;
+    width: 100%;
+    overflow: auto;
+  }
+  
+  ::ng-deep .p-card-title{
+      font-size: 19px;
+  }
+  ::ng-deep .p-card-body {
+      padding: 12px;
+      margin: 7px 0;
+  }
+  ::ng-deep.p-card-title{
+      margin-bottom: 15px;
+  }
+  
+  ::ng-deep.p-card-subtitle{
+      margin-bottom: 15px;
+  }
+  
+  
+  ::ng-deep .p-element .p-button{
+      padding: 10px;
+      background-color: #4c6d8e;
+      color: #fbcd68;
+  }
+  
+  ::ng-deep .p-card img {  border-radius: 8px;}
+  
+  @media only screen and (max-width:970px){
+      .hotels {
+          width:85%;
+        }
+        ::ng-deep .p-card {
+          width: 250px !important;
+        }
+    }
+  
+    @media only screen and (max-width:890px){
+      
+        ::ng-deep .p-card {
+          width: 220px !important;
+        }
+    }
+  
+    @media only screen and (max-width:790px){
+      
+      ::ng-deep .p-card {
+        width: 200px !important;
+      }
+  }
+  
+  
+  
+    
+    @media only screen and (max-width:710px){
+      
+      ::ng-deep .p-card {
+        width: 290px !important;
+      }
+      .hotels {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          
+          align-items: center;
+        }
+  }
+  

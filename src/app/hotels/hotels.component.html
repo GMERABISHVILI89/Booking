@@ -1,0 +1,16 @@
+
+<div class="hotels">
+    <div *ngFor="let hotel of hotels" class="hotel" (click)="goToHotel(hotel?.id)">
+    <p-card header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '360px' }"  >
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="hotel.featuredImage" />
+        </ng-template>
+       
+        <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1" >
+                <p-button label="სრულად ნახვა" class="w-full" styleClass="w-full" />
+            </div>
+        </ng-template>
+    </p-card>
+</div>
+</div>

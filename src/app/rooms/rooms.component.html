@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="room-types">
+        <button pButton type="button" label="All" icon="pi pi-check" class="p-button-lg"></button>
+        <button pButton type="button" label="Single Room" class="p-button-types"></button>
+        <button pButton type="button" label="Double Room" icon="pi pi-check" class="p-button-types"></button>
+        <button pButton type="button" label="Deluxe Room" icon="pi pi-check" class="p-button-types"></button>
+    </div>
+
+
+    <div class="filter">
+
+        <form [formGroup]="roomForm" class="filter-divs">
+            <div class="roomtype">
+                <label for="roomTypeId">ოთახის ტიპი</label>
+                <p-dropdown id="roomTypeId" formControlName="roomTypeId" [options]="types" optionLabel="name"
+                    placeholder="ოთახის ტიპი" />
+            </div>
+
+            <div class="ranges">
+                <label for="priceRange">ფასის მიხედვით</label>
+                <div class="price-range-inputs">
+                    <p-inputNumber class="rangeiputs" formControlName="priceFrom"
+                        [min]="roomForm.get('priceFrom')?.value" [max]="1000" [step]="10" >
+                    </p-inputNumber>
+                    <p-slider formControlName="priceRange" [min]="0" [max]="1000" [step]="10" [range]="true"
+                        (onChange)="onPriceRangeChange($event)">
+                    </p-slider>
+                    <p-inputNumber class="rangeiputs" formControlName="priceTo" [min]="0"
+                        [max]="roomForm.get('priceTo')?.value" [step]="10">
+                    </p-inputNumber>
+
+
+                </div>
+                <!-- <span>From: {{ roomForm.get('priceRange')?.value[0] }}</span>
+                <span>To: {{ roomForm.get('priceRange')?.value[1] }}</span> -->
+            </div>
+
+            <div class="guest-quantity">
+                <label for="maximumGuests">სტუმრების რაოდენობა</label>
+                <p-dropdown [options]="guestQuantity" id="maximumGuests" formControlName="maximumGuests"
+                    placeholder="აირჩიეთ" [editable]="true" optionLabel="val" />
+            </div>
+
+            <div class="checkIn">
+                <label for="checkIn">შესვლა</label>
+                <p-calendar id="checkIn" formControlName="checkIn"/>
+            </div>
+
+            <div class="checkOut">
+                <label for="checkOut">გასვლა</label>
+                <p-calendar id="checkOut" formControlName="checkOut"/>
+            </div>
+
+            <div class="submit-filter">
+                <p-button label="გაფილტვრა" (click)="onSubmit()" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="rooms">
+         
+        <app-room-card *ngFor="let room of rooms" [room]="room" ></app-room-card>
+    </div>
+</div>

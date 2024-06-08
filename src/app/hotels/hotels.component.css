@@ -1,0 +1,31 @@
+
+.hotels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px auto;
+    max-width: 1400px;
+  }
+  
+  ::ng-deep .p-card-title{
+      font-size: 19px;
+  }
+  ::ng-deep .p-card-body {
+      padding: 12px;
+      margin: 7px 0;
+  }
+  ::ng-deep.p-card-title{
+      margin-bottom: 15px;
+  }
+  
+  ::ng-deep.p-card-subtitle{
+      margin-bottom: 15px;
+  }
+  
+  
+  ::ng-deep .p-element .p-button{
+      padding: 10px;
+      background-color: #4c6d8e;
+      color: #fbcd68;
+  }
+  
