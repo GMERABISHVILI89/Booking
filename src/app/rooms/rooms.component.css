@@ -1,111 +1,159 @@
-
-
-.p-button-lg{
-    width: 50px;
-    height: 30px;
-    background:  #4c6d8e; 
-    color: #f8b62b;
+.p-button-lg {
+  width: 50px;
+  height: 30px;
+  background: #003b76;
+  color: #f8b62b;
 }
 
-.p-button-types{
-    width: 150px;
-    height: 30px;
-    background:  #4c6d8e; 
-    color: #f8b62b;
-}
-.rangeiputs{
- margin: 30px 0px
-
-}
-.roomtype{
-    display: flex;
-    flex-direction: column;
-    gap:30px;
-    margin-bottom: 10px;
+.p-button-types {
+  width: 150px;
+  height: 30px;
+  background: #003b76;
+  color: #f8b62b;
 }
 
-::ng-deep .p-inputnumber-input
-{
-   width: 60px;
+.rangeiputs {
+  margin: 30px 0px;
 }
-::ng-deep .p-inputwrapper{
-    width: 130px;
+.roomtype {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 10px;
+}
 
+::ng-deep .p-inputnumber-input {
+  width: 60px;
+}
+::ng-deep .p-inputwrapper {
+  width: 130px;
 }
 
-::ng-deep  .p-inputtext {
-    text-align: center;
+::ng-deep .p-inputtext {
+  text-align: center;
 }
-.guest-quantity{
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
+.guest-quantity {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
 }
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 40px auto;
-    max-width: 1400px;
-    align-items: start;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 1400px;
+  align-items: start;
 }
-.room-types{
-    display: flex;
-    gap: 20px;
+.room-types {
+  display: flex;
+  gap: 20px;
 }
-.ranges{
-    width: 20%;
-    display: flex;
-    flex-direction: column;
+.ranges {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
 }
 .ranges label {
-    text-align: center;
+  text-align: center;
 }
-.filter{
-    margin-top: 40px;
-    border: 1px solid #4c6d8e; 
-    border-radius: 10px;
-    padding: 30px;
-    width: 100%;
-    background: #4c6d8e;
-    color: #f8b62b;
-}
-
-.filter-divs{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: space-evenly;
+.filter {
+  margin-top: 40px;
+  border: 1px solid #003b76;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+  background: #003b76;
+  color: #f8b62b;
 }
 
-.checkOut, .checkIn {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
+.filter-divs {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.checkOut,
+.checkIn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
 }
 
 ::ng-deep .p-slider-handle {
-   
-    top: -7px;
+  top: -7px;
 }
 
-::ng-deep .p-button-label{
-    width: 120px;
-    height: 40px;
-    padding: 10px;
+::ng-deep .p-button-label {
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  background: #003b76;
+  color: #f8b62b;
 }
 
-.submit-filter{
+.submit-filter {
+  display: flex;
+  align-items: flex-end;
+}
+
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px auto;
+  gap: 40px;
+}
+@media only screen and (max-width: 1164px) {
+  .container {
+    align-items: center;
+  }
+  .filter-divs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+  .roomtype {
     display: flex;
-    align-items: flex-end;
+    gap: 54px;
+    width: 100%;
+  }
+  .ranges {
+    width: 100%;
+  }
+  .guest-quantity{
+    width: 100%;
+  }
+  .checkOut, .checkIn {
+    width: 100%;
+    align-items: flex-start;
+}
+.rooms{
+    grid-template-columns:1fr 1fr;
+}
 }
 
-.rooms{
-display: grid;
-grid-template-columns: repeat(3,1fr);
-margin: 20px auto;
-gap: 40px;
+
+@media only screen and (max-width: 788px) {
+    .rooms{
+        grid-template-columns: 1fr;
+    }
+}
+@media only screen and (max-width: 628px) {
+    .filter-divs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: start;
+    }
+    .guest-quantity{
+        align-items: start;
+    }
+    .room-types {
+        flex-direction: column;
+        align-items: center;
+    }
+   
 }

@@ -1,7 +1,7 @@
 :host {
     display: block;
     height: 100%;
-    background-color: #4c6d8e;
+    background-color: #003b76;
   }
   
   
@@ -25,6 +25,8 @@
   .nav-bar ul {
     display: flex;
     list-style: none;
+    align-items: center;
+    gap: 10px;
   }
   
   .nav-bar ul li a{

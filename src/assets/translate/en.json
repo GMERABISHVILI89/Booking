@@ -1,5 +1,5 @@
 {
-    "test": "test",
-     "hotels":"hotels",
-     "rooms":"Rooms"
+     "hotels":"Hotels",
+     "rooms":"Rooms",
+     "booking":"Booking"
   }
