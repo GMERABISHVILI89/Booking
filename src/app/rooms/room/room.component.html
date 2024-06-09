@@ -17,25 +17,25 @@
 
               <h3>{{"Price Per Night" | translate}}  {{roomPricePerNight + "GEL"}}</h3>
               <div class="form-group">
-                <label for="customerName">Customer Name</label>
+                <label for="customerName">{{"Customer Name" | translate}}</label>
                 <input id="customerName" formControlName="customerName" type="text"  />
               </div>
               <div class="form-group">
-                <label for="customerPhone">Customer Phone</label>
+                <label for="customerPhone">{{"Customer Phone"| translate}}</label>
                 <input id="customerPhone" formControlName="customerPhone" type="tel"  />
               </div>
               <div class="form-group">
-                <label for="checkInDate">Check-in Date</label>
+                <label for="checkInDate">{{"Check-in Date" | translate}}</label>
                 <input id="checkInDate" formControlName="checkInDate" type="date"  />
               </div>
               <div class="form-group">
-                <label for="checkOutDate">Check-out Date</label>
+                <label for="checkOutDate">{{"Check-out Date" | translate}}</label>
                 <input id="checkOutDate" formControlName="checkOutDate" type="date"  />
               </div>
               <div class="form-group" *ngIf="totalPrice !== null">
-                <label>Total Price: {{ totalPrice }} EUR</label>
+                <label>{{"Total Price:" | translate}} {{ totalPrice }} EUR</label>
               </div>
-              <button type="submit" (click)="onSubmit()">Reserve</button>
+              <button type="submit" (click)="onSubmit()">{{"Reserve" | translate}}</button>
             </form>
           </div>
 
@@ -67,8 +67,72 @@
 
 
     <div class="description">
-        description
+        <div class="content">
+            <section class="room-category">
+              <h2>Single Room</h2>
+              <p>Our Single Rooms offer a comfortable and affordable stay, ideal for solo travelers. Equipped with a cozy bed, a work desk, and modern amenities, you'll find everything you need for a relaxing stay.</p>
+            </section>
+            <section class="room-category">
+              <h2>Double Room</h2>
+              <p>Perfect for couples or friends traveling together, our Double Rooms feature a spacious bed and a comfortable seating area. Enjoy a blend of comfort and convenience with top-notch facilities.</p>
+            </section>
+            <section class="room-category">
+              <h2>Deluxe Room</h2>
+              <p>Experience luxury in our Deluxe Rooms. These rooms provide extra space and premium amenities, including a plush king-sized bed, a mini-bar, and a stunning view. Ideal for those looking to indulge in a little extra comfort.</p>
+            </section>
+         
+            <section class="overview">
+              <h2>Hotel Overview</h2>
+              <p>Welcome to our hotel, where comfort meets elegance. Our hotel offers a variety of rooms to suit every traveler's needs, from single rooms for solo adventurers to deluxe rooms for those seeking a luxurious experience.</p>
+              <p>Our amenities include a state-of-the-art fitness center, a relaxing spa, and multiple dining options that cater to all tastes. Whether you are here for business or leisure, our hotel provides the perfect blend of convenience and comfort.</p>
+              <p>Located in the heart of the city, our hotel offers easy access to major attractions, shopping centers, and business districts. Our dedicated staff is committed to ensuring your stay is both enjoyable and memorable.</p>
+            </section>
     </div>
-    <div class="overview">overview</div>
+   
 </div>
 
+
+<div class="overview">
+    <section class="slider">
+        <div class="slider-container">
+          <div class="slide" *ngFor="let image of hotelImages">
+                <img [src]="image" alt="Hotel Image ">
+          </div>
+        </div>
+      </section>
+ 
+        <div class="random-text-about-room">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quibusdam, labore culpa commodi dolore est molestiae? Obcaecati ex aliquam fugit recusandae nihil in aperiam atque quaerat expedita ut nisi, pariatur maiores quod quos maxime quas! Quo dignissimos provident aliquid exercitationem, reprehenderit, doloremque blanditiis voluptatum temporibus impedit nam quibusdam amet reiciendis odit vel, nulla beatae eaque explicabo possimus libero. Dolorem velit debitis reprehenderit tempore labore tenetur hic accusantium, molestias quod molestiae rem nesciunt commodi atque est possimus, animi sunt dolore facilis.</p>
+         
+          </div>
+          <div class="random-text-about-room">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quibusdam, labore culpa commodi dolore est molestiae? Obcaecati ex aliquam fugit recusandae nihil in aperiam atque quaerat expedita ut nisi, pariatur maiores quod quos maxime quas! Quo dignissimos provident aliquid exercitationem, reprehenderit, doloremque blanditiis voluptatum temporibus impedit nam quibusdam amet reiciendis odit vel, nulla beatae eaque explicabo possimus libero. Dolorem velit debitis reprehenderit tempore labore tenetur hic accusantium, molestias quod molestiae rem nesciunt commodi atque est possimus, animi sunt dolore facilis.</p>
+         
+          </div>
+      
+
+</div>
+</div>
+<div class="comments-and-social">
+    <div class="comment-card">
+      <img src="../../../assets/Images/random4.JPG" alt="Comment Image 2">
+      <h3>Comment Title 2</h3>
+    </div>
+    <div class="comment-card">
+      <img src="../../../assets/Images/random2.JPG" alt="Comment Image 3">
+      <h3>Comment Title 3</h3>
+    </div>
+    <div class="comment-card">
+      <img src="../../../assets/Images/random3.JPG" alt="Comment Image 4">
+      <h3>Comment Title 4</h3>
+    </div>
+    <div class="comment-card">
+      <img src="../../../assets/Images/random5.JPG" alt="Comment Image 5">
+      <h3>Comment Title 5</h3>
+    </div>
+    <div class="comment-card">
+        <img src="../../../assets/Images/random6.JPG" alt="Comment Image 5">
+        <h3>Comment Title 5</h3>
+      </div>
+  </div>
+  

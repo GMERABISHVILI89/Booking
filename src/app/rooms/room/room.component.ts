@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RoomsService } from '../../Services/rooms.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Rooms } from '../../Models/Rooms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../Services/booking.service';
 import { differenceInDays } from 'date-fns';
+import { HotelsService } from '../../Services/hotels.service';
 
 @Component({
   selector: 'app-room',
@@ -17,6 +18,7 @@ export class RoomComponent implements OnInit {
   bookingForm!: FormGroup;
   roomImages: any[] | undefined = [];
   images: string[] = [];
+  hotelImages:any []=[]
   currentIndex: number = 0;
   bookData:any;
   roomPricePerNight:any;
@@ -26,20 +28,28 @@ export class RoomComponent implements OnInit {
     private route: ActivatedRoute,
     private roomService: RoomsService,
     private fb: FormBuilder,
-    private bookingService:BookingService
+    private bookingService:BookingService,
+    private router: Router,
+    private hotelService:HotelsService
   ) {
     this.roomId = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-    this.roomService.GetRoom(Number(this.roomId)).subscribe((data) => {
+    window.scrollTo(0, 0);
+    this.hotelService.GetAll().subscribe((hotel) => {
+      hotel.forEach(images => {
+        this.hotelImages.push(images.featuredImage)
+      })
+    })
+    console.log(this.hotelImages)
+    this.roomService.GetRoom(Number(this.roomId)).subscribe((data) => { 
       this.room = data;
       this.roomPricePerNight = data.pricePerNight;
       this.roomImages = data.images;
       this.roomTypeID= data.roomTypeId;
       this.roomImages?.map((el) =>{
         (this.images.push(el.source));
-    
       }); 
     });
 
@@ -102,15 +112,17 @@ export class RoomComponent implements OnInit {
         customerPhone:this.bookingForm.controls['customerPhone'].value
         
       }
-      console.log(this.bookData)
       this.bookingService.addBooking(this.bookData).subscribe(data => {
        console.log(data)
+       this.bookingForm.reset();
       })
-
+      alert("ოთახი წარმატებით დაიჯავშნა ! გისრუვებთ ბედნიერ დასვენებას")
+      this.bookingForm.reset();
     }
     else {
       alert("გთხოვთ შეავსოთ შეავსოთ სავალდებულო ველები !")
     }
   }
+
 
 }

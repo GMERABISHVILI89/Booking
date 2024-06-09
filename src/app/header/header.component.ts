@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../Services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { LanguageService } from '../Services/language.service';
 })
 export class HeaderComponent implements OnInit {
   navbar: any;
-  constructor(private translate: LanguageService) {}
+  constructor(private translate: LanguageService,private router: Router) {}
   ngOnInit(): void {
     this.translate.getCurrentLanguage();
   }
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToHomePage() {
-    window.location.href = '/';
+    this.router.navigate(['/', '*']);
   }
 
   changeLang(param: any) {

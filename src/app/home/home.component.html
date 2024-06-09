@@ -1,19 +1,56 @@
 <div class="container">
-    <div class="main"><img src="../../assets/Images/main.jpg" alt=""></div>
-    <div class="hotels">
-        <div *ngFor="let hotel of hotels" class="hotel">
-        <p-card header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '320px' }" >
-            <ng-template pTemplate="header">
-                <img alt="Card" [src]="hotel.featuredImage" />
-            </ng-template>
+    <header class="main-background" (click)="navigateToFilter()"></header>
+    <main>
+        <section class="content-row">
+          <div class="overview">
+            <h2>Overview</h2>
+            <p>Explore the finest hotels with exceptional service and amenities. We provide a seamless booking experience to ensure your stay is comfortable and memorable.</p>
+          </div>
+          <div class="blog">
+            <h2>Latest News</h2>
+            <div class="blog-post">
+              <h3>New Hotel Openings</h3>
+              <p>Discover the latest hotel openings in prime locations.</p>
+            </div>
+            <div class="blog-post">
+              <h3>Travel Tips</h3>
+              <p>Get the best travel tips for your next vacation.</p>
+            </div>
            
-            <ng-template pTemplate="footer">
-                <div class="flex gap-3 mt-1">
-                    <p-button label="See More" class="w-full" styleClass="w-full" />
-                </div>
-            </ng-template>
-        </p-card>
-    </div>
-    </div>
-    <div class="description">desc</div>
+          </div>
+        </section>
+    
+        <section class="gallery">
+          <h2>Hotel Gallery</h2>
+          <div class="gallery-container">
+            <div *ngFor="let hotel of hotels" class="gallery-item">
+                <p-card header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px' }" >
+                    <ng-template pTemplate="header">
+                        <img alt="Card" [src]="hotel.featuredImage" />
+                    </ng-template>
+                   
+                    <ng-template pTemplate="footer">
+                        <div class="flex gap-3 mt-1">
+                            <p-button label="See More" class="w-full" styleClass="w-full" />
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+          </div>
+        </section>
+    
+        <section class="comments">
+          <h2>Comments</h2>
+          <div class="comments-container">
+            <div class="comment"><p><strong>John Doe:</strong> Wonderful stay, highly recommend!</p></div>
+            <div class="comment"><p><strong>Jane Smith:</strong> Great service and beautiful rooms.</p></div>
+            <div class="comment"><p><strong>Lana Steen:</strong> nice hotels</p></div>
+
+            <div class="comment"><p><strong>Anna Paterson:</strong> Beautiful rooms.</p></div>
+
+   
+          </div>
+        </section>
+      </main>
+
 </div>

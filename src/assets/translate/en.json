@@ -11,5 +11,11 @@
      "AboutText":"Welcome to Booking.com! We're a passionate team dedicated to creating unforgettable experiences for our guests. Whether you're here for business or leisure, we offer comfortable accommodations, exceptional service, and a convenient location. Explore our website to discover our rooms, amenities, and special offers. We can't wait to welcome you!",
      "Follow Us":"Follow Us",
      "Price Per Night":"Price Per Night",
-     "Room Reservation":"Room Reservation"
+     "Room Reservation":"Room Reservation",
+     "Customer Name":"Customer Name",
+     "Customer Phone":"Customer Phone",
+     "Check-in Date":"Check-in Date",
+     "Check-out Date":"Check-out Date",
+     "Reserve":"Reserve",
+     "Total Price:":"Total Price:"
   }
