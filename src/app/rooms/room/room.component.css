@@ -43,6 +43,70 @@
   .next-button {
     right: 10px;
   }
+  .reservation-form {
+    background-color: #003b76;
+    color: rgb(212, 160, 28);
+    max-width: 400px;
+    padding: 20px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reservation-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(212, 160, 28);
+    color: #003b76;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  form h3{
+    margin: 10px 0;
+  }
+  @media (max-width: 400px) {
+    .reservation-form {
+      padding: 15px;
+    }
+  
+    .form-group input {
+      padding: 6px;
+    }
+  
+    button {
+      padding: 8px;
+    }
+  }
+  
   
   @media (max-width: 768px) {
     .prev-button, .next-button {

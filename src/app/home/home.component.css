@@ -3,6 +3,7 @@
     flex-direction: column;
     max-width: 1400px;
     margin: auto;
+    padding: 20px;
   }
   .main img {
     width: 100%;
@@ -37,12 +38,24 @@
   
   ::ng-deep .p-element .p-button{
       padding: 10px;
-      background-color: #4c6d8e;
+      background-color: #003b76;
       color: #fbcd68;
   }
   
   ::ng-deep .p-card img {  border-radius: 8px;}
   
+
+  
+  @media only screen and (max-width:1026px){
+    .hotels{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      justify-content: space-around;
+      row-gap: 30px;
+    }
+  }
+
   @media only screen and (max-width:970px){
       .hotels {
           width:85%;

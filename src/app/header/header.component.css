@@ -4,6 +4,11 @@
     background-color: #003b76;
   }
   
+  a{
+    font-family: "Zen Dots", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
   
   header{
     width: 100%;
@@ -45,12 +50,12 @@
   
   .nav-bar ul li a:hover{
     color: rgb(255, 174, 0);
-    background: #4c6d8e;
+    background: #003b76;
   }
   
   .nav-bar ul li a.active{
     color: rgb(255, 174, 0);
-    background: #4c6d8e;
+    background: #003b76;
   }
   
   
@@ -86,7 +91,7 @@
       left: 0;
       right: 0;
       width: 100vw;
-      background: #4c6d8e;
+      background: #003b76;
       transition: 0.5s;
       overflow: hidden;
       z-index: 999;
