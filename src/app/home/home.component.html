@@ -4,7 +4,7 @@
         <section class="content-row">
           <div class="overview">
             <h2>Overview</h2>
-            <p>Explore the finest hotels with exceptional service and amenities. We provide a seamless booking experience to ensure your stay is comfortable and memorable.</p>
+            <p>Discover the ultimate hospitality experience at our carefully selected collection of the finest hotels around the world. Each property in our portfolio is renowned for its exceptional service, luxurious amenities, and attention to detail, ensuring that every aspect of your stay is nothing short of extraordinary. Whether you are traveling for business or leisure, our hotels are committed to providing an unparalleled level of comfort and sophistication.</p>
           </div>
           <div class="blog">
             <h2>Latest News</h2>
@@ -16,6 +16,14 @@
               <h3>Travel Tips</h3>
               <p>Get the best travel tips for your next vacation.</p>
             </div>
+            <div class="blog-post">
+              <h3>Special Promotions</h3>
+              <p>Take advantage of our exclusive deals and save on your next booking.</p>
+            </div>
+            <div class="blog-post">
+              <h3>Seasonal Highlights</h3>
+              <p>Learn about seasonal events and activities to enjoy during your travels.</p>
+            </div>
            
           </div>
         </section>
@@ -24,7 +32,7 @@
           <h2>Hotel Gallery</h2>
           <div class="gallery-container">
             <div *ngFor="let hotel of hotels" class="gallery-item">
-                <p-card header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px' }" >
+                <p-card (click)="navigateToHotel(hotel.id)" header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px', cursor:'pointer' }" >
                     <ng-template pTemplate="header">
                         <img alt="Card" [src]="hotel.featuredImage" />
                     </ng-template>
@@ -42,13 +50,10 @@
         <section class="comments">
           <h2>Comments</h2>
           <div class="comments-container">
-            <div class="comment"><p><strong>John Doe:</strong> Wonderful stay, highly recommend!</p></div>
+            <div class="comment"><p><strong>Pokahondas sheron:</strong> Wonderful stay, highly recommend!</p></div>
             <div class="comment"><p><strong>Jane Smith:</strong> Great service and beautiful rooms.</p></div>
-            <div class="comment"><p><strong>Lana Steen:</strong> nice hotels</p></div>
-
+            <div class="comment"><p><strong>David Stone:</strong> nice hotels in tbilisi</p></div>
             <div class="comment"><p><strong>Anna Paterson:</strong> Beautiful rooms.</p></div>
-
-   
           </div>
         </section>
       </main>

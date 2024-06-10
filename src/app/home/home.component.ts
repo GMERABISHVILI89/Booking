@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit{
 
   hotels:Hotels[] | undefined;
 
-  constructor(private hotelService: HotelsService,private router: Router) {}
+  constructor(private hotelService: HotelsService,private route: Router) {}
   ngOnInit(): void {
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
@@ -20,7 +20,10 @@ export class HomeComponent implements OnInit{
     })
   }
   navigateToFilter(){
-    this.router.navigate(['/', 'rooms']);
+    this.route.navigate(['/', 'rooms']);
+  }
+  navigateToHotel(id:any){
+    this.route.navigateByUrl(`/hotel/${id}`)
   }
 
 }

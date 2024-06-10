@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../Models/Enviroment';
 import { Hotels } from '../Models/Hotels';
+import { Rooms } from '../Models/Rooms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class HotelsService {
   }
 
   GetHotel(id: number) {
-    return this.http.get<Hotels>(this.API_URL + `GetHotel/${id}`);
+    return this.http.get<Rooms[]>(this.API_URL + `/GetHotel/${id}`);
   }
 
   GetHotels(city:string) {
@@ -25,6 +26,6 @@ export class HotelsService {
   }
 
   GetCities() {
-    return this.http.get<Hotels[]>(this.API_URL + `GetCities`);
+    return this.http.get<Hotels[]>(this.API_URL + `/GetCities`);
   }
 }

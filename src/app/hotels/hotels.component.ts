@@ -14,6 +14,7 @@ export class HotelsComponent implements OnInit{
 
   constructor(private hotelService: HotelsService, private route:Router) {}
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
       console.log(this.hotels)
