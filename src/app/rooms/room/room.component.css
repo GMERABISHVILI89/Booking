@@ -227,6 +227,7 @@ overflow-y: auto;
   padding: 0 10px;
 }
 
+
 @media (max-width: 768px) {
   .comments-and-social {
     padding: 5px;

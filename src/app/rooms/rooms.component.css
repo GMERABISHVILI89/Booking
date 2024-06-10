@@ -26,9 +26,12 @@
   width: 60px;
 }
 ::ng-deep .p-inputwrapper {
-  width: 130px;
+  width: 185px;
+  height: 30px;
 }
-
+::ng-deep .ng-star-inputwrapper {
+  height: 30px;
+}
 ::ng-deep .p-inputtext {
   text-align: center;
 }
