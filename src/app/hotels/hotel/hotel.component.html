@@ -1,4 +1,17 @@
-
-<div class="card">
-    <p>{{hotel?.address}}</p>
+<div class="container">
+  <img [src]="hotel?.featuredImage" alt="" />
+  <div class="hotel-info">
+    <p>{{ hotel?.city }}</p>
+    <p>{{ hotel?.name }}</p>
+    <p>{{ hotel?.address }}</p>
+  </div>
+</div>
+<div class="rooms-container">
+    <div class="rooms" *ngFor="let room of rooms" (click) ="goToRoom(room.id)">
+            <div class="title">{{ room.name }}</div>
+            <div><img [src]="room?.images![0].source" alt=""></div>
+            <div class="available">{{ room.available?'თავისუფალია':'დაკავებულია' }}</div>
+            <div class="price">{{"ერთი ღამის ფასი " + room.pricePerNight + "₾"}}</div>
+     
+    </div>
 </div>

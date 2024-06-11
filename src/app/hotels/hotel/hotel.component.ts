@@ -1,6 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
 import { HotelsService } from '../../Services/hotels.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Rooms } from '../../Models/Rooms';
 
 @Component({
@@ -17,12 +17,12 @@ export class HotelComponent implements OnInit {
  roomImages:any[]=[];
  available:any;
 
-constructor(private hotelService:HotelsService, private route:ActivatedRoute) {
+constructor(private hotelService:HotelsService, private router:ActivatedRoute, private route:Router) {
  
 }
   ngOnInit(): void {
     
-    this.hotelId = this.route.snapshot.paramMap.get('id');
+    this.hotelId = this.router.snapshot.paramMap.get('id');
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel:any) => {
       this.hotel = hotel; 
       this.rooms = hotel.rooms;
@@ -33,9 +33,13 @@ constructor(private hotelService:HotelsService, private route:ActivatedRoute) {
         }
       });
       // Log the arrays to the console
-      console.log('Room Images:', this.roomImages);
+      console.log('Room Images:', this.rooms);
     })
    
 
+  }
+
+  goToRoom(id:any){
+    this.route.navigateByUrl(`/room/${id}`)
   }
 }
