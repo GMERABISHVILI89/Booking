@@ -2,13 +2,14 @@
 .hotels {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 30px auto;
-    max-width: 1400px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    padding: 0 20px;
   }
   
   ::ng-deep .p-card-title{
-      font-size: 19px;
+      font-size: 17px;
   }
   ::ng-deep .p-card-body {
       padding: 12px;
@@ -21,11 +22,107 @@
   ::ng-deep.p-card-subtitle{
       margin-bottom: 15px;
   }
-  
+  img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+  }
+  .main-container{
+    padding: 0 10px;
+    max-width: 1400px;
+    margin: 30px auto;
+
+  }
   
   ::ng-deep .p-element .p-button{
       padding: 10px;
-      background-color: #4c6d8e;
-      color: #fbcd68;
+      background-color:  #003b76;
+      color:  rgb(212, 160, 28);
   }
+ .content{
+    padding: 0 40px;
+ }
+ .room-category {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #003b76;
+    color: rgb(212, 160, 28);
+  }
+
+  .overview{
+    color: #003b76;
+  }
+
   
+.comments-and-social {
+  scrollbar-color: #007 #d4a01c;
+  display: flex;
+  overflow-x: auto;
+  max-width: 100%;
+  background-color: #003b76;
+  padding: 10px;
+  gap: 20px;
+  scroll-behavior: smooth;
+  max-width: 1100px;
+  margin: 40px auto;
+  height: 270px;
+  border-radius: 10px;
+}
+
+.comment-card {
+  flex: 0 0 auto;
+  max-width: 400px;
+  background-color: #003b76;
+  color: #003b76;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.comment-card img {
+  width: 100%;
+  height: auto;
+}
+.title-hotels{
+  text-align: center;
+  margin-bottom: 30px;
+  color: rgb(255, 174, 0);
+}
+.comment-card h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  padding: 0 10px;
+}
+.image{
+  max-width: 1400px;
+  margin: 30px auto;
+}
+.image img {
+  width: 100%;
+  padding: 0 45px;
+  border-radius: 5%;
+}
+@media (max-width: 768px) {
+  .comments-and-social {
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .comment-card {
+    max-width: 300px;
+  }
+
+  .comment-card h3 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .comments-and-social {
+    padding: 5px;
+    gap: 5px;
+  }
+}

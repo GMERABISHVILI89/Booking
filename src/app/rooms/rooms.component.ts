@@ -21,7 +21,8 @@ export class RoomsComponent implements OnInit {
   types?: RoomType[];
   selectedType?: number;
   dateFrom?: Date | undefined;
-  dateTo?: Date | undefined;;
+  dateTo?: Date | undefined;
+  filteredRooms?:any [] = [];
   constructor(private fb: FormBuilder, private roomService: RoomsService) {
     this.types = [{ id: 1, name: "Single Room" }, { id: 2, name: "Double Room" }, { id: 3, name: "Deluxe Room" }];
     this.guestQuantity = [{ val: 1 }, { val: 2 }, { val: 3 }, { val: 4 }, { val: 5 }, { val: 6 }, { val: 7 }, { val: 8 }, { val: 9 }, { val: 10}];
@@ -65,7 +66,8 @@ export class RoomsComponent implements OnInit {
       // this.rooms?.push(<Rooms>data)
       this.roomService.getFiltered(this.filterData).subscribe(data => {
         this.rooms = data
-      
+        this.filteredRooms = data;
+        console.log(this.rooms)
       })
 
     }
@@ -73,7 +75,15 @@ export class RoomsComponent implements OnInit {
       alert("გთხოვთ შეავსოთ ფილტრი !")
     }
   }
+  filterRooms(param:number){
+    this.filteredRooms = this.rooms?.filter(el => {
+     
+    el.roomTypeId == param;
+    console.log(this.filteredRooms)
+    }); 
 
+    console.log(this.filteredRooms)
+  }
 
 
 }

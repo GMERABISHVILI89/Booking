@@ -70,7 +70,9 @@ section p {
     margin: 20px 0;
     gap: 20px;
   }
-  
+  h3{
+    margin: 8px 0;
+  }
   .overview, .blog {
     flex: 1 1 45%;
     background-color:#003b76;
@@ -78,7 +80,12 @@ section p {
     padding: 40px;
     color: rgb(255, 174, 0)
   }
-  
+  .blog h2 {
+    margin-bottom: 15px;
+  }
+   .overview > h2 {
+    margin-bottom: 15px;
+  }
   .gallery {
     margin-bottom: 20px;
   }

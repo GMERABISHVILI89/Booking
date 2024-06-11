@@ -21,7 +21,7 @@ constructor(private hotelService:HotelsService, private router:ActivatedRoute, p
  
 }
   ngOnInit(): void {
-    
+    window.scrollTo(0, 0);
     this.hotelId = this.router.snapshot.paramMap.get('id');
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel:any) => {
       this.hotel = hotel; 
@@ -32,8 +32,7 @@ constructor(private hotelService:HotelsService, private router:ActivatedRoute, p
           this.roomImages = this.roomImages.concat(room.images);
         }
       });
-      // Log the arrays to the console
-      console.log('Room Images:', this.rooms);
+      
     })
    
 

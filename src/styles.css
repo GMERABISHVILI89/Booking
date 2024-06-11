@@ -5,9 +5,22 @@
     box-sizing: border-box;
 
 }
+@font-face {
+    font-family: 'FiraGO';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff) format('woff');
+  }
+
+/* p,a,li,h2,span,label,.p-card-title, .p-card-subtitle, .p-button-title, .title{
+    font-family: "Zen Dots", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
 
 p,a,li,h2,span,label,.p-card-title, .p-card-subtitle, .p-button-title, .title{
-    font-family: "Zen Dots", sans-serif;
+    font-family: 'FiraGO';
     font-weight: 400;
     font-style: normal;
   }

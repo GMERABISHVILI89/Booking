@@ -3,33 +3,33 @@
     <main>
         <section class="content-row">
           <div class="overview">
-            <h2>Overview</h2>
-            <p>Discover the ultimate hospitality experience at our carefully selected collection of the finest hotels around the world. Each property in our portfolio is renowned for its exceptional service, luxurious amenities, and attention to detail, ensuring that every aspect of your stay is nothing short of extraordinary. Whether you are traveling for business or leisure, our hotels are committed to providing an unparalleled level of comfort and sophistication.</p>
+            <h2>{{"Overview" | translate}}</h2>
+            <p>{{"OverviewText" | translate}}</p>
           </div>
           <div class="blog">
-            <h2>Latest News</h2>
+            <h2>{{"LatestNews" | translate}}</h2>
             <div class="blog-post">
-              <h3>New Hotel Openings</h3>
-              <p>Discover the latest hotel openings in prime locations.</p>
+              <h3>{{"NewHotelOpenings" | translate}}</h3>
+              <p>{{"Discoverhotels" | translate}}</p>
             </div>
             <div class="blog-post">
-              <h3>Travel Tips</h3>
-              <p>Get the best travel tips for your next vacation.</p>
+              <h3>{{"Traveltips" | translate}}</h3>
+              <p>{{"tips" | translate}}</p>
             </div>
             <div class="blog-post">
-              <h3>Special Promotions</h3>
-              <p>Take advantage of our exclusive deals and save on your next booking.</p>
+              <h3>{{"promotions" | translate}}</h3>
+              <p>{{"promotion-text" | translate}}</p>
             </div>
             <div class="blog-post">
-              <h3>Seasonal Highlights</h3>
-              <p>Learn about seasonal events and activities to enjoy during your travels.</p>
+              <h3>{{"Seasonalhighlights" | translate}}</h3>
+              <p>{{"higlight-text" | translate}}</p>
             </div>
            
           </div>
         </section>
     
         <section class="gallery">
-          <h2>Hotel Gallery</h2>
+          <h2>{{"Hotelgallery" | translate}}</h2>
           <div class="gallery-container">
             <div *ngFor="let hotel of hotels" class="gallery-item">
                 <p-card (click)="navigateToHotel(hotel.id)" header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px', cursor:'pointer' }" >
@@ -48,7 +48,7 @@
         </section>
     
         <section class="comments">
-          <h2>Comments</h2>
+          <h2>{{"comments" | translate}}</h2>
           <div class="comments-container">
             <div class="comment"><p><strong>Pokahondas sheron:</strong> Wonderful stay, highly recommend!</p></div>
             <div class="comment"><p><strong>Jane Smith:</strong> Great service and beautiful rooms.</p></div>
