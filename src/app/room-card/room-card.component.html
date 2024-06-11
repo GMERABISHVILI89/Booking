@@ -1,16 +1,32 @@
-<p-card header="{{room.name}}"  [style]="{ width: '360px',cursor:'pointer', fontSize:'17px', padding:'15px' }" (click)="getRoomId(room?.id)">
-    <ng-template pTemplate="header" [style]="{ margin: '12px'}">
-        <img alt="Card" [src]="room.images[1].source" />
-    </ng-template>
-    <p [style]="{ margin: '12px'}">
-        {{"მაქსიმუმ " + room.maximumGuests + " " + "ადამიანი"}}
-    </p>
-    <p [style]="{ margin: '12px'}">
-        {{room.pricePerNight + "₾"}}
-    </p>
-    <ng-template pTemplate="footer" >
-        <div class="flex gap-3 mt-1">
-            <p-button [style]="{ margin: '12px'}" label="დეტალურად" class="w-full" styleClass="w-full" />
-        </div>
-    </ng-template>
+<p-card
+  header="{{ room.name }}"
+  [style]="{
+    width: '360px',
+    cursor: 'pointer',
+    fontSize: '17px',
+    padding: '15px',
+    border: '3px solid #f8b62b'
+  }"
+  (click)="getRoomId(room?.id)"
+>
+  <ng-template pTemplate="header" [style]="{ margin: '12px' }">
+    <img alt="Card" [src]="room.images[1].source" />
+  </ng-template>
+  <p [style]="{ margin: '12px' }">
+    {{ "MAX" | translate }} {{ room.maximumGuests }} {{ "PERSON" | translate }}
+  </p>
+  <p [style]="{ margin: '12px' }">
+    {{ room.pricePerNight + "₾" }}
+  </p>
+  <span [ngClass]="room.available ? 'available':'notavailable'">{{"test"}}</span>
+  <ng-template pTemplate="footer">
+    <div class="flex gap-3 mt-1">
+      <p-button
+        [style]="{ margin: '12px' }"
+        label="დეტალურად"
+        class="w-full"
+        styleClass="w-full"
+      />
+    </div>
+  </ng-template>
 </p-card>

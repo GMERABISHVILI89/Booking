@@ -18,7 +18,7 @@ export class HotelComponent implements OnInit {
  roomImages:any[]=[];
  available:any;
  showButton: boolean = false;
- threshold: number = 50;
+ threshold: number = 300;
 constructor(private hotelService:HotelsService, private router:ActivatedRoute, private route:Router) {
  
 }
@@ -37,9 +37,10 @@ constructor(private hotelService:HotelsService, private router:ActivatedRoute, p
       
     })
     const scroll$ = fromEvent(window, 'scroll').pipe(
-      debounceTime(50), 
+      debounceTime(100), 
       map(() => {
         try {
+          console.log(window.scrollY)
           return window.scrollY > this.threshold; 
         } catch (error) {
           console.error('Error obtaining scroll position:', error);

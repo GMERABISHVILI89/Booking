@@ -1,3 +1,7 @@
 ::ng-deep .ng-star-inserted {
     font-size: 16px !important;
 }
+
+.available{
+    background:rgb(3, 8, 165);
+}

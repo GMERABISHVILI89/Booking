@@ -51,23 +51,21 @@
     <div class="description">
         <div class="content">
             <section class="room-category">
-              <h2>Single Room</h2>
-              <p>Our Single Rooms offer a comfortable and affordable stay, ideal for solo travelers. Equipped with a cozy bed, a work desk, and modern amenities, you'll find everything you need for a relaxing stay.</p>
+              <h2>{{ 'SINGLE_ROOM' | translate }}</h2>
+              <p>{{ 'SINGLE_ROOM_DESC' | translate }}</p>
             </section>
             <section class="room-category">
-              <h2>Double Room</h2>
-              <p>Perfect for couples or friends traveling together, our Double Rooms feature a spacious bed and a comfortable seating area. Enjoy a blend of comfort and convenience with top-notch facilities.</p>
+              <h2>{{ 'DOUBLE_ROOM' | translate }}</h2>
+              <p>{{ 'DOUBLE_ROOM_DESC' | translate }}</p>
             </section>
             <section class="room-category">
-              <h2>Deluxe Room</h2>
-              <p>Experience luxury in our Deluxe Rooms. These rooms provide extra space and premium amenities, including a plush king-sized bed, a mini-bar, and a stunning view. Ideal for those looking to indulge in a little extra comfort.</p>
+              <h2>{{ 'DELUXE_ROOM' | translate }}</h2>
+              <p>{{ 'DELUXE_ROOM_DESC' | translate }}</p>
             </section>
          
             <section class="overview">
-              <h2>Hotel Overview</h2>
-              <p>Welcome to our hotel, where comfort meets elegance. Our hotel offers a variety of rooms to suit every traveler's needs, from single rooms for solo adventurers to deluxe rooms for those seeking a luxurious experience.</p>
-              <p>Our amenities include a state-of-the-art fitness center, a relaxing spa, and multiple dining options that cater to all tastes. Whether you are here for business or leisure, our hotel provides the perfect blend of convenience and comfort.</p>
-              <p>Located in the heart of the city, our hotel offers easy access to major attractions, shopping centers, and business districts. Our dedicated staff is committed to ensuring your stay is both enjoyable and memorable.</p>
+              <h2>{{ 'HOTEL_OVERVIEW' | translate }}</h2>
+              <p>{{ 'HOTEL_OVERVIEW_DESC' | translate }}</p>
             </section>
     </div>
    
@@ -77,7 +75,7 @@
 <div class="overview">
     <section class="slider">
         <div class="slider-container">
-          <div class="slide" *ngFor="let image of hotels" (click)="goToHotel(image.id)">
+          <div class="slide" *ngFor="let image of hotels" style="cursor: pointer;" (click)="goToHotel(image.id)">
                 <img [src]="image?.featuredImage" alt="Hotel Image ">
           </div>
         </div>
@@ -96,25 +94,8 @@
 </div>
 </div>
 <div class="comments-and-social">
-    <div class="comment-card">
-      <img src="../../../assets/Images/random4.JPG" alt="Comment Image 2">
-      <h3>Comment Title 2</h3>
-    </div>
-    <div class="comment-card">
-      <img src="../../../assets/Images/random2.JPG" alt="Comment Image 3">
-      <h3>Comment Title 3</h3>
-    </div>
-    <div class="comment-card">
-      <img src="../../../assets/Images/random3.JPG" alt="Comment Image 4">
-      <h3>Comment Title 4</h3>
-    </div>
-    <div class="comment-card">
-      <img src="../../../assets/Images/random5.JPG" alt="Comment Image 5">
-      <h3>Comment Title 5</h3>
-    </div>
-    <div class="comment-card">
-        <img src="../../../assets/Images/random6.JPG" alt="Comment Image 5">
-        <h3>Comment Title 5</h3>
-      </div>
+  <div *ngFor="let image of commentImages" class="comment-card">
+    <img [src]="'../../../assets/Images/' + image" [alt]="'Comment Image ' + (commentImages.indexOf(image) + 2)">
   </div>
+</div>
   
