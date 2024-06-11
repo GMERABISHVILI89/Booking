@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../Services/booking.service';
 import { differenceInDays } from 'date-fns';
 import { HotelsService } from '../../Services/hotels.service';
+import { debounceTime, fromEvent, map } from 'rxjs';
 
 @Component({
   selector: 'app-room',
@@ -24,6 +25,8 @@ export class RoomComponent implements OnInit {
   roomPricePerNight:any;
   totalPrice: number | null = null;
   roomTypeID:any;
+  showButton: boolean = false;
+  threshold: number = 50;
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomsService,
@@ -65,6 +68,22 @@ export class RoomComponent implements OnInit {
     });
     this.bookingForm.valueChanges.subscribe(() => this.calculateTotalPrice());
 
+    const scroll$ = fromEvent(window, 'scroll').pipe(
+      debounceTime(50), 
+      map(() => {
+        try {
+          return window.scrollY > this.threshold; 
+        } catch (error) {
+          console.error('Error obtaining scroll position:', error);
+          return false; 
+        }
+      })
+    );
+    scroll$.subscribe((isScrolled) => (this.showButton = isScrolled));
+
+  }
+  scrollToTop() {
+    window.scroll({ top: 0, behavior: 'smooth' });
   }
   calculateTotalPrice() {
     const checkInDate = this.bookingForm.get('checkInDate')?.value;

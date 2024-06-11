@@ -1,4 +1,6 @@
 <div class="container">
+    <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
+        <i class="pi-arrow-up"></i>Top </button>
     <div class="room-types">
         <button pButton type="button" label="All" icon="pi pi-check" class="p-button-lg" (click)="filterRooms(0)"></button>
         <button pButton type="button" label="Single Room" class="p-button-types"(click)="filterRooms(1)"></button>
@@ -59,7 +61,6 @@
 
 
     <div class="rooms">
-         
-        <app-room-card *ngFor="let room of rooms" [room]="room" ></app-room-card>
+        <app-room-card *ngFor="let room of filteredRooms" [room]="room" ></app-room-card>
     </div>
 </div>

@@ -5,6 +5,7 @@
     box-sizing: border-box;
 
 }
+@import "primeicons/primeicons.css";
 @font-face {
     font-family: 'FiraGO';
     font-style: normal;

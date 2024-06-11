@@ -1,5 +1,7 @@
 <div class="container">
     <header class="main-background" (click)="navigateToFilter()"></header>
+    <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
+      <i class="pi-arrow-up"></i>Top </button>
     <main>
         <section class="content-row">
           <div class="overview">
