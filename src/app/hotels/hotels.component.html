@@ -22,7 +22,7 @@
 
       <ng-template pTemplate="footer">
         <div class="flex gap-3 mt-1">
-          <p-button label="სრულად ნახვა" class="w-full" styleClass="w-full" />
+          <p-button label="{{'details'|translate}}" class="w-full" styleClass="w-full" />
         </div>
       </ng-template>
     </p-card>
@@ -33,49 +33,21 @@
 </div>
 <div class="content">
   <section class="room-category">
-    <h2>Single Room</h2>
-    <p>
-      Our Single Rooms offer a comfortable and affordable stay, ideal for solo
-      travelers. Equipped with a cozy bed, a work desk, and modern amenities,
-      you'll find everything you need for a relaxing stay.
-    </p>
+    <h2>{{ 'SINGLE_ROOM' | translate }}</h2>
+    <p>{{ 'SINGLE_ROOM_DESC' | translate }}</p>
   </section>
   <section class="room-category">
-    <h2>Double Room</h2>
-    <p>
-      Perfect for couples or friends traveling together, our Double Rooms
-      feature a spacious bed and a comfortable seating area. Enjoy a blend of
-      comfort and convenience with top-notch facilities.
-    </p>
+    <h2>{{ 'DOUBLE_ROOM' | translate }}</h2>
+    <p>{{ 'DOUBLE_ROOM_DESC' | translate }}</p>
   </section>
   <section class="room-category">
-    <h2>Deluxe Room</h2>
-    <p>
-      Experience luxury in our Deluxe Rooms. These rooms provide extra space and
-      premium amenities, including a plush king-sized bed, a mini-bar, and a
-      stunning view. Ideal for those looking to indulge in a little extra
-      comfort.
-    </p>
+    <h2>{{ 'DELUXE_ROOM' | translate }}</h2>
+    <p>{{ 'DELUXE_ROOM_DESC' | translate }}</p>
   </section>
 
   <section class="overview">
-    <h2>Hotel Overview</h2>
-    <p>
-      Welcome to our hotel, where comfort meets elegance. Our hotel offers a
-      variety of rooms to suit every traveler's needs, from single rooms for
-      solo adventurers to deluxe rooms for those seeking a luxurious experience.
-    </p>
-    <p>
-      Our amenities include a state-of-the-art fitness center, a relaxing spa,
-      and multiple dining options that cater to all tastes. Whether you are here
-      for business or leisure, our hotel provides the perfect blend of
-      convenience and comfort.
-    </p>
-    <p>
-      Located in the heart of the city, our hotel offers easy access to major
-      attractions, shopping centers, and business districts. Our dedicated staff
-      is committed to ensuring your stay is both enjoyable and memorable.
-    </p>
+    <h2>{{ 'HOTEL_OVERVIEW' | translate }}</h2>
+    <p>{{ 'HOTEL_OVERVIEW_DESC' | translate }}</p>
   </section>
 </div>
 
