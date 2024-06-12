@@ -5,7 +5,7 @@
     cursor: 'pointer',
     fontSize: '17px',
     padding: '15px',
-    border: '3px solid #f8b62b'
+    border: '3px solid rgb(255, 174, 0)'
   }"
   (click)="getRoomId(room?.id)"
 >
@@ -18,15 +18,12 @@
   <p [style]="{ margin: '12px' }">
     {{ room.pricePerNight + "₾" }}
   </p>
-  <span [ngClass]="room.available ? 'available':'notavailable'">{{"test"}}</span>
+  <span [ngClass]="room.available ? 'available':'notavailable'">{{"avalable" | translate}}</span>
   <ng-template pTemplate="footer">
     <div class="flex gap-3 mt-1">
-      <p-button
+      <button
         [style]="{ margin: '12px' }"
-        label="დეტალურად"
-        class="w-full"
-        styleClass="w-full"
-      />
+        class="room-detail-btn">{{"details" | translate}}</button>
     </div>
   </ng-template>
 </p-card>

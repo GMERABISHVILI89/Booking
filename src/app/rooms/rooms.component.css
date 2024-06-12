@@ -133,6 +133,26 @@
   opacity: 1;
 }
 
+.room-detail-btn{
+  padding: 15px 25px;
+  background: #003b76;
+  color: rgb(255, 174, 0);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.room-detail-btn-filter{
+  padding: 15px 55px;
+  background: rgb(255, 174, 0);
+  color: #003b76;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
 @media only screen and (max-width: 1164px) {
   .container {
     align-items: center;
@@ -167,6 +187,10 @@
     .rooms{
         grid-template-columns: 1fr;
     }
+    .room-detail-btn{
+      width: 100%;
+    }
+   
 }
 @media only screen and (max-width: 628px) {
     .filter-divs {
@@ -183,3 +207,8 @@
     }
    
 }
+
+::ng-deep .p-calendar {
+  height: 30px !important;
+} 
+/*   ng-invalid ng-star-inserted ng-touched */

@@ -103,7 +103,6 @@ export class RoomsComponent implements OnInit {
       this.rooms?.map(el => {
        if(el.roomTypeId == param){
          this.filteredRooms?.push(el)
-         
       }
       }); 
     }

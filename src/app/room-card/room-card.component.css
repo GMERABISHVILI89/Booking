@@ -3,5 +3,24 @@
 }
 
 .available{
-    background:rgb(3, 8, 165);
+    background:#127509;
+}
+.notavailable{
+    background:rgb(135, 1, 13);
+}
+span {
+    float: right !important;
+    padding: 5px;
+    border-radius: 10px;
+    color: #fff;
+    margin: 10px;
+}
+.room-detail-btn{
+    padding: 15px 25px;
+    background: #003b76;
+    color: rgb(255, 174, 0);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
 }

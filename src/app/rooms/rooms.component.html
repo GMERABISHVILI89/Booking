@@ -2,10 +2,10 @@
     <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
         <i class="pi-arrow-up"></i>Top </button>
     <div class="room-types">
-        <button pButton type="button" label="All" icon="pi pi-check" class="p-button-lg" (click)="filterRooms(0)"></button>
-        <button pButton type="button" label="Single Room" class="p-button-types"(click)="filterRooms(1)"></button>
-        <button pButton type="button" label="Double Room" icon="pi pi-check" class="p-button-types"(click)="filterRooms(2)"></button>
-        <button pButton type="button" label="Deluxe Room" icon="pi pi-check" class="p-button-types"(click)="filterRooms(3)"></button>
+        <button  class="room-detail-btn" (click)="filterRooms(0)">{{"all"|translate}}</button>
+        <button  class="room-detail-btn" (click)="filterRooms(1)">{{"singleroom"|translate}}</button>
+        <button  class="room-detail-btn" (click)="filterRooms(2)">{{"doubleroom"|translate}}</button>
+        <button  class="room-detail-btn" (click)="filterRooms(3)">{{"deluxeroom"|translate}}</button>
     </div>
 
 
@@ -13,13 +13,13 @@
 
         <form [formGroup]="roomForm" class="filter-divs">
             <div class="roomtype">
-                <label for="roomTypeId">ოთახის ტიპი</label>
+                <label for="roomTypeId">{{"roomtype" | translate}}</label>
                 <p-dropdown id="roomTypeId" formControlName="roomTypeId" [options]="types" optionLabel="name"
-                    placeholder="ოთახის ტიპი" />
+                    placeholder="{{'roomtype' | translate}}" />
             </div>
 
             <div class="ranges">
-                <label for="priceRange">ფასის მიხედვით</label>
+                <label for="priceRange">{{"byprice" | translate}}</label>
                 <div class="price-range-inputs">
                     <p-inputNumber class="rangeiputs" formControlName="priceFrom"
                         [min]="roomForm.get('priceFrom')?.value" [max]="1000" [step]="10" >
@@ -38,23 +38,23 @@
             </div>
 
             <div class="guest-quantity">
-                <label for="maximumGuests">სტუმრების რაოდენობა</label>
+                <label for="maximumGuests">{{"guest-quantity" | translate}}</label>
                 <p-dropdown [options]="guestQuantity" id="maximumGuests" formControlName="maximumGuests"
-                    placeholder="აირჩიეთ" [editable]="true" optionLabel="val" />
+                    placeholder="{{'choose' | translate}}" [editable]="true" optionLabel="val" />
             </div>
 
             <div class="checkIn">
-                <label for="checkIn">შესვლა</label>
+                <label for="checkIn">{{"checkin" | translate}}</label>
                 <p-calendar id="checkIn" formControlName="checkIn"/>
             </div>
 
             <div class="checkOut">
-                <label for="checkOut">გასვლა</label>
+                <label for="checkOut">{{"checkout" | translate}}</label>
                 <p-calendar id="checkOut" formControlName="checkOut"/>
             </div>
 
             <div class="submit-filter">
-                <p-button class="submitbtn" label="გაფილტვრა" (click)="onSubmit()" />
+                <button class="room-detail-btn-filter"  (click)="onSubmit()">{{"filter"|translate}}</button>
             </div>
         </form>
     </div>
