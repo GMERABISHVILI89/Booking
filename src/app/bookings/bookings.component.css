@@ -7,7 +7,9 @@
     display: flex;
     justify-content: space-around;
 }
-
+.text-primary, .text-color {
+    color:#003b76 ;
+}
 
 img{
     width: 100%;

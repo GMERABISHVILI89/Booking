@@ -100,7 +100,9 @@
   background: #003b76;
   color: #f8b62b;
 }
-
+.text-primary, .text-color {
+  color:#003b76 ;
+}
 .submit-filter {
   display: flex;
   align-items: flex-end;

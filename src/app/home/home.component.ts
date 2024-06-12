@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   threshold: number = 50;
   constructor(private hotelService: HotelsService, private route: Router) {}
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
      

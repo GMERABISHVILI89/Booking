@@ -51,7 +51,9 @@ img
     margin: 15px 0;
     font-size: 17px;
 }
-
+.text-primary, .text-color {
+    color:#003b76 ;
+}
 .btn-details {
     padding: 10px;
     width: 120px;
@@ -61,7 +63,11 @@ img
     cursor: pointer;
     border: none;
 }
-
+.hotelimage{
+    height: 600px;
+    /* width: 66%; */
+    object-fit: cover;
+}
 .btn-details:hover{
     background: #064a8d;
 }

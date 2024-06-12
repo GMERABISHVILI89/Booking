@@ -3,6 +3,7 @@ import { HotelsService } from '../../Services/hotels.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Rooms } from '../../Models/Rooms';
 import { debounceTime, fromEvent, map } from 'rxjs';
+import { MenuItem } from '../../Models/MenuItem';
 
 @Component({
   selector: 'app-hotel',
@@ -19,10 +20,22 @@ export class HotelComponent implements OnInit {
  available:any;
  showButton: boolean = false;
  threshold: number = 300;
+ items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
 constructor(private hotelService:HotelsService, private router:ActivatedRoute, private route:Router) {
  
 }
   ngOnInit(): void {
+    this.items = [
+      { label: 'Home' }, 
+      { label: 'Hotels' },
+      { label: 'Hotel' }
+   
+  ];
+
+  this.items = [ { label: 'Home' , route: '/home' },{ label: 'Hotels' , route: '/hotels' },{ label: 'hotel'  }];
+
     window.scrollTo(0, 0);
     this.hotelId = this.router.snapshot.paramMap.get('id');
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel:any) => {

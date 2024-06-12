@@ -208,6 +208,9 @@ overflow-y: auto;
 .p-tabview-nav{
   margin-bottom: 20px;
 }
+.text-primary, .text-color {
+  color:#003b76 ;
+}
 .pagination{
   max-width: 1100px;
   margin: 50px auto;

@@ -3,6 +3,7 @@ import { Hotels } from '../Models/Hotels';
 import { HotelsService } from '../Services/hotels.service';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, map } from 'rxjs';
+import { MenuItem } from '../Models/MenuItem';
 
 @Component({
   selector: 'app-hotels',
@@ -17,6 +18,9 @@ export class HotelsComponent implements OnInit{
     '../../../assets/Images/random5.JPG',
     '../../../assets/Images/random6.JPG'
   ];
+  items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
   hotels:Hotels[] | undefined;
   showButton: boolean = false;
   threshold: number = 50;
@@ -27,7 +31,12 @@ export class HotelsComponent implements OnInit{
       this.hotels = hotel;
       console.log(this.hotels)
     })
-    
+    this.items = [
+      { label: 'Home' }, 
+      { label: 'Hotels' }
+  ];
+
+  this.items = [ { label: 'Home' , route: '/home' },{ label: 'Hotels' , route: '/hotels' }];
     const scroll$ = fromEvent(window, 'scroll').pipe(
       debounceTime(50), 
       map(() => {

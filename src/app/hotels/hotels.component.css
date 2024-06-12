@@ -104,7 +104,9 @@
 }
 
 
-
+.text-primary, .text-color {
+  color:#003b76 ;
+}
 .scroll-top-button {
   position: fixed;
   bottom: 100px;
