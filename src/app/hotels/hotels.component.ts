@@ -10,7 +10,13 @@ import { debounceTime, fromEvent, map } from 'rxjs';
   styleUrl: './hotels.component.css'
 })
 export class HotelsComponent implements OnInit{
-
+  commentImages: string[] = [
+    '../../../assets/Images/random4.JPG',
+    '../../../assets/Images/random2.JPG',
+    '../../../assets/Images/random3.JPG',
+    '../../../assets/Images/random5.JPG',
+    '../../../assets/Images/random6.JPG'
+  ];
   hotels:Hotels[] | undefined;
   showButton: boolean = false;
   threshold: number = 50;

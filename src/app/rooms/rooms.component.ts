@@ -5,6 +5,7 @@ import { Filter } from '../Models/Filter';
 import { RoomsService } from '../Services/rooms.service';
 import { Rooms } from '../Models/Rooms';
 import { debounceTime, fromEvent, map } from 'rxjs';
+import { MenuItem } from '../Models/MenuItem';
 
 @Component({
   selector: 'app-rooms',
@@ -13,7 +14,9 @@ import { debounceTime, fromEvent, map } from 'rxjs';
 })
 
 export class RoomsComponent implements OnInit {
+  items: MenuItem[] | undefined;
 
+  home: MenuItem | undefined;
   roomForm!: FormGroup;
   rooms?: Rooms[];
   guestQuantity?: GuestQuantity[] | undefined;  
@@ -39,6 +42,14 @@ export class RoomsComponent implements OnInit {
       this.filteredRooms = [...this.rooms];
       console.log(this.rooms)
     })
+
+    this.items = [
+      { label: 'Home' }, 
+      { label: 'rooms' }
+   
+  ];
+
+  this.items = [ { label: 'Home' , route: '/home' },{ label: 'rooms' }];
    
     this.roomForm = this.fb.group({
       roomTypeId: [null, Validators.required],

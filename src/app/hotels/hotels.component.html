@@ -79,28 +79,11 @@
   </section>
 </div>
 
-
 <div class="comments-and-social">
-  <div class="comment-card">
-    <img src="../../../assets/Images/random4.JPG" alt="Comment Image 2">
-    <h3>Comment Title 2</h3>
+  <div *ngFor="let image of commentImages" class="comment-card">
+    <img [src]="'../../../assets/Images/' + image" [alt]="'Comment Image ' + (commentImages.indexOf(image) + 2)">
   </div>
-  <div class="comment-card">
-    <img src="../../../assets/Images/random2.JPG" alt="Comment Image 3">
-    <h3>Comment Title 3</h3>
-  </div>
-  <div class="comment-card">
-    <img src="../../../assets/Images/random3.JPG" alt="Comment Image 4">
-    <h3>Comment Title 4</h3>
-  </div>
-  <div class="comment-card">
-    <img src="../../../assets/Images/random5.JPG" alt="Comment Image 5">
-    <h3>Comment Title 5</h3>
-  </div>
-  <div class="comment-card">
-      <img src="../../../assets/Images/random6.JPG" alt="Comment Image 5">
-      <h3>Comment Title 5</h3>
-    </div>
 </div>
+  
 
 </div>

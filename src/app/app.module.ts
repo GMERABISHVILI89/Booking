@@ -24,7 +24,9 @@ import { HotelComponent } from './hotels/hotel/hotel.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
 
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { TabViewModule } from 'primeng/tabview';
         deps: [HttpClient],
       },
     }),
+    BreadcrumbModule,
+    TableModule,
     TabViewModule,
     BrowserModule,
     HttpClientModule,

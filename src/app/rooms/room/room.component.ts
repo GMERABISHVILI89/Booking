@@ -7,6 +7,7 @@ import { BookingService } from '../../Services/booking.service';
 import { differenceInDays } from 'date-fns';
 import { HotelsService } from '../../Services/hotels.service';
 import { debounceTime, fromEvent, map } from 'rxjs';
+import { MenuItem } from '../../Models/MenuItem';
 
 @Component({
   selector: 'app-room',
@@ -23,8 +24,11 @@ export class RoomComponent implements OnInit {
     '../../../assets/Images/random6.JPG'
   ];
 
-  activeIndex: number = 0;
 
+  activeIndex: number = 0;
+  items: MenuItem[] | undefined;
+
+  home: MenuItem | undefined;
   roomId?: string | null;
   room?: Rooms;
   bookingForm!: FormGroup;
@@ -55,6 +59,15 @@ export class RoomComponent implements OnInit {
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
     });
+
+    this.items = [
+      { label: 'Home' }, 
+      { label: 'rooms' },
+      { label: 'room' }
+   
+  ];
+
+  this.items = [ { label: 'Home' , route: '/home' },{ label: 'Rooms' , route: '/rooms' },{ label: 'room'  }];
 
     this.roomService.GetRoom(Number(this.roomId)).subscribe((data) => {
       this.room = data;

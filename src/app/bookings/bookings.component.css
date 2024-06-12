@@ -1,0 +1,48 @@
+.container {
+    max-width: 1400px;
+    padding: 0 10px;
+    margin: 40px auto;
+}
+.bookings{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+img{
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+
+}
+
+::ng-deep .p-ripple {
+    z-index: 99 !important; 
+}
+::ng-deeb .p-inputtext span{
+    padding-top: 50px;
+}
+
+::ng-deep .p-paginator {
+    margin: 40px 0 80px 0;
+}
+
+::ng-deep .p-datatable-table thead{
+    height: 60px;
+}
+::ng-deep .p-datatable-table  td{
+    height: 60px;
+}
+
+.deletebooking-btn{
+    padding: 10px 30px;
+    background: rgb(187, 3, 3);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+::ng-deep .p-paginator-rpp-options span{
+    padding-top: 12px;
+    padding-left: 12px;
+}
