@@ -23,6 +23,8 @@ import { RoomComponent } from './rooms/room/room.component';
 import { HotelComponent } from './hotels/hotel/hotel.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TabViewModule } from 'primeng/tabview';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         deps: [HttpClient],
       },
     }),
-
+    TabViewModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
