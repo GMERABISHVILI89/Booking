@@ -23,7 +23,7 @@ export class RoomComponent implements OnInit {
     '../../../assets/Images/random6.JPG'
   ];
 
-
+  activeIndex: number = 0;
 
   roomId?: string | null;
   room?: Rooms;

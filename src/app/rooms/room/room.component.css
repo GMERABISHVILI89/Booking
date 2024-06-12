@@ -5,6 +5,13 @@
     grid-template-columns: repeat(2,1fr);
     gap: 50px;
 }
+.overview-container{
+  display: grid;
+  max-width: 1100px;
+  margin: 50px auto;
+  grid-template-columns: 1fr;
+  gap: 50px;
+}
 .image-gallery {
     position: relative;
     overflow: hidden;
@@ -189,6 +196,16 @@ overflow-y: auto;
   25%, 45% { transform: translateX(-100%); }
   50%, 70% { transform: translateX(-200%); }
   75%, 95% { transform: translateX(-200%); }
+}
+
+
+::ng-deep.p-tabview-title{
+  padding: 10px 15px;
+}
+::ng-deep
+.p-tabview-nav{
+  
+  margin-bottom: 20px;
 }
 .comments-and-social {
   scrollbar-color: #007 #d4a01c;

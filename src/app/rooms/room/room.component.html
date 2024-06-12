@@ -1,8 +1,27 @@
 
+  <div class="overview-container">
+    <p-tabView>
+      <p-tabPanel header="{{'Overview' | translate}}">
+          <p>
+            {{'OverviewText' | translate}}
+          </p>
+      </p-tabPanel>
+      <p-tabPanel header="Header II">
+          <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
+          </p>
+      </p-tabPanel>
+      <p-tabPanel header="Header III">
+          <p>
+              At vero eos et accusamus et iusto odio dignissimos...
+          </p>
+      </p-tabPanel>
+  </p-tabView>
+  </div>
 <div class="container">
   <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
     <i class="pi-arrow-up"></i>Top </button>
-    
+
     <div class="gallery">
         <div class="image-gallery">
             <div class="image-container">
@@ -48,6 +67,7 @@
     </div>
 
 
+
     <div class="description">
         <div class="content">
             <section class="room-category">
@@ -82,14 +102,11 @@
       </section>
  
         <div class="random-text-about-room">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quibusdam, labore culpa commodi dolore est molestiae? Obcaecati ex aliquam fugit recusandae nihil in aperiam atque quaerat expedita ut nisi, pariatur maiores quod quos maxime quas! Quo dignissimos provident aliquid exercitationem, reprehenderit, doloremque blanditiis voluptatum temporibus impedit nam quibusdam amet reiciendis odit vel, nulla beatae eaque explicabo possimus libero. Dolorem velit debitis reprehenderit tempore labore tenetur hic accusantium, molestias quod molestiae rem nesciunt commodi atque est possimus, animi sunt dolore facilis.</p>
-         
+          <p>{{"hoteloverview1"| translate}}</p>
           </div>
           <div class="random-text-about-room">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quibusdam, labore culpa commodi dolore est molestiae? Obcaecati ex aliquam fugit recusandae nihil in aperiam atque quaerat expedita ut nisi, pariatur maiores quod quos maxime quas! Quo dignissimos provident aliquid exercitationem, reprehenderit, doloremque blanditiis voluptatum temporibus impedit nam quibusdam amet reiciendis odit vel, nulla beatae eaque explicabo possimus libero. Dolorem velit debitis reprehenderit tempore labore tenetur hic accusantium, molestias quod molestiae rem nesciunt commodi atque est possimus, animi sunt dolore facilis.</p>
-         
+            <p>{{"hoteloverview2"| translate}}</p>
           </div>
-      
 
 </div>
 </div>
