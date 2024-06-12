@@ -13,12 +13,17 @@ export class HomeComponent implements OnInit {
   hotels: Hotels[] | undefined;
   showButton: boolean = false;
   threshold: number = 50;
+  currentIndex: number = 0;
+  hotelImages:any[]=[];
   constructor(private hotelService: HotelsService, private route: Router) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
-     
+      hotel.forEach(el => {
+        this.hotelImages.push(el.featuredImage);
+      })
+      console.log(this.hotels)
     });
 
     const scroll$ = fromEvent(window, 'scroll').pipe(
@@ -43,5 +48,20 @@ export class HomeComponent implements OnInit {
   }
   navigateToHotel(id: any) {
     this.route.navigateByUrl(`/hotel/${id}`);
+  }
+
+  prevImage() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      this.currentIndex = this.hotelImages.length - 1;
+    }
+  }
+  nextImage() {
+    if (this.currentIndex < this.hotelImages.length - 1) {
+      this.currentIndex++;
+    } else {
+      this.currentIndex = 0;
+    }
   }
 }

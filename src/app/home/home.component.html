@@ -32,6 +32,18 @@
     
         <section class="gallery">
           <h2>{{"Hotelgallery" | translate}}</h2>
+
+          <div class="gallery">
+            <div class="image-gallery">
+                <div class="image-container">
+                  <img [src]="hotelImages[currentIndex]" alt="Gallery Image">
+                </div>
+                <button class="prev-button" (click)="prevImage()">&#10094;</button>
+                <button class="next-button" (click)="nextImage()">&#10095;</button>
+              </div>
+        </div>
+
+
           <div class="gallery-container">
             <div *ngFor="let hotel of hotels" class="gallery-item">
                 <p-card (click)="navigateToHotel(hotel.id)" header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px', cursor:'pointer' }" >
