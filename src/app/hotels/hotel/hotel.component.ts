@@ -53,7 +53,7 @@ constructor(private hotelService:HotelsService, private router:ActivatedRoute, p
       debounceTime(100), 
       map(() => {
         try {
-          console.log(window.scrollY)
+       
           return window.scrollY > this.threshold; 
         } catch (error) {
           console.error('Error obtaining scroll position:', error);

@@ -29,7 +29,7 @@ export class HotelsComponent implements OnInit{
     window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
-      console.log(this.hotels)
+    
     })
     this.items = [
       { label: 'Home' }, 

@@ -12,7 +12,7 @@ export class RoomCardComponent implements OnInit{
  }
 
  ngOnInit(): void {
-  console.log(this.room)
+
  }
 
  getRoomId(id:any){

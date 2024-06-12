@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       hotel.forEach(el => {
         this.hotelImages.push(el.featuredImage);
       })
-      console.log(this.hotels)
+    
     });
 
     const scroll$ = fromEvent(window, 'scroll').pipe(

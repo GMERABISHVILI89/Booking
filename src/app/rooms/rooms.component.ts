@@ -40,7 +40,7 @@ export class RoomsComponent implements OnInit {
     this.roomService.getRooms().subscribe(data => {
       this.rooms = data;
       this.filteredRooms = [...this.rooms];
-      console.log(this.rooms)
+    
     })
 
     this.items = [

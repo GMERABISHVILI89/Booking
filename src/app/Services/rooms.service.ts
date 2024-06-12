@@ -24,11 +24,9 @@ export class RoomsService {
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
-      console.log(errorMessage)
     } else {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-      console.log(errorMessage)
     }
     return throwError(errorMessage);
   };
