@@ -4,6 +4,7 @@
     margin: 50px auto;
     grid-template-columns: repeat(2,1fr);
     gap: 50px;
+    padding: 0 10px;
 }
 .overview-container{
   display: grid;
@@ -11,6 +12,7 @@
   margin: 50px auto;
   grid-template-columns: 1fr;
   gap: 50px;
+  padding: 0 10px;
 }
 .image-gallery {
     position: relative;
