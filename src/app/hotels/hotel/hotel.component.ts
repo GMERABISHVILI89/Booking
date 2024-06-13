@@ -41,7 +41,6 @@ constructor(private hotelService:HotelsService, private router:ActivatedRoute, p
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel:any) => {
       this.hotel = hotel; 
       this.rooms = hotel.rooms;
-     
       this.rooms.forEach((room: any) => {
         if (room.images) {
           this.roomImages = this.roomImages.concat(room.images);

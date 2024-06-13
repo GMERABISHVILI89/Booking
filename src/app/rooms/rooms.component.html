@@ -111,7 +111,7 @@
     <div class="gallery">
         <div class="image-gallery">
             <div class="image-container">
-              <img [src]="hotelImages[currentIndex]" alt="Gallery Image">
+              <img [src]="hotelImages[currentIndex]" alt="Gallery Image" (click)="filterHotelRooms(hotels![currentIndex].id)">
             </div>
             <button class="prev-button" (click)="prevImage()">&#10094;</button>
             <button class="next-button" (click)="nextImage()">&#10095;</button>
