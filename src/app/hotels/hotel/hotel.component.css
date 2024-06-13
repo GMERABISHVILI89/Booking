@@ -63,6 +63,9 @@ img
     cursor: pointer;
     border: none;
 }
+::ng-deep .p-breadcrumb{
+    border: none !important;
+  }
 .hotelimage{
     height: 600px;
     /* width: 66%; */

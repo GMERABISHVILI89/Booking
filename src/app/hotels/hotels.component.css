@@ -67,7 +67,12 @@
   height: 270px;
   border-radius: 10px;
 }
-
+::ng-deep .p-breadcrumb{
+  border: none !important;
+}
+::ng-deep .p-element{
+  color: #003b76;
+}
 .comment-card {
   flex: 0 0 auto;
   max-width: 400px;

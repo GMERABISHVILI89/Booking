@@ -13,7 +13,7 @@
 }
 
 .rangeiputs {
-  margin: 30px 0px;
+  margin: 28px 0px;
 }
 .roomtype {
   display: flex;
@@ -26,7 +26,7 @@
   width: 60px;
 }
 ::ng-deep .p-inputwrapper {
-  width: 185px;
+  width: 200px;
   height: 30px;
 }
 ::ng-deep .ng-star-inputwrapper {
@@ -35,13 +35,7 @@
 ::ng-deep .p-inputtext {
   text-align: center;
 }
-.guest-quantity {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -50,43 +44,6 @@
   max-width: 1400px;
   align-items: start;
   padding: 10px;
-}
-.room-types {
-  display: flex;
-  gap: 20px;
-  margin: auto;
-}
-.ranges {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-}
-.ranges label {
-  text-align: center;
-}
-.filter {
-  margin-top: 40px;
-  border: 1px solid #003b76;
-  border-radius: 10px;
-  padding: 30px;
-  width: 100%;
-  background: #003b76;
-  color: #f8b62b;
-}
-
-.filter-divs {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: space-evenly;
-}
-
-.checkOut,
-.checkIn {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  text-align: center;
 }
 
 ::ng-deep .p-slider-handle {
@@ -100,8 +57,9 @@
   background: #003b76;
   color: #f8b62b;
 }
-.text-primary, .text-color {
-  color:#003b76 ;
+.text-primary,
+.text-color {
+  color: #003b76;
 }
 .submit-filter {
   display: flex;
@@ -109,12 +67,12 @@
 }
 
 .rooms {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 20px auto;
-    gap: 50px;
-    width: 100%;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  margin: 20px auto;
+  gap: 50px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .scroll-top-button {
@@ -135,8 +93,8 @@
   opacity: 1;
 }
 
-.room-detail-btn{
-  padding: 15px 25px;
+.room-detail-btn {
+  padding: 20px 25px;
   background: #003b76;
   color: rgb(255, 174, 0);
   border-radius: 10px;
@@ -145,7 +103,7 @@
   font-size: 17px;
 }
 
-.room-detail-btn-filter{
+.room-detail-btn-filter {
   padding: 15px 55px;
   background: rgb(255, 174, 0);
   color: #003b76;
@@ -155,6 +113,128 @@
   font-size: 17px;
 }
 
+.filter-rooms {
+  display: grid;
+  grid-template-columns: 200px auto 400px;
+  gap: 40px;
+}
+.room-types {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: fit-content;
+}
+.filter {
+  border: 1px solid #003b76;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: fit-content;
+  background: #003b76;
+  color: #f8b62b;
+}
+.filter-divs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.dates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.guest-quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.checkOut,
+.checkIn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+.ranges {
+  display: flex;
+  flex-direction: column;
+}
+.ranges label {
+  text-align: center;
+}
+
+.image-gallery {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+@media only screen and (max-width: 1426px) {
+  .filter-rooms {
+    display: grid;
+    grid-template-columns: 200px auto;
+    gap: 20px;
+    margin: auto;
+  }
+  .gallery {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1175px) {
+  .filter-rooms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: auto;
+  }
+  
+}
+
+
+@media only screen and (max-width: 1264px) {
+  .rooms {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+}
 @media only screen and (max-width: 1164px) {
   .container {
     align-items: center;
@@ -164,53 +244,59 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
   }
-  .roomtype {
-    display: flex;
-    gap: 54px;
-    width: 100%;
-  }
+ 
   .ranges {
     width: 100%;
   }
-  .guest-quantity{
+  .guest-quantity {
     width: 100%;
   }
-  .checkOut, .checkIn {
+  .checkOut,
+  .checkIn {
     width: 100%;
     align-items: flex-start;
-}
-.rooms{
-    grid-template-columns:1fr 1fr;
-}
+  }
+  .rooms {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
 }
 
-
+@media only screen and (max-width: 975px) {
+  .rooms {
+    grid-template-columns: 1fr;
+  }
+}
 @media only screen and (max-width: 788px) {
-    .rooms{
-        grid-template-columns: 1fr;
-    }
-    .room-detail-btn{
-      width: 100%;
-    }
-   
+  .rooms {
+    grid-template-columns: 1fr;
+  }
+  .room-detail-btn {
+    width: 100%;
+  }
 }
+@media (max-width: 768px) {
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media only screen and (max-width: 628px) {
-    .filter-divs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: start;
-    }
-    .guest-quantity{
-        align-items: start;
-    }
-    .room-types {
-        flex-direction: column;
-        align-items: center;
-    }
-   
+  .filter-divs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+  }
+  .guest-quantity {
+    align-items: start;
+  }
+  .room-types {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 ::ng-deep .p-calendar {
   height: 30px !important;
-} 
+}
 /*   ng-invalid ng-star-inserted ng-touched */

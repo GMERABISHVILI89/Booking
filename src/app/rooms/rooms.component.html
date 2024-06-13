@@ -1,83 +1,128 @@
 <div class="container">
-    <div class="card flex justify-content-center">
-        <p-breadcrumb class="max-w-full" [model]="items">
-            <ng-template pTemplate="item" let-item>
-                <ng-container *ngIf="item.route; else elseBlock">
-                    <a [routerLink]="item.route" class="p-menuitem-link">
-                        <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
-                        <span class="text-primary font-semibold">{{ item.label }}</span>
-                    </a>
-                </ng-container>
-                <ng-template #elseBlock>
-                    <a [href]="item.url">
-                        <span class="text-color">{{ item.label }}</span>
-                    </a>
-                </ng-template>
-            </ng-template>
-        </p-breadcrumb>
-    </div>
-    <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
-        <i class="pi-arrow-up"></i>Top </button>
+  <div class="card flex justify-content-center">
+    <p-breadcrumb class="max-w-full" [model]="items">
+      <ng-template pTemplate="item" let-item>
+        <ng-container *ngIf="item.route; else elseBlock">
+          <a [routerLink]="item.route" class="p-menuitem-link">
+            <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
+            <span class="text-primary font-semibold">{{ item.label }}</span>
+          </a>
+        </ng-container>
+        <ng-template #elseBlock>
+          <a [href]="item.url">
+            <span class="text-color">{{ item.label }}</span>
+          </a>
+        </ng-template>
+      </ng-template>
+    </p-breadcrumb>
+  </div>
+  <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
+    <i class="pi-arrow-up"></i>Top
+  </button>
+  <div class="filter-rooms">
     <div class="room-types">
-        <button  class="room-detail-btn" (click)="filterRooms(0)">{{"all"|translate}}</button>
-        <button  class="room-detail-btn" (click)="filterRooms(1)">{{"singleroom"|translate}}</button>
-        <button  class="room-detail-btn" (click)="filterRooms(2)">{{"doubleroom"|translate}}</button>
-        <button  class="room-detail-btn" (click)="filterRooms(3)">{{"deluxeroom"|translate}}</button>
+      <button class="room-detail-btn" (click)="filterRooms(0)">
+        {{ "all" | translate }}
+      </button>
+      <button class="room-detail-btn" (click)="filterRooms(1)">
+        {{ "singleroom" | translate }}
+      </button>
+      <button class="room-detail-btn" (click)="filterRooms(2)">
+        {{ "doubleroom" | translate }}
+      </button>
+      <button class="room-detail-btn" (click)="filterRooms(3)">
+        {{ "deluxeroom" | translate }}
+      </button>
     </div>
-
-
     <div class="filter">
-
-        <form [formGroup]="roomForm" class="filter-divs">
-            <div class="roomtype">
-                <label for="roomTypeId">{{"roomtype" | translate}}</label>
-                <p-dropdown id="roomTypeId" formControlName="roomTypeId" [options]="types" optionLabel="name"
-                    placeholder="{{'roomtype' | translate}}" />
+      <form [formGroup]="roomForm" class="filter-divs">
+        <div class="dropdowns">
+          <div class="roomtype">
+            <label for="roomTypeId">{{ "roomtype" | translate }}</label>
+            <p-dropdown
+              id="roomTypeId"
+              formControlName="roomTypeId"
+              [options]="types"
+              optionLabel="name"
+              placeholder="{{ 'roomtype' | translate }}"
+            />
+          </div>
+          <div class="guest-quantity">
+            <label for="maximumGuests">{{
+              "guest-quantity" | translate
+            }}</label>
+            <p-dropdown
+              [options]="guestQuantity"
+              id="maximumGuests"
+              formControlName="maximumGuests"
+              placeholder="{{ 'choose' | translate }}"
+              [editable]="true"
+              optionLabel="val"
+            />
+          </div>
+        </div>
+        <div class="dates">
+          <div class="checkIn">
+            <label for="checkIn">{{ "checkin" | translate }}</label>
+            <p-calendar id="checkIn" formControlName="checkIn" />
+          </div>
+          <div class="checkOut">
+            <label for="checkOut">{{ "checkout" | translate }}</label>
+            <p-calendar id="checkOut" formControlName="checkOut" />
+          </div>
+        </div>
+        <div class="ranges">
+          <label for="priceRange">{{ "byprice" | translate }}</label>
+          <div class="price-range-inputs">
+            <p-inputNumber
+              class="rangeiputs"
+              formControlName="priceFrom"
+              [min]="roomForm.get('priceFrom')?.value"
+              [max]="1000"
+              [step]="10"
+            >
+            </p-inputNumber>
+            <p-slider
+              formControlName="priceRange"
+              [min]="0"
+              [max]="1000"
+              [step]="10"
+              [range]="true"
+              (onChange)="onPriceRangeChange($event)"
+            >
+            </p-slider>
+            <p-inputNumber
+              class="rangeiputs"
+              formControlName="priceTo"
+              [min]="0"
+              [max]="roomForm.get('priceTo')?.value"
+              [step]="10"
+            >
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="submit-filter">
+          <button class="room-detail-btn-filter" (click)="onSubmit()">
+            {{ "filter" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="gallery">
+        <div class="image-gallery">
+            <div class="image-container">
+              <img [src]="hotelImages[currentIndex]" alt="Gallery Image">
             </div>
-
-            <div class="ranges">
-                <label for="priceRange">{{"byprice" | translate}}</label>
-                <div class="price-range-inputs">
-                    <p-inputNumber class="rangeiputs" formControlName="priceFrom"
-                        [min]="roomForm.get('priceFrom')?.value" [max]="1000" [step]="10" >
-                    </p-inputNumber>
-                    <p-slider formControlName="priceRange" [min]="0" [max]="1000" [step]="10" [range]="true"
-                        (onChange)="onPriceRangeChange($event)">
-                    </p-slider>
-                    <p-inputNumber class="rangeiputs" formControlName="priceTo" [min]="0"
-                        [max]="roomForm.get('priceTo')?.value" [step]="10">
-                    </p-inputNumber>
-
-
-                </div>
-                <!-- <span>From: {{ roomForm.get('priceRange')?.value[0] }}</span>
-                <span>To: {{ roomForm.get('priceRange')?.value[1] }}</span> -->
-            </div>
-
-            <div class="guest-quantity">
-                <label for="maximumGuests">{{"guest-quantity" | translate}}</label>
-                <p-dropdown [options]="guestQuantity" id="maximumGuests" formControlName="maximumGuests"
-                    placeholder="{{'choose' | translate}}" [editable]="true" optionLabel="val" />
-            </div>
-
-            <div class="checkIn">
-                <label for="checkIn">{{"checkin" | translate}}</label>
-                <p-calendar id="checkIn" formControlName="checkIn"/>
-            </div>
-
-            <div class="checkOut">
-                <label for="checkOut">{{"checkout" | translate}}</label>
-                <p-calendar id="checkOut" formControlName="checkOut"/>
-            </div>
-
-            <div class="submit-filter">
-                <button class="room-detail-btn-filter"  (click)="onSubmit()">{{"filter"|translate}}</button>
-            </div>
-        </form>
+            <button class="prev-button" (click)="prevImage()">&#10094;</button>
+            <button class="next-button" (click)="nextImage()">&#10095;</button>
+          </div>
     </div>
 
-
-    <div class="rooms">
-        <app-room-card *ngFor="let room of filteredRooms" [room]="room" ></app-room-card>
-    </div>
+  </div>
+  <div class="rooms">
+    <app-room-card
+      *ngFor="let room of filteredRooms"
+      [room]="room"
+    ></app-room-card>
+  </div>
 </div>

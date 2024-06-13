@@ -24,3 +24,21 @@ span {
     cursor: pointer;
     font-size: 17px;
 }
+
+@media only screen and (max-width: 1264px) {
+  ::ng-deep .p-card {
+    width: 450px !important;
+  }
+  }
+
+  @media only screen and (max-width: 975px) {
+    ::ng-deep .p-card {
+        width: 490px !important;
+      }
+  }
+  
+  @media only screen and (max-width: 515px) {
+    ::ng-deep .p-card {
+        width:350px !important;
+      }
+  }

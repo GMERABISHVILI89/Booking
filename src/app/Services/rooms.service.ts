@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../Models/Enviroment';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Rooms } from '../Models/Rooms';
 import { Filter } from '../Models/Filter';
-import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,22 +13,9 @@ export class RoomsService {
   constructor(private http: HttpClient) { }
 
   getRooms() {
-    return this.http.get<Rooms[]>(this.API_URL + `/GetAll`).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<Rooms[]>(this.API_URL + `/GetAll`)
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
-  };
 
 
   GetRoom(id: number) {

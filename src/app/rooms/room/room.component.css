@@ -218,7 +218,9 @@ overflow-y: auto;
 ::ng-deep .p-element{
   color: #003b76;
 }
-
+::ng-deep .p-breadcrumb{
+  border: none !important;
+}
 ::ng-deep .p-tabview-panels
 {
   height: 150px;

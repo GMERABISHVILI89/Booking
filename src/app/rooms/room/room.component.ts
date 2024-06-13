@@ -140,10 +140,8 @@ export class RoomComponent implements OnInit {
     this.rout.navigateByUrl(`/hotel/${id}`);
   }
   onSubmit() {
-    debugger;
-    console.log(this.bookingForm);
+
     if (this.bookingForm.valid) {
-      console.log(this.bookingForm);
       this.bookData = {
         id: 111,
         roomID: Number(this.roomId),
@@ -156,7 +154,6 @@ export class RoomComponent implements OnInit {
         customerPhone: this.bookingForm.controls['customerPhone'].value,
       };
       this.bookingService.addBooking(this.bookData).subscribe((data) => {
-        console.log(data);
         this.bookingForm.reset();
       });
       alert('ოთახი წარმატებით დაიჯავშნა ! გისრუვებთ ბედნიერ დასვენებას');

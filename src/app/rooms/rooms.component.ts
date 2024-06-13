@@ -6,6 +6,8 @@ import { RoomsService } from '../Services/rooms.service';
 import { Rooms } from '../Models/Rooms';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { MenuItem } from '../Models/MenuItem';
+import { Hotels } from '../Models/Hotels';
+import { HotelsService } from '../Services/hotels.service';
 
 @Component({
   selector: 'app-rooms',
@@ -29,13 +31,25 @@ export class RoomsComponent implements OnInit {
   filteredRooms?:any [] = [];
   showButton: boolean = false;
   threshold: number = 50;
-  constructor(private fb: FormBuilder, private roomService: RoomsService) {
+  currentIndex: number = 0;
+  hotels: Hotels[] | undefined;
+  hotelImages:any[]=[];
+  constructor(private fb: FormBuilder, private roomService: RoomsService, private hotelService:HotelsService) {
     this.types = [{ id: 1, name: "Single Room" }, { id: 2, name: "Double Room" }, { id: 3, name: "Deluxe Room" }];
     this.guestQuantity = [{ val: 1 }, { val: 2 }, { val: 3 }, { val: 4 }, { val: 5 }, { val: 6 }, { val: 7 }, { val: 8 }, { val: 9 }, { val: 10}];
   }
 
 
   ngOnInit() {
+
+
+    this.hotelService.GetAll().subscribe((hotel) => {
+      this.hotels = hotel;
+      hotel.forEach(el => {
+        this.hotelImages.push(el.featuredImage);
+      })
+    
+    });
 
     this.roomService.getRooms().subscribe(data => {
       this.rooms = data;
@@ -127,5 +141,18 @@ export class RoomsComponent implements OnInit {
   scrollToTop() {
     window.scroll({ top: 0, behavior: 'smooth' });
   }
-
+  prevImage() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      this.currentIndex = this.hotelImages.length - 1;
+    }
+  }
+  nextImage() {
+    if (this.currentIndex < this.hotelImages.length - 1) {
+      this.currentIndex++;
+    } else {
+      this.currentIndex = 0;
+    }
+  }
 }
