@@ -1,25 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 
-}
-@import "primeicons/primeicons.css";
 @font-face {
-    font-family: 'FiraGO';
-    font-style: normal;
-    font-display: swap;
-    font-weight: 400;
-    src: url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff) format('woff');
-  }
+  font-family: 'FiraGO';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff) format('woff');
+}
+
 
 /* p,a,li,h2,span,label,.p-card-title, .p-card-subtitle, .p-button-title, .title{
     font-family: "Zen Dots", sans-serif;
     font-weight: 400;
     font-style: normal;
   } */
+/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
+}
 p,a,li,h2,span,label,.p-card-title, .p-card-subtitle, .p-button-title, .title{
     font-family: 'FiraGO';
     font-weight: 400;
