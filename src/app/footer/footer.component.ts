@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent {
 
-  /**
-   *
-   */
+
   constructor(private route:Router) {
 
     

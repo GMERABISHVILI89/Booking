@@ -15,15 +15,13 @@ import { MenuItem } from '../../Models/MenuItem';
   styleUrl: './room.component.css',
 })
 export class RoomComponent implements OnInit {
-
   commentImages: string[] = [
     '../../../assets/Images/random4.JPG',
     '../../../assets/Images/random2.JPG',
     '../../../assets/Images/random3.JPG',
     '../../../assets/Images/random5.JPG',
-    '../../../assets/Images/random6.JPG'
+    '../../../assets/Images/random6.JPG',
   ];
-
 
   activeIndex: number = 0;
   items: MenuItem[] | undefined;
@@ -60,14 +58,13 @@ export class RoomComponent implements OnInit {
       this.hotels = hotel;
     });
 
-    this.items = [
-      { label: 'Home' }, 
-      { label: 'rooms' },
-      { label: 'room' }
-   
-  ];
+    this.items = [{ label: 'Home' }, { label: 'rooms' }, { label: 'room' }];
 
-  this.items = [ { label: 'Home' , route: '/home' },{ label: 'Rooms' , route: '/rooms' },{ label: 'room'  }];
+    this.items = [
+      { label: 'Home', route: '/home' },
+      { label: 'Rooms', route: '/rooms' },
+      { label: 'room' },
+    ];
 
     this.roomService.GetRoom(Number(this.roomId)).subscribe((data) => {
       this.room = data;
@@ -140,7 +137,6 @@ export class RoomComponent implements OnInit {
     this.rout.navigateByUrl(`/hotel/${id}`);
   }
   onSubmit() {
-
     if (this.bookingForm.valid) {
       this.bookData = {
         id: 111,
@@ -150,7 +146,7 @@ export class RoomComponent implements OnInit {
         totalPrice: this.totalPrice,
         isConfirmed: true,
         customerName: this.bookingForm.controls['customerName'].value,
-        customerId: '1112',
+        customerId: '45678',
         customerPhone: this.bookingForm.controls['customerPhone'].value,
       };
       this.bookingService.addBooking(this.bookData).subscribe((data) => {

@@ -1,14 +1,14 @@
 :host {
     display: block;
     height: 100%;
-    background-color: #f8f9fa; /* Example background color */
+    background-color: #f8f9fa; 
   }
   
   .footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px; /* Example padding */
+    padding: 0 20px; 
   }
 h2, p, li{
     color:#f8b62b;

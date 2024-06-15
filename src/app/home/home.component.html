@@ -1,75 +1,89 @@
 <div class="container">
-    <header class="main-background" (click)="navigateToFilter()"></header>
-    <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
-      <i class="pi-arrow-up"></i>Top </button>
-    <main>
-        <section class="content-row">
-          <div class="overview">
-            <h2>{{"Overview" | translate}}</h2>
-            <p>{{"OverviewText" | translate}}</p>
-          </div>
-          <div class="blog">
-            <h2>{{"LatestNews" | translate}}</h2>
-            <div class="blog-post">
-              <h3>{{"NewHotelOpenings" | translate}}</h3>
-              <p>{{"Discoverhotels" | translate}}</p>
-            </div>
-            <div class="blog-post">
-              <h3>{{"Traveltips" | translate}}</h3>
-              <p>{{"tips" | translate}}</p>
-            </div>
-            <div class="blog-post">
-              <h3>{{"promotions" | translate}}</h3>
-              <p>{{"promotion-text" | translate}}</p>
-            </div>
-            <div class="blog-post">
-              <h3>{{"Seasonalhighlights" | translate}}</h3>
-              <p>{{"higlight-text" | translate}}</p>
-            </div>
-           
-          </div>
-        </section>
-    
-        <section class="gallery">
-          <h2>{{"Hotelgallery" | translate}}</h2>
-
-          <div class="gallery">
-            <div class="image-gallery">
-                <div class="image-container">
-                  <img [src]="hotelImages[currentIndex]" alt="Gallery Image">
-                </div>
-                <button class="prev-button" (click)="prevImage()">&#10094;</button>
-                <button class="next-button" (click)="nextImage()">&#10095;</button>
-              </div>
+  <header class="main-background" (click)="navigateToFilter()"></header>
+  <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
+    <i class="pi-arrow-up"></i>Top
+  </button>
+  <main>
+    <section class="content-row">
+      <div class="overview">
+        <h2>{{ "Overview" | translate }}</h2>
+        <p>{{ "OverviewText" | translate }}</p>
+      </div>
+      <div class="blog">
+        <h2>{{ "LatestNews" | translate }}</h2>
+        <div class="blog-post">
+          <h3>{{ "NewHotelOpenings" | translate }}</h3>
+          <p>{{ "Discoverhotels" | translate }}</p>
         </div>
+        <div class="blog-post">
+          <h3>{{ "Traveltips" | translate }}</h3>
+          <p>{{ "tips" | translate }}</p>
+        </div>
+        <div class="blog-post">
+          <h3>{{ "promotions" | translate }}</h3>
+          <p>{{ "promotion-text" | translate }}</p>
+        </div>
+        <div class="blog-post">
+          <h3>{{ "Seasonalhighlights" | translate }}</h3>
+          <p>{{ "higlight-text" | translate }}</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="gallery">
+      <h2>{{ "Hotelgallery" | translate }}</h2>
 
-          <div class="gallery-container">
-            <div *ngFor="let hotel of hotels" class="gallery-item">
-                <p-card (click)="navigateToHotel(hotel.id)" header="{{hotel.name}}" subheader="{{hotel.city}}" [style]="{ width: '400px', cursor:'pointer' }" >
-                    <ng-template pTemplate="header">
-                        <img alt="Card" [src]="hotel.featuredImage" />
-                    </ng-template>
-                   
-                    <ng-template pTemplate="footer">
-                        <div class="flex gap-3 mt-1">
-                            <p-button label="See More" class="w-full" styleClass="w-full" />
-                        </div>
-                    </ng-template>
-                </p-card>
-            </div>
+      <div class="gallery">
+        <div class="image-gallery">
+          <div class="image-container">
+            <img [src]="hotelImages[currentIndex]" alt="Gallery Image" />
           </div>
-        </section>
-    
-        <section class="comments">
-          <h2>{{"comments" | translate}}</h2>
-          <div class="comments-container">
-            <div class="comment"><p><strong>Pokahondas sheron:</strong> {{ 'WONDERFUL_STAY' | translate }}</p></div>
-            <div class="comment"><p><strong>Jane Smith:</strong> Great service and beautiful rooms.</p></div>
-            <div class="comment"><p><strong>David Stone:</strong> nice hotels in tbilisi</p></div>
-            <div class="comment"><p><strong>Anna Paterson:</strong> Beautiful rooms.</p></div>
-          </div>
-        </section>
-      </main>
+          <button class="prev-button" (click)="prevImage()">&#10094;</button>
+          <button class="next-button" (click)="nextImage()">&#10095;</button>
+        </div>
+      </div>
 
+      <div class="gallery-container">
+        <div *ngFor="let hotel of hotels" class="gallery-item">
+          <p-card
+            (click)="navigateToHotel(hotel.id)"
+            header="{{ hotel.name }}"
+            subheader="{{ hotel.city }}"
+            [style]="{ width: '400px', cursor: 'pointer' }"
+          >
+            <ng-template pTemplate="header">
+              <img alt="Card" [src]="hotel.featuredImage" />
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+              <div class="flex gap-3 mt-1">
+                <p-button label="See More" class="w-full" styleClass="w-full" />
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </section>
+
+    <section class="comments">
+      <h2>{{ "comments" | translate }}</h2>
+      <div class="comments-container">
+        <div class="comment">
+          <p>
+            <strong>Pokahondas sheron:</strong>
+            {{ "WONDERFUL_STAY" | translate }}
+          </p>
+        </div>
+        <div class="comment">
+          <p><strong>Jane Smith:</strong> Great service and beautiful rooms.</p>
+        </div>
+        <div class="comment">
+          <p><strong>David Stone:</strong> nice hotels in tbilisi</p>
+        </div>
+        <div class="comment">
+          <p><strong>Anna Paterson:</strong> Beautiful rooms.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

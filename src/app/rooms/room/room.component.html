@@ -1,147 +1,150 @@
-
- <div class="pagination">
+<div class="pagination">
   <div class="card flex justify-content-center">
     <p-breadcrumb class="max-w-full" [model]="items">
-        <ng-template pTemplate="item" let-item>
-            <ng-container *ngIf="item.route; else elseBlock">
-                <a [routerLink]="item.route" class="p-menuitem-link">
-                    <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
-                    <span class="text-primary font-semibold">{{ item.label }}</span>
-                </a>
-            </ng-container>
-            <ng-template #elseBlock>
-                <a [href]="item.url">
-                    <span class="text-color">{{ item.label }}</span>
-                </a>
-            </ng-template>
+      <ng-template pTemplate="item" let-item>
+        <ng-container *ngIf="item.route; else elseBlock">
+          <a [routerLink]="item.route" class="p-menuitem-link">
+            <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
+            <span class="text-primary font-semibold">{{ item.label }}</span>
+          </a>
+        </ng-container>
+        <ng-template #elseBlock>
+          <a [href]="item.url">
+            <span class="text-color">{{ item.label }}</span>
+          </a>
         </ng-template>
+      </ng-template>
     </p-breadcrumb>
-</div>
- </div>
- 
- <div class="overview-container">
-    <p-tabView>
-      <p-tabPanel header="{{'Overview' | translate}}">
-          <p>
-            {{'OverviewText' | translate}}
-          </p>
-      </p-tabPanel>
-      <p-tabPanel header="{{'food' | translate}}">
-          <p>
-              {{"fullboard" | translate}}
-          </p>
-          <p>
-           {{"bedandbreakfast" | translate}}
-        </p>
-      </p-tabPanel>
-      <p-tabPanel header="{{'comments' | translate}}">
-          <p>{{"room-comment1"|translate}}
-           
-          </p>
-          <p>
-            {{"room-comment2"|translate}}
-          </p>
-          <p>
-            {{"room-comment3"|translate}}
-          </p>
-      </p-tabPanel>
-  </p-tabView>
   </div>
+</div>
+
+<div class="overview-container">
+  <p-tabView>
+    <p-tabPanel header="{{ 'Overview' | translate }}">
+      <p>
+        {{ "OverviewText" | translate }}
+      </p>
+    </p-tabPanel>
+    <p-tabPanel header="{{ 'food' | translate }}">
+      <p>
+        {{ "fullboard" | translate }}
+      </p>
+      <p>
+        {{ "bedandbreakfast" | translate }}
+      </p>
+    </p-tabPanel>
+    <p-tabPanel header="{{ 'comments' | translate }}">
+      <p>{{ "room-comment1" | translate }}</p>
+      <p>
+        {{ "room-comment2" | translate }}
+      </p>
+      <p>
+        {{ "room-comment3" | translate }}
+      </p>
+    </p-tabPanel>
+  </p-tabView>
+</div>
 <div class="container">
   <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
-    <i class="pi-arrow-up"></i>Top </button>
+    <i class="pi-arrow-up"></i>Top
+  </button>
 
-    <div class="gallery">
-        <div class="image-gallery">
-            <div class="image-container">
-              <img [src]="images[currentIndex]" alt="Gallery Image">
-            </div>
-            <button class="prev-button" (click)="prevImage()">&#10094;</button>
-            <button class="next-button" (click)="nextImage()">&#10095;</button>
-          </div>
+  <div class="gallery">
+    <div class="image-gallery">
+      <div class="image-container">
+        <img [src]="images[currentIndex]" alt="Gallery Image" />
+      </div>
+      <button class="prev-button" (click)="prevImage()">&#10094;</button>
+      <button class="next-button" (click)="nextImage()">&#10095;</button>
     </div>
-    <div class="reserve">
-        <div class="reservation-form">
-            <form [formGroup]="bookingForm">
-              <h2>{{"Room Reservation" | translate}}</h2>
+  </div>
+  <div class="reserve">
+    <div class="reservation-form">
+      <form [formGroup]="bookingForm">
+        <h2>{{ "Room Reservation" | translate }}</h2>
 
-              <h3>{{"Price Per Night" | translate}}  {{roomPricePerNight + "GEL"}}</h3>
-              <div class="form-group">
-                <label for="customerName">{{"Customer Name" | translate}}</label>
-                <input id="customerName" formControlName="customerName" type="text"  />
-              </div>
-              <div class="form-group">
-                <label for="customerPhone">{{"Customer Phone"| translate}}</label>
-                <input id="customerPhone" formControlName="customerPhone" type="tel"  />
-              </div>
-              <div class="form-group">
-                <label for="checkInDate">{{"Check-in Date" | translate}}</label>
-                <input id="checkInDate" formControlName="checkInDate" type="date"  />
-              </div>
-              <div class="form-group">
-                <label for="checkOutDate">{{"Check-out Date" | translate}}</label>
-                <input id="checkOutDate" formControlName="checkOutDate" type="date"  />
-              </div>
-              <div class="form-group" *ngIf="totalPrice !== null">
-                <label>{{"Total Price:" | translate}} {{ totalPrice }} EUR</label>
-              </div>
-              <button type="submit" (click)="onSubmit()">{{"Reserve" | translate}}</button>
-            </form>
-          </div>
-
-
-
-
-
-    </div>
-
-
-
-    <div class="description">
-        <div class="content">
-            <section class="room-category">
-              <h2>{{ 'SINGLE_ROOM' | translate }}</h2>
-              <p>{{ 'SINGLE_ROOM_DESC' | translate }}</p>
-            </section>
-            <section class="room-category">
-              <h2>{{ 'DOUBLE_ROOM' | translate }}</h2>
-              <p>{{ 'DOUBLE_ROOM_DESC' | translate }}</p>
-            </section>
-            <section class="room-category">
-              <h2>{{ 'DELUXE_ROOM' | translate }}</h2>
-              <p>{{ 'DELUXE_ROOM_DESC' | translate }}</p>
-            </section>
-         
-            <section class="overview">
-              <h2>{{ 'HOTEL_OVERVIEW' | translate }}</h2>
-              <p>{{ 'HOTEL_OVERVIEW_DESC' | translate }}</p>
-            </section>
-    </div>
-   
-</div>
-
-
-<div class="overview">
-    <section class="slider">
-        <div class="slider-container">
-          <div class="slide" *ngFor="let image of hotels" style="cursor: pointer;" (click)="goToHotel(image.id)">
-                <img [src]="image?.featuredImage" alt="Hotel Image ">
-          </div>
+        <h3>
+          {{ "Price Per Night" | translate }} {{ roomPricePerNight + "GEL" }}
+        </h3>
+        <div class="form-group">
+          <label for="customerName">{{ "Customer Name" | translate }}</label>
+          <input id="customerName" formControlName="customerName" type="text" />
         </div>
-      </section>
- 
-        <div class="random-text-about-room">
-          <p>{{"hoteloverview1"| translate}}</p>
-          </div>
-          <div class="random-text-about-room">
-            <p>{{"hoteloverview2"| translate}}</p>
-          </div>
+        <div class="form-group">
+          <label for="customerPhone">{{ "Customer Phone" | translate }}</label>
+          <input
+            id="customerPhone"
+            formControlName="customerPhone"
+            type="tel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="checkInDate">{{ "Check-in Date" | translate }}</label>
+          <input id="checkInDate" formControlName="checkInDate" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="checkOutDate">{{ "Check-out Date" | translate }}</label>
+          <input id="checkOutDate" formControlName="checkOutDate" type="date" />
+        </div>
+        <div class="form-group" *ngIf="totalPrice !== null">
+          <label>{{ "Total Price:" | translate }} {{ totalPrice }} EUR</label>
+        </div>
+        <button type="submit" (click)="onSubmit()">
+          {{ "Reserve" | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
 
-</div>
+  <div class="description">
+    <div class="content">
+      <section class="room-category">
+        <h2>{{ "SINGLE_ROOM" | translate }}</h2>
+        <p>{{ "SINGLE_ROOM_DESC" | translate }}</p>
+      </section>
+      <section class="room-category">
+        <h2>{{ "DOUBLE_ROOM" | translate }}</h2>
+        <p>{{ "DOUBLE_ROOM_DESC" | translate }}</p>
+      </section>
+      <section class="room-category">
+        <h2>{{ "DELUXE_ROOM" | translate }}</h2>
+        <p>{{ "DELUXE_ROOM_DESC" | translate }}</p>
+      </section>
+
+      <section class="overview">
+        <h2>{{ "HOTEL_OVERVIEW" | translate }}</h2>
+        <p>{{ "HOTEL_OVERVIEW_DESC" | translate }}</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="overview">
+    <section class="slider">
+      <div class="slider-container">
+        <div
+          class="slide"
+          *ngFor="let image of hotels"
+          style="cursor: pointer"
+          (click)="goToHotel(image.id)"
+        >
+          <img [src]="image?.featuredImage" alt="Hotel Image " />
+        </div>
+      </div>
+    </section>
+
+    <div class="random-text-about-room">
+      <p>{{ "hoteloverview1" | translate }}</p>
+    </div>
+    <div class="random-text-about-room">
+      <p>{{ "hoteloverview2" | translate }}</p>
+    </div>
+  </div>
 </div>
 <div class="comments-and-social">
   <div *ngFor="let image of commentImages" class="comment-card">
-    <img [src]="'../../../assets/Images/' + image" [alt]="'Comment Image ' + (commentImages.indexOf(image) + 2)">
+    <img
+      [src]="'../../../assets/Images/' + image"
+      [alt]="'Comment Image ' + (commentImages.indexOf(image) + 2)"
+    />
   </div>
 </div>
-  

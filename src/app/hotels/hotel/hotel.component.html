@@ -1,26 +1,25 @@
 <div class="container">
-
-
   <div class="pagination">
     <div class="card flex justify-content-center">
       <p-breadcrumb class="max-w-full" [model]="items">
-          <ng-template pTemplate="item" let-item>
-              <ng-container *ngIf="item.route; else elseBlock">
-                  <a [routerLink]="item.route" class="p-menuitem-link">
-                      <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
-                      <span class="text-primary font-semibold">{{ item.label }}</span>
-                  </a>
-              </ng-container>
-              <ng-template #elseBlock>
-                  <a [href]="item.url">
-                      <span class="text-color">{{ item.label }}</span>
-                  </a>
-              </ng-template>
+        <ng-template pTemplate="item" let-item>
+          <ng-container *ngIf="item.route; else elseBlock">
+            <a [routerLink]="item.route" class="p-menuitem-link">
+              <span
+                [ngClass]="[item.icon ? item.icon : '', 'text-color']"
+              ></span>
+              <span class="text-primary font-semibold">{{ item.label }}</span>
+            </a>
+          </ng-container>
+          <ng-template #elseBlock>
+            <a [href]="item.url">
+              <span class="text-color">{{ item.label }}</span>
+            </a>
           </ng-template>
+        </ng-template>
       </p-breadcrumb>
+    </div>
   </div>
-   </div>
-
 
   <img [src]="hotel?.featuredImage" alt="" class="hotelimage" />
   <div class="hotel-info">
@@ -30,23 +29,23 @@
   </div>
 </div>
 <div class="rooms-container">
-    <div class="rooms" *ngFor="let room of rooms" (click) ="goToRoom(room.id)">
-            <div class="title">{{ room.name }}</div>
-            <div><img [src]="room?.images![0].source" alt=""></div>
-            <div class="available">{{ room.available?'თავისუფალია':'დაკავებულია' }}</div>
-            <div class="price">{{"ერთი ღამის ფასი " + room.pricePerNight + "₾"}}</div>
-            <button class="btn-details">{{"See More" | translate}}</button>
+  <div class="rooms" *ngFor="let room of rooms" (click)="goToRoom(room.id)">
+    <div class="title">{{ room.name }}</div>
+    <div><img [src]="(room?.images)![0].source" alt="" /></div>
+    <div class="available">
+      {{ room.available ? "თავისუფალია" : "დაკავებულია" }}
     </div>
-
-   
+    <div class="price">{{ "ერთი ღამის ფასი " + room.pricePerNight + "₾" }}</div>
+    <button class="btn-details">{{ "See More" | translate }}</button>
+  </div>
 </div>
 <div class="description-container">
-    <p>Indulge in Unforgettable Experiences:</p>
-    <p>Serene Accommodations: Unwind in our elegantly appointed rooms, each boasting [amenities] and breathtaking views of [view description].
-        Culinary Delights: Embark on a culinary journey at our [restaurant description], featuring [cuisine type] specialties and [service detail].
-        Unwind and Reconnect: Dive into our sparkling pool or rejuvenate at our [spa description], offering a haven of tranquility.
-        Explore with Ease: Our convenient location places you at the center of the action. Explore vibrant [attractions] or delve into the rich history of [historical sites].</p>
+  <p>{{"hotelTitle" | translate}}</p>
+  <p>
+ {{"hotelDescriptions" | translate}}
+  </p>
 </div>
 
 <button class="scroll-top-button" *ngIf="showButton" (click)="scrollToTop()">
-  <i class="pi-arrow-up"></i>Top </button>
+  <i class="pi-arrow-up"></i>Top
+</button>

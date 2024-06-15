@@ -1,58 +1,53 @@
-
 .hotels {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  
-  }
-  
-  ::ng-deep .p-card-title{
-      font-size: 17px;
-  }
-  ::ng-deep .p-card-body {
-      padding: 12px;
-      margin: 7px 0;
-  }
-  ::ng-deep.p-card-title{
-      margin-bottom: 15px;
-  }
-  
-  ::ng-deep.p-card-subtitle{
-      margin-bottom: 15px;
-  }
-  img{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-  }
-  .main-container{
-    padding: 0 10px;
-    max-width: 1400px;
-    margin: 30px auto;
+::ng-deep .p-card-title {
+  font-size: 17px;
+}
+::ng-deep .p-card-body {
+  padding: 12px;
+  margin: 7px 0;
+}
+::ng-deep.p-card-title {
+  margin-bottom: 15px;
+}
 
-  }
-  
-  ::ng-deep .p-element .p-button{
-      padding: 10px;
-      background-color:  #003b76;
-      color:  rgb(212, 160, 28);
-  }
+::ng-deep.p-card-subtitle {
+  margin-bottom: 15px;
+}
+img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.main-container {
+  padding: 0 10px;
+  max-width: 1400px;
+  margin: 30px auto;
+}
 
- .room-category {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #003b76;
-    color: rgb(212, 160, 28);
-  }
+::ng-deep .p-element .p-button {
+  padding: 10px;
+  background-color: #003b76;
+  color: rgb(212, 160, 28);
+}
 
-  .overview{
-    color: #003b76;
-  }
+.room-category {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #003b76;
+  color: rgb(212, 160, 28);
+}
 
-  
+.overview {
+  color: #003b76;
+}
+
 .comments-and-social {
   scrollbar-color: #007 #d4a01c;
   display: flex;
@@ -67,10 +62,10 @@
   height: 270px;
   border-radius: 10px;
 }
-::ng-deep .p-breadcrumb{
+::ng-deep .p-breadcrumb {
   border: none !important;
 }
-::ng-deep .p-element{
+::ng-deep .p-element {
   color: #003b76;
 }
 .comment-card {
@@ -88,7 +83,7 @@
   width: 100%;
   height: auto;
 }
-.title-hotels{
+.title-hotels {
   text-align: center;
   margin-bottom: 30px;
   color: rgb(255, 174, 0);
@@ -98,19 +93,19 @@
   font-size: 1.2em;
   padding: 0 10px;
 }
-.image{
+.image {
   max-width: 1400px;
   margin: 30px auto;
 }
 .image img {
   width: 100%;
- 
-  border-radius:10px;
+
+  border-radius: 10px;
 }
 
-
-.text-primary, .text-color {
-  color:#003b76 ;
+.text-primary,
+.text-color {
+  color: #003b76;
 }
 .scroll-top-button {
   position: fixed;

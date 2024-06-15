@@ -14,26 +14,25 @@ export class HomeComponent implements OnInit {
   showButton: boolean = false;
   threshold: number = 50;
   currentIndex: number = 0;
-  hotelImages:any[]=[];
+  hotelImages: any[] = [];
   constructor(private hotelService: HotelsService, private route: Router) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
-      hotel.forEach(el => {
+      hotel.forEach((el) => {
         this.hotelImages.push(el.featuredImage);
-      })
-    
+      });
     });
 
     const scroll$ = fromEvent(window, 'scroll').pipe(
-      debounceTime(50), 
+      debounceTime(50),
       map(() => {
         try {
-          return window.scrollY > this.threshold; 
+          return window.scrollY > this.threshold;
         } catch (error) {
           console.error('Error obtaining scroll position:', error);
-          return false; 
+          return false;
         }
       })
     );
