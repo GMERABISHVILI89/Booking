@@ -61,7 +61,6 @@ export class RoomsComponent implements OnInit {
   ngOnInit() {
     this.hotelService.GetAll().subscribe((hotel) => {
       this.hotels = hotel;
-      console.log(hotel);
       hotel.forEach((el) => {
         this.hotelImages.push(el.featuredImage);
       });

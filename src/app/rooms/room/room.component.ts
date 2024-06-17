@@ -94,7 +94,6 @@ export class RoomComponent implements OnInit {
         try {
           return window.scrollY > this.threshold;
         } catch (error) {
-          console.error('Error obtaining scroll position:', error);
           return false;
         }
       })
@@ -158,4 +157,7 @@ export class RoomComponent implements OnInit {
       alert('გთხოვთ შეავსოთ შეავსოთ სავალდებულო ველები !');
     }
   }
+
+ 
+  
 }

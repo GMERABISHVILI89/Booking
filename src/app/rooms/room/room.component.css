@@ -291,6 +291,16 @@ section h2 {
   opacity: 1;
 }
 
+dialog {
+  padding: 10px;
+}
+
+dialog div {
+  margin: 10px;
+}
+
+
+
 @media (max-width: 768px) {
   .comments-and-social {
     padding: 5px;
