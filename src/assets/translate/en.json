@@ -7,6 +7,8 @@
   "Address": "Address : 14 Pekini St, TBILISI, GEORGIA",
   "Phone": "Phone: (+995) 599-151515",
   "Email": "Email: bookinghotels.com",
+  "EmailReg": "Email",
+
   "About Us": "About Us",
   "AboutText": "Welcome to Booking.com! We're a passionate team dedicated to creating unforgettable experiences for our guests. Whether you're here for business or leisure, we offer comfortable accommodations, exceptional service, and a convenient location. Explore our website to discover our rooms, amenities, and special offers. We can't wait to welcome you!",
   "Follow Us": "Follow Us",
@@ -45,7 +47,13 @@
   "checkout":"Check Out",
   "Login":"Login",
   "Register":"Register",
-
+  "UserName":"UserName",
+  "Password":"Password",
+  "Role":"Role",
+  "RoleUser":"User",
+  "RememberMe":"Remember Me",
+  "LoginBtn":"Login",
+  "RoleAdmin":"Admin",
   "avalable":"Avalable",
   "notavalable":"Not Avalable",
   "filter":"Find",

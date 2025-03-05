@@ -1,1 +1,52 @@
-<p>register works!</p>
+<div class="pagination">
+    <div class="card flex justify-content-center">
+      <p-breadcrumb class="max-w-full" [model]="items">
+        <ng-template pTemplate="item" let-item>
+          <ng-container *ngIf="item.route; else elseBlock">
+            <a [routerLink]="item.route" class="p-menuitem-link">
+              <span [ngClass]="[item.icon ? item.icon : '', 'text-color']"></span>
+              <span class="text-primary font-semibold">{{ item.label }}</span>
+            </a>
+          </ng-container>
+          <ng-template #elseBlock>
+            <a [href]="item.url">
+              <span class="text-color">{{ item.label }}</span>
+            </a>
+          </ng-template>
+        </ng-template>
+      </p-breadcrumb>
+    </div>
+  </div>
+
+<div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">{{ "UserName" | translate }}:</label>
+          <input type="text" id="username" formControlName="username" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="email">{{ "EmailReg" | translate }}:</label>
+          <input type="email" id="email" formControlName="email" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="password">{{ "Password" | translate }}:</label>
+          <input type="password" id="password" formControlName="password" required>
+        </div>
+    
+        <div class="form-group-inline">
+
+        <div class="form-group">
+          <label for="role">{{ "Role" | translate }}:</label>
+          <select id="role" formControlName="role">
+            <option value="user">{{ "RoleUser" | translate }}</option>
+            <option value="admin">{{ "RoleAdmin" | translate }}:</option>
+          </select>
+        </div>
+    
+        <button type="submit" [disabled]="!registrationForm.valid">{{ "Register" | translate }}</button>
+    </div>
+
+      </form>
+</div>

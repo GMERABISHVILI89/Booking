@@ -29,6 +29,7 @@ import { TableModule } from 'primeng/table';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     RegisterComponent
    
+   
   ],
   imports: [
     TranslateModule.forRoot({
@@ -53,6 +55,14 @@ import { RegisterComponent } from './register/register.component';
         useFactory: httpTranslateloader,
         deps: [HttpClient],
       },
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('jwtToken'); // Or wherever you store the token
+        },
+        // ... other configuration options if needed ...
+      }
     }),
     BreadcrumbModule,
     TableModule,
