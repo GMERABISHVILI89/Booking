@@ -4,7 +4,19 @@ import { HotelsService } from '../Services/hotels.service';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { MenuItem } from '../Models/MenuItem';
-
+interface ServiceResponse<T> {
+  data: T;
+  success: boolean;
+  message: string;
+}
+interface Hotel {
+  // Define the Hotel interface to match your ASP.NET Core Hotel class
+  id: number;
+  name: string;
+  city: string;
+  address:string;
+  FeaturedImage:string;
+}
 @Component({
   selector: 'app-hotels',
   templateUrl: './hotels.component.html',
@@ -27,8 +39,13 @@ export class HotelsComponent implements OnInit {
   constructor(private hotelService: HotelsService, private route: Router) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.hotelService.GetAll().subscribe((hotel) => {
-      this.hotels = hotel;
+    this.hotelService.GetAll().subscribe((response: ServiceResponse<Hotel[]>) => {
+      if (response && response.data) {
+        this.hotels = response.data;
+      } else {
+        console.error('Failed to retrieve hotels:', response);
+        // Handle the error (e.g., display an error message)
+      }
     });
     this.items = [{ label: 'Home' }, { label: 'Hotels' }];
 

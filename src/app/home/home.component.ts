@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.hotelService.GetAll().subscribe((hotel) => {
-      this.hotels = hotel;
-      hotel.forEach((el) => {
-        this.hotelImages.push(el.featuredImage);
-      });
+      // this.hotels = hotel;
+      // hotel.forEach((el) => {
+      //   this.hotelImages.push(el.featuredImage);
+      // });
     });
 
     const scroll$ = fromEvent(window, 'scroll').pipe(

@@ -14,11 +14,11 @@ export class AuthServiceService {
   constructor(private http: HttpClient,private jwtHelper: JwtHelperService) {}
 
   register(data: RegistrationModel) {
-    return this.http.post(this.API_URL + '/register', data);
+    return this.http.post(this.API_URL + '/Register', data);
   }
   
   login(data: any): Observable<any> { // Adjust the type of 'data' as needed
-    return this.http.post(this.API_URL + '/login', data).pipe(
+    return this.http.post(this.API_URL + '/Login', data).pipe(
       tap((response: any) => { // Assuming the API response contains both tokens
         this.storeAccessToken(response.accessToken);
         // this.storeRefreshToken(response.refreshToken);

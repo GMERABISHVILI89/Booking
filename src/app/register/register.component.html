@@ -34,14 +34,19 @@
           <label for="password">{{ "Password" | translate }}:</label>
           <input type="password" id="password" formControlName="password" required>
         </div>
+        <div class="form-group">
+          <label for="password">{{ "ConfirmPassword" | translate }}:</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+        </div>
     
+
         <div class="form-group-inline">
 
         <div class="form-group">
           <label for="role">{{ "Role" | translate }}:</label>
           <select id="role" formControlName="role">
-            <option value="user">{{ "RoleUser" | translate }}</option>
-            <option value="admin">{{ "RoleAdmin" | translate }}:</option>
+            <option value="User">{{ "RoleUser" | translate }}</option>
+            <option value="Admin">{{ "RoleAdmin" | translate }}</option>
           </select>
         </div>
     

@@ -25,7 +25,7 @@ registrationForm!: FormGroup;
         username: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required],
-        repeatPassword: ['', Validators.required], // Add repeatPassword control
+        confirmPassword: ['', Validators.required], // Add repeatPassword control
         role: ['user']
       });
 
