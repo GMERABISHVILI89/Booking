@@ -10,12 +10,12 @@
     font-style: normal;
   }
   
-  header{
+  header {
     width: 100%;
     height: 80px;
-    display: flex;
+    display: grid; /* Use grid for the header */
+    grid-template-columns: 1fr 1fr  1fr; /* Create four columns */
     align-items: center;
-    justify-content: space-between;
     padding: 0 100px;
   }
   img{
@@ -30,15 +30,34 @@
   svg:hover{
     scale: 1.3;
   }
-  .nav-bar ul {
+  .nav-bar {  /* Apply grid-column to the nav element */
+    grid-column: 2 / span 2; /* Make the nav-bar span the center two columns */
     display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 10px;
+    justify-content: space-between;
   }
-  .logo{
-    cursor: pointer;
-  }
+.center-menu{
+ margin: 0px 60px;
+ gap:80px !important;
+}
+ .nav-bar ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  align-items: center;
+  gap: 30px;
+}
+.logo {
+  grid-column: 1; /* Place the logo in the first column */
+  cursor: pointer;
+}
+
+.login-register {
+  grid-column: 4; /* Place login and register in the last column */
+  display: flex; /* Use flexbox to align items at the end */
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+}
+
   .nav-bar ul li a{
     display: block;
     color:rgb(212, 160, 28);

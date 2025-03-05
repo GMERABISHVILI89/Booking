@@ -27,6 +27,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     BookingsComponent,
     RoomCardComponent,
     RoomComponent,
-    HotelComponent
+    HotelComponent,
+    LoginComponent,
+    RegisterComponent
    
   ],
   imports: [

@@ -43,6 +43,9 @@
   "guest-quantity":"Guests",
   "checkin":"Check In",
   "checkout":"Check Out",
+  "Login":"Login",
+  "Register":"Register",
+
   "avalable":"Avalable",
   "notavalable":"Not Avalable",
   "filter":"Find",

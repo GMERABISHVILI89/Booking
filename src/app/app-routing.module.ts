@@ -6,12 +6,16 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { RoomComponent } from './rooms/room/room.component';
 import { HotelComponent } from './hotels/hotel/hotel.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'hotels', component: HotelsComponent },
   { path: 'rooms', component: RoomsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'room/:id', component: RoomComponent },
   { path: 'hotel/:id', component: HotelComponent },
