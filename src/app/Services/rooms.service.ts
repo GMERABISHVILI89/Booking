@@ -34,5 +34,9 @@ export class RoomsService {
   getFiltered(data:Filter){
     return this.http.post<Rooms[]>(this.API_URL + `/getFiltered/`,data);
   }
+  
+  addRoom(formData: FormData) {
+    return this.http.post(`${this.API_URL}/AddRoom`, formData);
+  }
 
 }

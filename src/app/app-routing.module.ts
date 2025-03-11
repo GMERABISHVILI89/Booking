@@ -8,6 +8,7 @@ import { RoomComponent } from './rooms/room/room.component';
 import { HotelComponent } from './hotels/hotel/hotel.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'bookings', component: BookingsComponent },
+  { path: 'admin', component: HotelAdminComponent },
   { path: 'room/:id', component: RoomComponent },
   { path: 'hotel/:id', component: HotelComponent },
 

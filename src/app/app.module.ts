@@ -30,6 +30,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     RoomComponent,
     HotelComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HotelAdminComponent
    
    
   ],

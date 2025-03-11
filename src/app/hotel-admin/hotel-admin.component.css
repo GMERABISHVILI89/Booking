@@ -1,0 +1,53 @@
+.card {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  h2{
+    margin-bottom: 20px;
+  }
+  
+  .p-field {
+    margin-bottom: 15px;
+  }
+  
+  .preview-image {
+    margin-top: 10px;
+    border-radius: 8px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .image-preview {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .p-field input {
+    height: 40px;
+    margin-top:20px;
+  }
+
+  .p-field input[type="file"] {
+   margin-left: 60px;
+  }
+
+
+  button {
+    height: 40px;
+  }
+  .image-preview {
+    margin-top: 10px;
+  }
+  
+  .image-preview img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }

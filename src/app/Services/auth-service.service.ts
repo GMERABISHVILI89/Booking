@@ -17,11 +17,15 @@ export class AuthServiceService {
     return this.http.post(this.API_URL + '/Register', data);
   }
   
-  login(data: any): Observable<any> { // Adjust the type of 'data' as needed
-    return this.http.post(this.API_URL + '/Login', data).pipe(
-      tap((response: any) => { // Assuming the API response contains both tokens
-        this.storeAccessToken(response.accessToken);
-        // this.storeRefreshToken(response.refreshToken);
+  login(data: any): Observable<any> {
+    return this.http.post<any>(this.API_URL + '/Login', data).pipe(
+      tap((response) => {
+        console.log("Login Response:", response); // Debugging
+        if (response && response.data) { // Use response.data instead of accessToken
+          this.storeAccessToken(response.data);
+        } else {
+          console.error("No accessToken in response");
+        }
       })
     );
   }
