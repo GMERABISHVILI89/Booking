@@ -39,13 +39,14 @@ export class HotelComponent implements OnInit {
     window.scrollTo(0, 0);
     this.hotelId = this.router.snapshot.paramMap.get('id');
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel: any) => {
-      this.hotel = hotel;
+      this.hotel = hotel.data;
+      console.log(hotel)
       this.rooms = hotel.rooms;
-      this.rooms.forEach((room: any) => {
-        if (room.images) {
-          this.roomImages = this.roomImages.concat(room.images);
-        }
-      });
+      // this.rooms.forEach((room: any) => {
+      //   if (room.images) {
+      //     this.roomImages = this.roomImages.concat(room.images);
+      //   }
+      // });
     });
     const scroll$ = fromEvent(window, 'scroll').pipe(
       debounceTime(100),

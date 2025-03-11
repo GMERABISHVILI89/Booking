@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageUploadService } from '../Services/image-upload.service';
 import { HotelsService } from '../Services/hotels.service';
 import { Hotels } from '../Models/Hotels';
 

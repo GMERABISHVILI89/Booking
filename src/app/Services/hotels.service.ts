@@ -32,7 +32,7 @@ export class HotelsService {
 }
   // Fetch a single hotel by ID
   GetHotel(id: number): Observable<any> {
-    return this.http.get<any>(this.API_URL + `/GetHotel/${id}`);
+    return this.http.get<any>(this.API_URL + `/${id}`);
   }
 
 
