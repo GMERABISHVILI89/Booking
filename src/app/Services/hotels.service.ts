@@ -26,21 +26,15 @@ export class HotelsService {
 
   constructor(private http: HttpClient) {}
 
-  // Fetch all hotels
-  GetAll(): Observable<ServiceResponse<Hotel[]>> {
-    return this.http.get<ServiceResponse<Hotel[]>>(this.API_URL + `/GetAll`);
-  }
-
+ // Fetch all hotels
+ GetAll(): Observable<ServiceResponse<Hotel[]>> {
+  return this.http.get<ServiceResponse<Hotel[]>>(this.API_URL + `/all`);
+}
   // Fetch a single hotel by ID
   GetHotel(id: number): Observable<any> {
     return this.http.get<any>(this.API_URL + `/GetHotel/${id}`);
   }
 
-  // Fetch hotels by city
-  GetHotels(city: string): Observable<Hotel[]> {
-    let params = new HttpParams().set('city', city);
-    return this.http.get<Hotel[]>(`${this.API_URL}/GetHotels`, { params });
-  }
 
 
 

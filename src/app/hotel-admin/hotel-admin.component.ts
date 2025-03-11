@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageUploadService } from '../Services/image-upload.service';
 import { HotelsService } from '../Services/hotels.service';
+import { Hotels } from '../Models/Hotels';
 
 @Component({
   selector: 'app-hotel-admin',
@@ -11,29 +12,27 @@ export class HotelAdminComponent implements OnInit {
   hotel = {
     name: '',
     address: '',
-    city: ''
+    city: '',
+    hotelImageUrl: ''  // Store image URL
   };
-  hotelImage: File | null = null; // Store the selected image
-  hotels: any[] = [];
-
+  hotelImage: File | null = null;
+  hotels: Hotels[] = [];
+  
+  
   constructor(private hotelService: HotelsService) {}
 
   ngOnInit(): void {
-    if (this.hotel.city) {
-      this.getHotelsByCity(this.hotel.city);
-    }
+    this.getHotels(); // Get hotels on load
   }
 
-  // Fetch hotels based on the city
-  getHotelsByCity(city: string): void {
-    this.hotelService.GetHotels(city).subscribe(
-      (response) => {
-        this.hotels = response;
-      },
-      (error) => {
-        console.error('Error fetching hotels by city', error);
+  // Fetch hotels (and image URLs) from backend
+  getHotels(): void {
+    this.hotelService.GetAll().subscribe((response) => {
+      if (response.success) {
+        this.hotels = response.data;
+        console.log(this.hotels)
       }
-    );
+    });
   }
 
   // Handle hotel image selection
@@ -70,7 +69,8 @@ export class HotelAdminComponent implements OnInit {
     this.hotel = {
       name: '',
       address: '',
-      city: ''
+      city: '',
+      hotelImageUrl: ''
     };
     this.hotelImage = null;
   }

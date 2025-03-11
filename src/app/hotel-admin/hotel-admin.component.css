@@ -1,53 +1,68 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.add-hotel-form {
+  width: 30%;
+  padding: 20px;
+  margin-right: 20px;
+}
+
 .card {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background: #fff;
-  }
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  h2{
-    margin-bottom: 20px;
-  }
-  
-  .p-field {
-    margin-bottom: 15px;
-  }
-  
-  .preview-image {
-    margin-top: 10px;
-    border-radius: 8px;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-  
-  .image-preview {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .p-field input {
-    height: 40px;
-    margin-top:20px;
-  }
+.hotel-list {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  .p-field input[type="file"] {
-   margin-left: 60px;
-  }
+.hotel-card {
+  width: 30%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
+.hotel-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
-  button {
-    height: 40px;
-  }
-  .image-preview {
-    margin-top: 10px;
-  }
-  
-  .image-preview img {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.hotel-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+}
+
+.hotel-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

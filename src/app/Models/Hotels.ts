@@ -5,6 +5,6 @@ export class Hotels {
     name?: string;
     address?: string;
     city?: string;
-    hotelimage?: string;
+    hotelImage?: string;
     rooms?:Rooms [];
 }

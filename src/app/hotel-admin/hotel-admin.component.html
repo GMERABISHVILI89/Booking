@@ -1,82 +1,39 @@
-<div class="card">
-  <h2>🏨 Add Hotel</h2>
+<div class="container">
+  <div class="add-hotel-form">
+    <div class="card">
+      <h2>🏨 Add Hotel</h2>
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="hotelName">Hotel Name</label>
+          <input type="text" pInputText id="hotelName" [(ngModel)]="hotel.name" required />
+        </div>
 
-  <div class="p-fluid">
-    <!-- Hotel Name -->
-    <div class="p-field">
-      <label for="hotelName">Hotel Name</label>
-      <input type="text" pInputText id="hotelName" [(ngModel)]="hotel.name" required />
-    </div>
+        <div class="p-field">
+          <label for="address">Address</label>
+          <input type="text" pInputText id="address" [(ngModel)]="hotel.address" required />
+        </div>
 
-    <!-- Address -->
-    <div class="p-field">
-      <label for="address">Address</label>
-      <input type="text" pInputText id="address" [(ngModel)]="hotel.address" required />
-    </div>
+        <div class="p-field">
+          <label for="city">City</label>
+          <input type="text" pInputText id="city" [(ngModel)]="hotel.city" required />
+        </div>
+        
+        <div class="p-field">
+          <label for="hotelImage">Featured Image</label>
+          <input type="file" id="hotelImage" (change)="onHotelImageSelected($event)" accept="image/*" />
+        </div>
 
-    <!-- City -->
-    <div class="p-field">
-      <label for="city">City</label>
-      <input type="text" pInputText id="city" [(ngModel)]="hotel.city" required />
-    </div>
-
-    <!-- Hotel Image Upload -->
-    <div class="p-field">
-      <label for="hotelImage">Featured Image</label>
-      <input type="file" id="hotelImage" (change)="onHotelImageSelected($event)" accept="image/*" />
-      
-      <!-- Image Preview -->
-      <!-- <div *ngIf="hotel.hotelimage" class="image-preview">
-        <img [src]="hotel.hotelimage" alt="Hotel Image" />
+        <button pButton type="button" label="Add Hotel" class="p-mt-3" (click)="addHotel()"></button>
       </div>
-    </div> -->
+    </div>
+  </div>
 
-    <!-- Add Hotel Button -->
-    <button pButton type="button" label="Add Hotel" class="p-mt-3" (click)="addHotel()"></button>
+  <div class="hotel-list">
+    <div *ngFor="let hotel of hotels" class="hotel-card">
+      <img [src]="hotel.hotelImage" alt="{{ hotel.name }}" class="hotel-image"/>
+      <h3>{{ hotel.name }}</h3>
+      <p>{{ hotel.address }}</p>
+      <p>{{ hotel.city }}</p>
+    </div>
   </div>
 </div>
-  
-  <!-- <div class="card">
-
-    <h2>🛏️ Add Room</h2>
-  
-    <div class="p-field">
-        <label for="hotelSelect">Select Hotel</label>
-        <p-dropdown 
-          [options]="hotels" 
-          [(ngModel)]="room.hotelId" 
-          optionLabel="name" 
-          placeholder="Select a Hotel">
-        </p-dropdown>
-      </div>
-
-    <div class="p-fluid">
-      <div class="p-field">
-        <label for="roomName">Room Name</label>
-        <input type="text" pInputText id="roomName" [(ngModel)]="room.name" />
-      </div>
-  
-      <div class="p-field">
-        <label for="price">Price Per Night</label>
-        <input type="number" pInputText id="price" [(ngModel)]="room.pricePerNight" />
-      </div>
-  
-      <div class="p-field">
-        <label for="guests">Max Guests</label>
-        <input type="number" pInputText id="guests" [(ngModel)]="room.maximumGuests" />
-      </div>
-
-
-
-      <div class="p-field">
-        <label>Room Images</label>
-        <input type="file" multiple (change)="onRoomImagesSelected($event)" />
-        <div class="image-preview">
-          <img *ngFor="let img of roomImages" [src]="img" class="preview-image" />
-        </div>
-      </div>
-  
-      <button pButton type="button" label="Add Room" (click)="addRoom()"></button>
-    </div>
-  </div>
-   -->
