@@ -26,12 +26,18 @@
     </ul>
     <div class="login-register">
       <ul>
-      <li>
-        <a routerLink="/login">{{ "Login" | translate }}</a>
+        <li *ngIf="!isAuthenticated">
+          <a routerLink="/login">{{ "Login" | translate }}</a>
       </li>
-      <li>
-        <a routerLink="/register">{{ "Register" | translate }}</a>
+      <li *ngIf="!isAuthenticated">
+          <a routerLink="/register">{{ "Register" | translate }}</a>
       </li>
+      <li *ngIf="isAuthenticated">
+          <a (click)="logout()" style="cursor: pointer;">{{ "logout" | translate }}</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a (click)="goToProfilePage()" style="cursor: pointer;">{{ "Profile" | translate }}</a>
+    </li>
       <li (click)="changeLang(0)">
         <svg
           xmlns="http://www.w3.org/2000/svg"

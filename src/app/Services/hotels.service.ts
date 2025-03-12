@@ -33,8 +33,6 @@ export class HotelsService {
   }
 
 
-
-
   // Add a new hotel
   AddHotel(hotel: any, hotelImage: File): Observable<ServiceResponse<Hotel>> {
     const formData = new FormData();

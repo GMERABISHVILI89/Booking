@@ -40,6 +40,9 @@
   "doubleroom":"Double Room",
   "singleroom":"Single Room",
   "all":"ALL",
+  "logout":"Logout",
+  "Profile":"Profile",
+
   "details":"See More",
   "byprice":"By Price",
   "guest-quantity":"Guests",
