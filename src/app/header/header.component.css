@@ -17,6 +17,7 @@
     grid-template-columns: 1fr 1fr  1fr; /* Create four columns */
     align-items: center;
     padding: 0 100px;
+    justify-items: center;
   }
   img{
     width: 200px;
@@ -34,6 +35,7 @@
     grid-column: 2 / span 2; /* Make the nav-bar span the center two columns */
     display: flex;
     justify-content: space-between;
+
   }
 .center-menu{
  margin: 0px 60px;

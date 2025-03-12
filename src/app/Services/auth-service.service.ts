@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../Models/Enviroment';
 import { RegistrationModel } from '../Models/Registration';
-import { Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -11,7 +11,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthServiceService {
   API_URL = environment.apiBaseUrl + "Auth"; // Adjust base URL if needed
   
-  constructor(private http: HttpClient,private jwtHelper: JwtHelperService) {}
+
+
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
+
+  
+  constructor(private http: HttpClient,private jwtHelper: JwtHelperService) {this.checkTokenOnLoad();}
 
   register(data: RegistrationModel) {
     return this.http.post(this.API_URL + '/Register', data);
@@ -29,22 +35,46 @@ export class AuthServiceService {
       })
     );
   }
+  getProfile(): Observable<any> {
+    const token = localStorage.getItem('jwtToken'); // Get stored token
+    if (!token) {
+      console.error('No token found');
+      return new Observable(); // Return an empty observable if no token
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any>(`${this.API_URL}/Profile`, { headers });
+  }
+  private checkTokenOnLoad(): void {
+    const token = localStorage.getItem('jwtToken');
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+        this.isAuthenticatedSubject.next(true); // Token is valid
+    }
+}
+  logout(): void {
+    localStorage.removeItem('jwtToken'); // Clear token
+    this.isAuthenticatedSubject.next(false); // Update status
+}
+
 
   private storeAccessToken(token: string) {
-    localStorage.setItem('jwtToken', token); // Store access token in local storage
+    localStorage.setItem('jwtToken', token);
+    this.isAuthenticatedSubject.next(true); // Store access token in local storage
   }
 
-  // private storeRefreshToken(token: string) {
-  //   // Store refresh token securely (e.g., in HttpOnly cookies)
-  //   // ... implementation for secure storage ...
-  // }
+  private storeRefreshToken(token: string) {
+    // Store refresh token securely (e.g., in HttpOnly cookies)
+    // ... implementation for secure storage ...
+  }
 
   getUserRole(): Observable<string | null> {
     const token = localStorage.getItem('jwtToken'); // Get token from local storage
 
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       const decodedToken = this.jwtHelper.decodeToken(token);
-      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']; // Adjust claim name if needed
+      const role = decodedToken.role;
+      console.log(decodedToken.role)
       return of(role); // Return role as an Observable
     }
 

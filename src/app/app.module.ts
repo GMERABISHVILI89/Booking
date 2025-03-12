@@ -31,6 +31,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
     HotelComponent,
     LoginComponent,
     RegisterComponent,
-    HotelAdminComponent
+    HotelAdminComponent,
+    ProfileComponent
    
    
   ],

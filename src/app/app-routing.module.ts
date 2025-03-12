@@ -9,6 +9,8 @@ import { HotelComponent } from './hotels/hotel/hotel.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
+import { ProfileComponent } from './profile/profile.component';
+import { adminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +20,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'bookings', component: BookingsComponent },
-  { path: 'admin', component: HotelAdminComponent },
+  { path: 'Profile', component: ProfileComponent },
+  { path: 'admin', component: HotelAdminComponent,canActivate: [adminGuard]  },
   { path: 'room/:id', component: RoomComponent },
   { path: 'hotel/:id', component: HotelComponent },
 

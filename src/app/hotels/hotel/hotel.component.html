@@ -31,7 +31,7 @@
 <div class="rooms-container">
   <div class="rooms" *ngFor="let room of rooms" (click)="goToRoom(room.id)">
     <div class="title">{{ room.name }}</div>
-    <div><img [src]="(room?.images)![0].source" alt="" /></div>
+    <div><img [src]="(room?.imageUrls)![0]" alt="" /></div>
     <div class="available">
       {{ room.available ? "თავისუფალია" : "დაკავებულია" }}
     </div>

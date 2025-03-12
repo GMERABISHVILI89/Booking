@@ -4,12 +4,8 @@ import { HotelsService } from '../Services/hotels.service';
 import { Router } from '@angular/router';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { MenuItem } from '../Models/MenuItem';
+import { ServiceResponse } from '../Models/ServiceResponse';
 
-interface ServiceResponse<T> {
-  data: T;
-  success: boolean;
-  message: string;
-}
 
 @Component({
   selector: 'app-hotels',

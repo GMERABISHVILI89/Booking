@@ -1,0 +1,13 @@
+<div class="profile-container">
+    <div class="profile-card">
+      <h2>{{ userProfile?.userName }}</h2>
+      <p>{{ userProfile?.email }}</p>
+  
+      <!-- Show buttons only if user is an Admin -->
+      <div *ngIf="isAdmin" class="button-group">
+        <button (click)="navigateToAdmin()">Add Hotel</button>
+        <button (click)="navigateToAdmin()">Add Rooms</button>
+      </div>
+    </div>
+  </div>
+  

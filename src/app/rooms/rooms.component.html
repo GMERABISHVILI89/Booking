@@ -112,7 +112,7 @@
       <div class="image-gallery">
         <div class="image-container">
           <img
-            [src]="hotelImages[currentIndex]"
+            [src]="hotelImages[currentIndex]?.hotelImage"
             alt="Gallery Image"
             (click)="filterHotelRooms(hotels![currentIndex].id)"
           />
