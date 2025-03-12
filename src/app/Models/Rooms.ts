@@ -9,7 +9,7 @@ export class Rooms {
     maximumGuests?: number;
     roomTypeId?: number;
     bookedDates?:bookDates [] = [];
-    images?:Images []= []
+    imageUrls?:Images []= []
 
 }
 

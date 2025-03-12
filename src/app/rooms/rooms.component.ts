@@ -13,6 +13,7 @@ import { debounceTime, fromEvent, map } from 'rxjs';
 import { MenuItem } from '../Models/MenuItem';
 import { Hotels } from '../Models/Hotels';
 import { HotelsService } from '../Services/hotels.service';
+import { ServiceResponse } from '../Models/ServiceResponse';
 
 @Component({
   selector: 'app-rooms',
@@ -59,18 +60,33 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.hotelService.GetAll().subscribe((hotel) => {
-    //   this.hotels = hotel;
-    //   hotel.forEach((el) => {
-    //     this.hotelImages.push(el.featuredImage);
-    //   });
-    // });
+    this.hotelService.GetAll().subscribe(
+       (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
+         if (response && response.success && response.data) {
+           this.hotels = response.data; 
+           console.log(response.data)
+           this.hotelImages = response.data // Assign the hotel data to the hotels array
+         } else {
+           console.error('Failed to retrieve hotels:', response.message);
+           // Optionally handle the failure, e.g., display a message to the user
+         }
+       },
+       (error) => {
+         console.error('Error fetching hotels:', error);
+         // Handle error, e.g., display an error message
+       }
+     );
 
-    // this.roomService.getRooms().subscribe((data) => {
-    //   this.rooms = data;
-    //   this.filteredRooms = [...this.rooms];
-    // });
-
+     this.roomService.GetAll().subscribe((response) => {
+      if (response.success) {  
+        this.rooms = response.data; 
+        this.filteredRooms = [...this.rooms]
+         console.log(this.filteredRooms)
+    
+      } else {
+        console.error('Error fetching rooms:', response.message);  
+      }
+    });
     this.items = [{ label: 'Home' }, { label: 'rooms' }];
 
     this.items = [{ label: 'Home', route: '/home' }, { label: 'rooms' }];
@@ -158,8 +174,13 @@ export class RoomsComponent implements OnInit {
   }
 
   filterHotelRooms(id: any) {
-    this.hotelService.GetHotel(Number(id)).subscribe((hotel: any) => {
-      this.filteredRooms = [...hotel.rooms];
+    this.roomService.GetRoomsByHotelId(Number(id)).subscribe((response) => {
+
+      if(response.success){
+        console.log(response.data)
+        this.filteredRooms = [...response.data];
+      }
+     
     });
   }
 }

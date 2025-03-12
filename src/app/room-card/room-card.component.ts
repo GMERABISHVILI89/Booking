@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 export class RoomCardComponent implements OnInit{
  @Input() room:any;
  constructor(private route:Router) {
+
  }
 
  ngOnInit(): void {
-
  }
 
  getRoomId(id:any){

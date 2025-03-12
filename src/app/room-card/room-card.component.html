@@ -10,7 +10,7 @@
   (click)="getRoomId(room?.id)" class="card"
 >
   <ng-template pTemplate="header" [style]="{ margin: '12px' }">
-    <img alt="Card" [src]="room.images[1].source" />
+    <img alt="Card" [src]="room.imageUrls[0]" />
   </ng-template>
   <p [style]="{ margin: '12px' }">
     {{ "MAX" | translate }} {{ room.maximumGuests }} {{ "PERSON" | translate }}
@@ -18,7 +18,7 @@
   <p [style]="{ margin: '12px' }">
     {{ room.pricePerNight + "₾" }}
   </p>
-  <span [ngClass]="room.available ? 'available':'notavailable'">{{"avalable" | translate}}</span>
+  <!-- <span [ngClass]="room.available ? 'available':'notavailable'">{{"avalable" | translate}}</span> -->
   <ng-template pTemplate="footer">
     <div class="flex gap-3 mt-1">
       <button

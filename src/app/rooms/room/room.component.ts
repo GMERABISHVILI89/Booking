@@ -8,6 +8,8 @@ import { differenceInDays } from 'date-fns';
 import { HotelsService } from '../../Services/hotels.service';
 import { debounceTime, fromEvent, map } from 'rxjs';
 import { MenuItem } from '../../Models/MenuItem';
+import { ServiceResponse } from '../../Models/ServiceResponse';
+import { Hotels } from '../../Models/Hotels';
 
 @Component({
   selector: 'app-room',
@@ -54,9 +56,20 @@ export class RoomComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    // this.hotelService.GetAll().subscribe((hotel) => {
-    //   this.hotels = hotel;
-    // });
+     this.hotelService.GetAll().subscribe(
+         (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
+           if (response && response.success && response.data) {
+             this.hotels = response.data;  // Assign the hotel data to the hotels array
+           } else {
+             console.error('Failed to retrieve hotels:', response.message);
+             // Optionally handle the failure, e.g., display a message to the user
+           }
+         },
+         (error) => {
+           console.error('Error fetching hotels:', error);
+           // Handle error, e.g., display an error message
+         }
+       );
 
     this.items = [{ label: 'Home' }, { label: 'rooms' }, { label: 'room' }];
 
@@ -66,13 +79,19 @@ export class RoomComponent implements OnInit {
       { label: 'room' },
     ];
 
-    this.roomService.GetRoom(Number(this.roomId)).subscribe((data) => {
-      this.room = data;
-      this.roomPricePerNight = data.pricePerNight;
-      this.roomImages = data.images;
-      this.roomTypeID = data.roomTypeId;
+    this.roomService.GetRoom(Number(this.roomId)).subscribe(response=> {
+     
+      if(response.success){
+        this.room = response.data
+        this.roomPricePerNight = response.data.pricePerNight;
+        this.roomImages = response.data.imageUrls;
+        this.roomTypeID = response.data.roomTypeId;
+      }
+     
+ 
+  
       this.roomImages?.map((el) => {
-        this.images.push(el.source);
+        this.images.push(el);
       });
     });
 
