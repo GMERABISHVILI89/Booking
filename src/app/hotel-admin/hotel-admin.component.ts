@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelsService } from '../Services/hotels.service';
 import { Hotels } from '../Models/Hotels';
+import { RoomsService } from '../Services/rooms.service';
+import { CreateRoomDTO } from '../Models/CreateRoomDTO';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Rooms } from '../Models/Rooms';
 
 @Component({
   selector: 'app-hotel-admin',
@@ -14,22 +18,104 @@ export class HotelAdminComponent implements OnInit {
     city: '',
     hotelImageUrl: ''  // Store image URL
   };
+  room: CreateRoomDTO = {
+    hotelId: 0,
+    name: '',
+    pricePerNight: 0,
+    maximumGuests: 0,
+    roomTypeId: 0,
+    roomImages: [] // Initialize an empty array for images
+  };
+  roomForm!: FormGroup;
+
+
   hotelImage: File | null = null;
   hotels: Hotels[] = [];
   
+  selectedImages: File[] = [];
+
+  roomTypes: any[] = [
+    { type: 'Single Room', value: 1 },
+    { type: 'Double Room', value: 2 },
+    { type: 'Triple Room', value: 3 },
+    { type: 'Deluxe Room', value: 4 },
+    { type: 'Family Room', value: 5 }
+  ]; 
+    
   
-  constructor(private hotelService: HotelsService) {}
+  constructor(private hotelService: HotelsService, private roomService: RoomsService, private fb:FormBuilder) {}
 
   ngOnInit(): void {
-    this.getHotels(); // Get hotels on load
+
+
+    this.getHotels(); 
+
+    this.roomForm = this.fb.group({
+      hotelId: [0, Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      pricePerNight: ['', [Validators.required, Validators.min(1)]],
+      maximumGuests: ['', [Validators.required, Validators.min(1)]],
+      roomTypeId: [null, Validators.required],
+      roomImages: [[], Validators.required]
+    });
   }
+
+
+  //ROOMS
+
+  onRoomImagesSelected(event: any): void {
+    const files: FileList = event.target.files;
+    this.selectedImages = Array.from(files);
+    this.roomForm.patchValue({ roomImages: this.selectedImages });
+  }
+
+  onHotelSelect(event: any): void {
+    const selectedHotelId = event.value;  
+    console.log('Selected Hotel ID:', selectedHotelId);  
+    this.roomForm.patchValue({ hotelId: selectedHotelId });  // Update form control with hotel ID
+  }
+
+onSubmit(): void {
+  console.log(this.roomForm.valid)
+  if (this.roomForm.valid) {
+    const formData = new FormData();
+
+    // Append basic form values
+    formData.append('hotelId', this.roomForm.value.hotelId);
+    formData.append('name', this.roomForm.value.name);
+    formData.append('pricePerNight', this.roomForm.value.pricePerNight);
+    formData.append('maximumGuests', this.roomForm.value.maximumGuests);
+    formData.append('roomTypeId', this.roomForm.value.roomTypeId);
+
+    // Append images
+    this.selectedImages.forEach(image => {
+      formData.append('roomImages', image, image.name);
+    });
+
+    // Call the service method
+    this.roomService.addRoom(formData).subscribe({
+      next: (response) => {
+        console.log('Room added successfully!', response);
+        alert('Room added successfully!');
+        this.roomForm.reset();
+        this.selectedImages = [];
+      },
+      error: (error) => {
+        console.error('Error adding room:', error);
+        alert('Failed to add room. Please try again.');
+      }
+    });
+  }
+}
+
+
+//HOTELS
 
   // Fetch hotels (and image URLs) from backend
   getHotels(): void {
     this.hotelService.GetAll().subscribe((response) => {
       if (response.success) {
         this.hotels = response.data;
-        console.log(this.hotels)
       }
     });
   }
@@ -72,5 +158,14 @@ export class HotelAdminComponent implements OnInit {
       hotelImageUrl: ''
     };
     this.hotelImage = null;
+  }
+  resetRoomForm():void{
+      this.room = {
+      name: '',
+      pricePerNight: 0,
+      maximumGuests: 0,
+      roomTypeId: 0,
+      roomImages: [] 
+    }
   }
 }

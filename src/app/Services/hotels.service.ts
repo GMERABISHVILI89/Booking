@@ -4,6 +4,7 @@ import { environment } from '../Models/Enviroment';
 import { Hotels } from '../Models/Hotels';
 import { Rooms } from '../Models/Rooms';
 import { Observable } from 'rxjs';
+import { ServiceResponse } from '../Models/ServiceResponse';
 interface Hotel {
   id: number;
   name: string;
@@ -11,11 +12,7 @@ interface Hotel {
   address: string;
   hotelimage: string;  
 }
-interface ServiceResponse<T> {
-  data: T;
-  success: boolean;
-  message: string;
-}
+
 @Injectable({
   providedIn: 'root'
 })
