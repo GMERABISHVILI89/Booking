@@ -54,9 +54,9 @@ export class RoomComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.hotelService.GetAll().subscribe((hotel) => {
-      this.hotels = hotel;
-    });
+    // this.hotelService.GetAll().subscribe((hotel) => {
+    //   this.hotels = hotel;
+    // });
 
     this.items = [{ label: 'Home' }, { label: 'rooms' }, { label: 'room' }];
 

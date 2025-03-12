@@ -27,6 +27,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     BookingsComponent,
     RoomCardComponent,
     RoomComponent,
-    HotelComponent
+    HotelComponent,
+    LoginComponent,
+    RegisterComponent,
+    HotelAdminComponent
+   
    
   ],
   imports: [
@@ -49,6 +57,14 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
         useFactory: httpTranslateloader,
         deps: [HttpClient],
       },
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('jwtToken'); // Or wherever you store the token
+        },
+        // ... other configuration options if needed ...
+      }
     }),
     BreadcrumbModule,
     TableModule,

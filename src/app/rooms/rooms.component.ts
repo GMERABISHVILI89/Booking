@@ -59,17 +59,17 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.hotelService.GetAll().subscribe((hotel) => {
-      this.hotels = hotel;
-      hotel.forEach((el) => {
-        this.hotelImages.push(el.featuredImage);
-      });
-    });
+    // this.hotelService.GetAll().subscribe((hotel) => {
+    //   this.hotels = hotel;
+    //   hotel.forEach((el) => {
+    //     this.hotelImages.push(el.featuredImage);
+    //   });
+    // });
 
-    this.roomService.getRooms().subscribe((data) => {
-      this.rooms = data;
-      this.filteredRooms = [...this.rooms];
-    });
+    // this.roomService.getRooms().subscribe((data) => {
+    //   this.rooms = data;
+    //   this.filteredRooms = [...this.rooms];
+    // });
 
     this.items = [{ label: 'Home' }, { label: 'rooms' }];
 

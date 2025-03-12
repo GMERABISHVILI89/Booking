@@ -10,7 +10,7 @@ import { debounceTime, fromEvent, map } from 'rxjs';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  hotels: Hotels[] | undefined;
+  hotels: Hotels[] = []; 
   showButton: boolean = false;
   threshold: number = 50;
   currentIndex: number = 0;
@@ -18,11 +18,15 @@ export class HomeComponent implements OnInit {
   constructor(private hotelService: HotelsService, private route: Router) {}
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.hotelService.GetAll().subscribe((hotel) => {
-      this.hotels = hotel;
-      hotel.forEach((el) => {
-        this.hotelImages.push(el.featuredImage);
-      });
+    this.hotelService.GetAll().subscribe((response) => {
+      if (response.success) {  
+        this.hotels = response.data; 
+        this.hotels.forEach((el) => {
+          this.hotelImages.push(el.hotelImage);  
+        });
+      } else {
+        console.error('Error fetching hotels:', response.message);  
+      }
     });
 
     const scroll$ = fromEvent(window, 'scroll').pipe(

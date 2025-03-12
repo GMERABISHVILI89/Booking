@@ -13,17 +13,25 @@
     <div class="line"></div>
   </div>
   <nav class="nav-bar">
-    <ul>
+    <ul class="center-menu">
       <li>
         <a routerLink="/hotels">{{ "hotels" | translate }}</a>
       </li>
       <li>
         <a routerLink="/rooms">{{ "rooms" | translate }}</a>
       </li>
-      <li>
+      <li >
         <a routerLink="/bookings">{{ "booking" | translate }}</a>
       </li>
-
+    </ul>
+    <div class="login-register">
+      <ul>
+      <li>
+        <a routerLink="/login">{{ "Login" | translate }}</a>
+      </li>
+      <li>
+        <a routerLink="/register">{{ "Register" | translate }}</a>
+      </li>
       <li (click)="changeLang(0)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -194,5 +202,6 @@
         </svg>
       </li>
     </ul>
+    </div>
   </nav>
 </header>
