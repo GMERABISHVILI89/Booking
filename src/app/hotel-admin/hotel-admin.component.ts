@@ -135,6 +135,7 @@ onSubmit(): void {
         (response) => {
           if (response.success) {
             console.log('Hotel added successfully', response);
+            alert("Hotel Added Successfully.")
             this.resetForm();
           } else {
             console.error('Failed to add hotel:', response.message);

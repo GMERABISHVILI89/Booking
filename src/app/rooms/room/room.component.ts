@@ -59,7 +59,8 @@ export class RoomComponent implements OnInit {
      this.hotelService.GetAll().subscribe(
          (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
            if (response && response.success && response.data) {
-             this.hotels = response.data;  // Assign the hotel data to the hotels array
+             this.hotels = response.data;
+             console.log(this.hotels)  // Assign the hotel data to the hotels array
            } else {
              console.error('Failed to retrieve hotels:', response.message);
              // Optionally handle the failure, e.g., display a message to the user
