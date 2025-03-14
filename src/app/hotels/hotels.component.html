@@ -31,14 +31,15 @@
     *ngFor="let hotel of hotels"
     class="hotel"
     (click)="goToHotel(hotel?.id)"
+    [style]="{ cursor: 'pointer' }" 
   >
-    <p-card
+    <p-card 
       header="{{ hotel.name }}"
       subheader="{{ hotel.city }}"
       [style]="{ width: '430px' }"
     >
-      <ng-template pTemplate="header">
-        <img alt="Card" [src]="hotel.hotelImage" />
+      <ng-template pTemplate="header" >
+        <img alt="Card" [src]="hotel.hotelImage"/>
       </ng-template>
 
       <ng-template pTemplate="footer">

@@ -15,7 +15,9 @@
 ::ng-deep.p-card-title {
   margin-bottom: 15px;
 }
-
+.pointer {
+  cursor: pointer;
+}
 ::ng-deep.p-card-subtitle {
   margin-bottom: 15px;
 }
