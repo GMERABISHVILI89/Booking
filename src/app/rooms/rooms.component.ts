@@ -14,6 +14,7 @@ import { MenuItem } from '../Models/MenuItem';
 import { Hotels } from '../Models/Hotels';
 import { HotelsService } from '../Services/hotels.service';
 import { ServiceResponse } from '../Models/ServiceResponse';
+import { FilterService } from '../Services/filter.service';
 
 @Component({
   selector: 'app-rooms',
@@ -26,8 +27,9 @@ export class RoomsComponent implements OnInit {
   home: MenuItem | undefined;
   roomForm!: FormGroup;
   rooms?: Rooms[];
+  filterType?:string = "Default";
   guestQuantity?: GuestQuantity[] | undefined;
-  filterData?: Filter;
+  filterData?: any = {};
   rangeValues: number[] = [20, 80];
   types?: RoomType[];
   selectedType?: number;
@@ -42,7 +44,8 @@ export class RoomsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private roomService: RoomsService,
-    private hotelService: HotelsService
+    private hotelService: HotelsService,
+    private filterService:FilterService
   ) {
     this.types = [
       { id: 1, name: 'Single Room' },
@@ -60,6 +63,18 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.roomForm = this.fb.group({
+      roomTypeId: [0], // Defaulting to 0
+      priceFrom: [0],
+      priceTo: [0],
+      maximumGuests: [0],
+      checkIn: [null],
+      checkOut: [null]
+    });
+
+
+
     this.hotelService.GetAll().subscribe(
        (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
          if (response && response.success && response.data) {
@@ -126,17 +141,20 @@ export class RoomsComponent implements OnInit {
   onSubmit() {
     if (this.roomForm.valid) {
       this.filterData = {
-        roomTypeId: this.roomForm.value.roomTypeId.id,
-        priceFrom: this.roomForm.value.priceFrom,
-        priceTo: this.roomForm.value.priceTo,
-        maximumGuests: this.roomForm.value.maximumGuests.val,
-        checkIn: this.roomForm.value.checkIn,
-        checkOut: this.roomForm.value.checkOut,
+        roomTypeId: this.roomForm.value.roomTypeId || 0,
+        priceFrom: this.roomForm.value.priceFrom || 0,
+        priceTo: this.roomForm.value.priceTo || 0,
+        maximumGuests: this.roomForm.value.maximumGuests || 0,
+        checkIn: this.roomForm.value.checkIn ? new Date(this.roomForm.value.checkIn).toISOString() : null,
+        checkOut: this.roomForm.value.checkOut ? new Date(this.roomForm.value.checkOut).toISOString() : null,
       };
+      console.log(this.roomForm)
       // this.rooms?.push(<Rooms>data)
-      this.roomService.getFiltered(this.filterData).subscribe((data) => {
-        this.rooms = data;
-        this.filteredRooms = data;
+      this.filterService.getFiltered(this.filterData).subscribe((response: ServiceResponse<any[]>) => {
+        this.rooms = response.data;
+        console.log(response.data);
+        this.filterType = "Filtered";
+        this.filteredRooms = response.data;
       });
     } else {
       alert('გთხოვთ შეავსოთ ფილტრი !');
@@ -149,6 +167,7 @@ export class RoomsComponent implements OnInit {
       this.rooms?.map((el) => {
         if (el.roomTypeId == param) {
           this.filteredRooms?.push(el);
+          this.filterType = "Default";
         }
       });
     } else {
@@ -179,6 +198,7 @@ export class RoomsComponent implements OnInit {
       if(response.success){
         console.log(response.data)
         this.filteredRooms = [...response.data];
+        this.filterType = "Default";
       }
      
     });

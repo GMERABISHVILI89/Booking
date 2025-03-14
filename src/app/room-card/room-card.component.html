@@ -10,7 +10,7 @@
   (click)="getRoomId(room?.id)" class="card"
 >
   <ng-template pTemplate="header" [style]="{ margin: '12px' }">
-    <img alt="Card" [src]="room.imageUrls[0]" />
+    <img alt="Card" [src]="filterType == 'Filtered' ? room?.imageUrls?.[0]?.roomImage : room?.imageUrls?.[0]" />
   </ng-template>
   <p [style]="{ margin: '12px' }">
     {{ "MAX" | translate }} {{ room.maximumGuests }} {{ "PERSON" | translate }}
