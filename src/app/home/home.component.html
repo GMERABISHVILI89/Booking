@@ -52,7 +52,9 @@
             [style]="{ width: '400px', cursor: 'pointer' }"
           >
             <ng-template pTemplate="header">
-              <img alt="Card" [src]="hotel.hotelImage" />
+              <img alt="Card" [src]="hotel.hotelImage"
+              style="width: 100%; height: 200px; object-fit: cover;" 
+              />
             </ng-template>
 
             <ng-template pTemplate="footer">

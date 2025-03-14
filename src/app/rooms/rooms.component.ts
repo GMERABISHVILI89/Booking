@@ -9,7 +9,7 @@ import {
 import { Filter } from '../Models/Filter';
 import { RoomsService } from '../Services/rooms.service';
 import { Rooms } from '../Models/Rooms';
-import { debounceTime, fromEvent, map } from 'rxjs';
+import { debounceTime, fromEvent, map, Observable } from 'rxjs';
 import { MenuItem } from '../Models/MenuItem';
 import { Hotels } from '../Models/Hotels';
 import { HotelsService } from '../Services/hotels.service';
@@ -47,11 +47,7 @@ export class RoomsComponent implements OnInit {
     private hotelService: HotelsService,
     private filterService:FilterService
   ) {
-    this.types = [
-      { id: 1, name: 'Single Room' },
-      { id: 2, name: 'Double Room' },
-      { id: 3, name: 'Deluxe Room' },
-    ];
+ 
     this.guestQuantity = [
       { val: 1 },
       { val: 2 },
@@ -63,7 +59,16 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filterService.getRoomTypes().subscribe(
+      (response:ServiceResponse<RoomType[]>) => {
+        if(response && response.success && response.data){
+          this.types = response.data;
+          console.log(response.data)
+        }else{
+          console.error('Failed to retrieve roomTypes:', response.message);
+        }
 
+    });
     this.roomForm = this.fb.group({
       roomTypeId: [0], // Defaulting to 0
       priceFrom: [0],
@@ -96,7 +101,7 @@ export class RoomsComponent implements OnInit {
       if (response.success) {  
         this.rooms = response.data; 
         this.filteredRooms = [...this.rooms]
-         console.log(this.filteredRooms)
+         this.filterType = "Default";
     
       } else {
         console.error('Error fetching rooms:', response.message);  
@@ -172,6 +177,7 @@ export class RoomsComponent implements OnInit {
       });
     } else {
       this.filteredRooms = [...this.rooms!];
+      this.filterType = "Default";
     }
   }
   scrollToTop() {

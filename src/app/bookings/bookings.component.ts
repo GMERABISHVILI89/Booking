@@ -23,7 +23,7 @@ export class BookingsComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.bookingService.getBookings().subscribe(data => {
-      this.bookingModel = data;
+      // this.bookingModel = data;
     })
 
     this.items = [

@@ -20,7 +20,7 @@
       <li>
         <a routerLink="/rooms">{{ "rooms" | translate }}</a>
       </li>
-      <li >
+      <li *ngIf="isAuthenticated">
         <a routerLink="/bookings">{{ "booking" | translate }}</a>
       </li>
     </ul>

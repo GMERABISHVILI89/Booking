@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../Models/Enviroment';
 import { Observable } from 'rxjs';
 import { ServiceResponse } from '../Models/ServiceResponse';
+import { RoomType } from '../Models/RoomType';
 interface Filter {
   roomTypeId: { id: number, name: string };
   priceFrom: number;
@@ -31,6 +32,11 @@ export class FilterService {
     };
 
     return this.http.post<ServiceResponse<Filter[]>>(`${this.API_URL}/filter`, modifiedFilter);
+  }
+
+  getRoomTypes():Observable<ServiceResponse<RoomType[]>>{
+
+    return this.http.get<ServiceResponse<RoomType[]>>(`${this.API_URL}/roomTypes`)
   }
 
 

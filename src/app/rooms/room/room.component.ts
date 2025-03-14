@@ -6,10 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../Services/booking.service';
 import { differenceInDays } from 'date-fns';
 import { HotelsService } from '../../Services/hotels.service';
-import { debounceTime, fromEvent, map } from 'rxjs';
+import { debounceTime, fromEvent, map, Subscription } from 'rxjs';
 import { MenuItem } from '../../Models/MenuItem';
 import { ServiceResponse } from '../../Models/ServiceResponse';
 import { Hotels } from '../../Models/Hotels';
+import { AuthServiceService } from '../../Services/auth-service.service';
 
 @Component({
   selector: 'app-room',
@@ -43,18 +44,31 @@ export class RoomComponent implements OnInit {
   showButton: boolean = false;
   threshold: number = 50;
   hotels: any[] = [];
+  isAuthenticated: boolean = false;
+  private authSubscription: Subscription | undefined;
+
+  userid:any | undefined;
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomsService,
     private fb: FormBuilder,
     private bookingService: BookingService,
     private rout: Router,
-    private hotelService: HotelsService
+    private hotelService: HotelsService,
+    private authService:AuthServiceService
   ) {
     this.roomId = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+    this.authService.getUserId().subscribe(data => {
+      this.userid = data;
+    })
+    this.authSubscription = this.authService.isAuthenticated.subscribe(
+      (status) => {
+          this.isAuthenticated = status;
+      }
+    );
     window.scrollTo(0, 0);
      this.hotelService.GetAll().subscribe(
          (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
@@ -120,6 +134,11 @@ export class RoomComponent implements OnInit {
     );
     scroll$.subscribe((isScrolled) => (this.showButton = isScrolled));
   }
+  ngOnDestroy(): void {
+    if (this.authSubscription) {
+        this.authSubscription.unsubscribe();
+    }
+  }
   scrollToTop() {
     window.scroll({ top: 0, behavior: 'smooth' });
   }
@@ -156,18 +175,23 @@ export class RoomComponent implements OnInit {
     this.rout.navigateByUrl(`/hotel/${id}`);
   }
   onSubmit() {
+    if (!this.isAuthenticated){
+      alert("გთოხვთ ჯავშნისთვის გაიაროთ ავტორიზაცია. /  Please Login For Reservation ")
+      return;
+    } 
     if (this.bookingForm.valid) {
       this.bookData = {
-        id: 111,
-        roomID: Number(this.roomId),
-        checkInDate: this.bookingForm.controls['checkInDate'].value,
-        checkOutDate: this.bookingForm.controls['checkOutDate'].value,
-        totalPrice: this.totalPrice,
+   
+        RoomId: Number(this.roomId),
+        CheckInDate: this.bookingForm.controls['checkInDate'].value,
+        CheckOutDate: this.bookingForm.controls['checkOutDate'].value,
+        TotalPrice: this.totalPrice,
         isConfirmed: true,
         customerName: this.bookingForm.controls['customerName'].value,
-        customerId: '45678',
+        customerId: this.userid,
         customerPhone: this.bookingForm.controls['customerPhone'].value,
       };
+
       this.bookingService.addBooking(this.bookData).subscribe((data) => {
         this.bookingForm.reset();
       });
@@ -181,3 +205,7 @@ export class RoomComponent implements OnInit {
  
   
 }
+function uuidv4() {
+  throw new Error('Function not implemented.');
+}
+

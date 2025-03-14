@@ -63,10 +63,9 @@ export class AuthServiceService {
     this.isAuthenticatedSubject.next(true); // Store access token in local storage
   }
 
-  private storeRefreshToken(token: string) {
-    // Store refresh token securely (e.g., in HttpOnly cookies)
-    // ... implementation for secure storage ...
-  }
+  // private storeRefreshToken(token: string) {
+
+  // }
 
   getUserRole(): Observable<string | null> {
     const token = localStorage.getItem('jwtToken'); // Get token from local storage
@@ -76,6 +75,19 @@ export class AuthServiceService {
       const role = decodedToken.role;
       console.log(decodedToken.role)
       return of(role); // Return role as an Observable
+    }
+
+    return of(null); // Return null if no role found
+  }
+
+  getUserId(): Observable<string | null> {
+    const token = localStorage.getItem('jwtToken'); // Get token from local storage
+
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      const id = decodedToken.nameid;
+      console.log(decodedToken.nameid)
+      return of(id); // Return role as an Observable
     }
 
     return of(null); // Return null if no role found

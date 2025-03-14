@@ -1,11 +1,11 @@
 export class Booking {
     id?: number;
-    roomID?: number;
-    checkInDate?: Date;
-    checkOutDate?: Date;
-    totalPrice?: number;
+    RoomId?: number;
+    CheckInDate?: Date;
+    CheckOutDate?: Date;
+    TotalPrice?: number;
     isConfirmed?: boolean;
-    customerName?: string;
+    CustomerName?: string;
     customerId?: string;
-    customerPhone?: string
+    CustomerPhone?: string
 }
