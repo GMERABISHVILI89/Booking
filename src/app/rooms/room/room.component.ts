@@ -11,6 +11,8 @@ import { MenuItem } from '../../Models/MenuItem';
 import { ServiceResponse } from '../../Models/ServiceResponse';
 import { Hotels } from '../../Models/Hotels';
 import { AuthServiceService } from '../../Services/auth-service.service';
+import { Booking } from '../../Models/Booking';
+import { RegisterBooking } from '../../Models/RegisterBooking';
 
 @Component({
   selector: 'app-room',
@@ -192,17 +194,24 @@ export class RoomComponent implements OnInit {
         customerPhone: this.bookingForm.controls['customerPhone'].value,
       };
 
-      this.bookingService.addBooking(this.bookData).subscribe((data) => {
-        this.bookingForm.reset();
+      this.bookingService.addBooking(this.bookData).subscribe( (response:ServiceResponse<RegisterBooking>)  => {
+        if(response.success){
+          this.bookingForm.reset();
+          console.log("success!")
+          alert("დაჯავშნა წარმატებით განხორციელდა.")
+          this.rout.navigateByUrl(`/bookings`);
+        }else{
+          this.bookingForm.reset();
+          console.log("დაჯავშნა წარუმატებელია !")
+          alert("დაჯავშნა შეუძლებელია, მოცემულ თარიღებში უკვე დაჯავშნილია ოთახი!")
+
+        }
       });
-      alert('ოთახი წარმატებით დაიჯავშნა ! გისრუვებთ ბედნიერ დასვენებას');
-      this.bookingForm.reset();
+
     } else {
       alert('გთხოვთ შეავსოთ შეავსოთ სავალდებულო ველები !');
     }
   }
-
- 
   
 }
 function uuidv4() {
