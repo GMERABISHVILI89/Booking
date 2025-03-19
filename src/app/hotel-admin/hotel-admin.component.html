@@ -23,7 +23,7 @@
           <input type="file" id="hotelImage" (change)="onHotelImageSelected($event)" accept="image/*" />
         </div>
 
-        <button pButton type="button" label="Add Hotel" class="p-mt-3" (click)="addHotel()"></button>
+        <button  type="button" id="addHotelBtn" label="Add Hotel" class="p-mt-3" (click)="addHotel()">{{ "AddHotel" | translate }}</button>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
   
           <!-- Hotel Selection -->
           <div class="p-field">
-            <label for="hotelId">Hotel</label>
+            <label for="hotelId">{{ "hotels" | translate }}</label>
             <p-dropdown 
               id="hotelId"
               [options]="hotels"
@@ -44,7 +44,9 @@
               optionLabel="name" 
               optionValue="id" 
               placeholder="Select a Hotel"
-              (onChange)="onHotelSelect($event)">
+              (onChange)="onHotelSelect($event)"
+              [ngClass]="'hotelDropDown'"
+              >
             </p-dropdown>
             <small *ngIf="roomForm.controls['hotelId'].invalid && roomForm.controls['hotelId'].touched">
               Please select a hotel.
@@ -109,14 +111,14 @@
           </div>
   
           <!-- Submit Button -->
-          <button pButton type="submit" label="Add Room" class="p-mt-3" [disabled]="roomForm.invalid"></button>
+          <button id="AddRoomBtn" type="submit"  class="p-mt-3" [disabled]="roomForm.invalid">{{ "AddRoom" | translate }}</button>
         </div>
       </form>
   </div>
   
 
   <div class="hotel-list">
-    <div *ngFor="let hotel of hotels" class="hotel-card">
+    <div *ngFor="let hotel of hotels" class="hotel-card" (click)="navigateToHotel(hotel.id!)">
       <img [src]="hotel.hotelImage" alt="{{ hotel.name }}" class="hotel-image"/>
       <h3>{{ hotel.name }}</h3>
       <p>{{ hotel.address }}</p>

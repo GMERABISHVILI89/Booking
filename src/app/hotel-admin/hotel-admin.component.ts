@@ -5,6 +5,7 @@ import { RoomsService } from '../Services/rooms.service';
 import { CreateRoomDTO } from '../Models/CreateRoomDTO';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Rooms } from '../Models/Rooms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-admin',
@@ -43,7 +44,7 @@ export class HotelAdminComponent implements OnInit {
   ]; 
     
   
-  constructor(private hotelService: HotelsService, private roomService: RoomsService, private fb:FormBuilder) {}
+  constructor(private hotelService: HotelsService, private roomService: RoomsService, private fb:FormBuilder, private router:Router) {}
 
   ngOnInit(): void {
 
@@ -60,7 +61,10 @@ export class HotelAdminComponent implements OnInit {
     });
   }
 
-
+  navigateToHotel(hotelId: number) {
+    console.log(hotelId)
+    this.router.navigate([`admin/hotelDetails/${hotelId}`]);
+  }
   //ROOMS
 
   onRoomImagesSelected(event: any): void {
@@ -147,6 +151,8 @@ onSubmit(): void {
       );
     } else {
       console.error('Please fill all hotel details and select an image.');
+      alert('Please fill all hotel details and select an image.');
+
     }
   }
 

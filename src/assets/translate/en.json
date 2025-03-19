@@ -42,7 +42,8 @@
   "all":"ALL",
   "logout":"Logout",
   "Profile":"Profile",
-
+  "AddHotel":"Add Hotel",
+  "AddRoom":"Add Room",
   "details":"See More",
   "byprice":"By Price",
   "guest-quantity":"Guests",

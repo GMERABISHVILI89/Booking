@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { adminGuard } from './guards/admin.guard';
+import { HotelDetailsComponent } from './hotel-admin/hotel-details/hotel-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'bookings', component: BookingsComponent },
   { path: 'Profile', component: ProfileComponent },
   { path: 'admin', component: HotelAdminComponent,canActivate: [adminGuard]  },
+  { path: 'admin/hotelDetails/:id', component: HotelDetailsComponent },
   { path: 'room/:id', component: RoomComponent },
   { path: 'hotel/:id', component: HotelComponent },
 

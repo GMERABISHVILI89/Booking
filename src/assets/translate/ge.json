@@ -39,6 +39,8 @@
   "Password":"პაროლი",
   "ConfirmPassword":"გაიმეორეთ პაროლი",
   "Role":"როლი",
+  "AddHotel":"სასტუმროს დამატება",
+  "AddRoom":"ოთახის დამატება",
   "RoleUser":"ვიზიტორი",
   "LoginBtn":"შესვლა",
   "RoleAdmin":"ადმინისტრატორი",
