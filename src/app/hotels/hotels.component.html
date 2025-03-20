@@ -25,10 +25,20 @@
 <div class="title-hotels">
   <h1>{{"Hotelgallery" | translate}}</h1>
 </div>
+<div class="title-hotels">
+  <p-dropdown 
+  [options]="cities" 
+  [(ngModel)]="selectedCity" 
+  (ngModelChange)="filterHotels()" 
+  optionLabel="name" 
+  optionValue="code" 
+  placeholder="{{'Choose City' | translate}}" 
+></p-dropdown>
+</div>
 <div class="hotels">
 
   <div
-    *ngFor="let hotel of hotels"
+    *ngFor="let hotel of filteredHotels"
     class="hotel"
     (click)="goToHotel(hotel?.id)"
     [style]="{ cursor: 'pointer' }" 
