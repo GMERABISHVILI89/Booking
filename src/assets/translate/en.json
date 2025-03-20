@@ -23,6 +23,7 @@
   "See More": "See More",
   "Overview": "Overview",
   "LatestNews": "Latest News",
+  "Choose City":"Choose City",
   "NewHotelOpenings": "New Hotel Openings",
   "Discoverhotels": "Discover the latest hotel openings in prime locations.",
   "Traveltips": "Travel Tips",
@@ -42,7 +43,8 @@
   "all":"ALL",
   "logout":"Logout",
   "Profile":"Profile",
-
+  "AddHotel":"Add Hotel",
+  "AddRoom":"Add Room",
   "details":"See More",
   "byprice":"By Price",
   "guest-quantity":"Guests",

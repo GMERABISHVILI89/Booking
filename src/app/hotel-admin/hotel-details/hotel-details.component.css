@@ -1,0 +1,96 @@
+.card {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.p-fluid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.p-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.p-field label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.p-field input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out;
+}
+
+.p-field input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#updateHotelBtn {
+    background: #28a745;
+    color: white;
+    margin-top: 10px;
+}
+
+#updateHotelBtn:hover {
+    background: #218838;
+}
+
+#deleteHotelBtn {
+    background: #dc3545;
+    color: white;
+    margin-top: 10px;
+}
+
+#deleteHotelBtn:hover {
+    background: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .p-field input {
+        max-width: 100%;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}

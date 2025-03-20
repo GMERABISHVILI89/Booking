@@ -13,7 +13,7 @@ import { MenuItem } from '../../Models/MenuItem';
 export class HotelComponent implements OnInit {
   hotelId: any;
   hotel: any;
-  rooms: Rooms[] = [];
+  rooms:any [] = [];
   roomDetails: any[] = [];
   roomImages: any[] = [];
   available: any;
@@ -41,12 +41,12 @@ export class HotelComponent implements OnInit {
     this.hotelService.GetHotel(Number(this.hotelId)).subscribe((hotel: any) => {
       this.hotel = hotel.data;
       console.log(hotel)
-      this.rooms = hotel.rooms;
-      // this.rooms.forEach((room: any) => {
-      //   if (room.images) {
-      //     this.roomImages = this.roomImages.concat(room.images);
-      //   }
-      // });
+      this.rooms = hotel.data.rooms;
+      this.rooms.forEach((room: any) => {
+        if (room.images) {
+          this.roomImages = this.roomImages.concat(room.images);
+        }
+      });
     });
     const scroll$ = fromEvent(window, 'scroll').pipe(
       debounceTime(100),

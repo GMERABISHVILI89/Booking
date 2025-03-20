@@ -56,4 +56,48 @@ export class HotelsService {
     // Send the request with the Authorization header
     return this.http.post<ServiceResponse<Hotel>>(`${this.API_URL}/AddHotel`, formData, { headers });
   }
+
+
+
+  // admin 
+
+
+  // Method to get hotel details by ID
+  getHotelById(hotelId: number): Observable<ServiceResponse<Hotel>> {
+    return this.http.get<ServiceResponse<Hotel>>(this.API_URL + `/${hotelId}`);
+  }
+
+  updateHotel(hotelId: number, hotelData: any): Observable<ServiceResponse<Hotel>> {
+    // Create a FormData instance
+    const formData = new FormData();
+
+    // Append hotel data to formData
+    formData.append('name', hotelData.name);
+    formData.append('address', hotelData.address);
+    formData.append('city', hotelData.city);
+
+    // Check if hotel image exists and append it if present
+  // Only append hotelImage if it exists and is not an empty string.
+  if (hotelData.hotelImage && hotelData.hotelImage !== '') {
+    formData.append('hotelImage', hotelData.hotelImage, hotelData.hotelImage.name);
+  }
+    // Get the JWT token from localStorage
+    const token = localStorage.getItem('jwtToken');
+
+    // Check if token exists
+    if (!token) {
+        console.error('JWT token is missing.');
+    }
+
+    // Set the Authorization header if the token exists
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    // Call the API with headers and formData
+    return this.http.put<ServiceResponse<Hotel>>(this.API_URL + `/update/${hotelId}`, formData, { headers }); // corrected path
+}
+
+  // Method to delete hotel
+  deleteHotel(hotelId: number): Observable<ServiceResponse<Hotel>> {
+    return this.http.delete<ServiceResponse<Hotel>>(`${this.API_URL}/delete/${hotelId}`);
+  }
 }

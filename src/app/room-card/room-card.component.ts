@@ -8,11 +8,14 @@ import { Router } from '@angular/router';
 })
 export class RoomCardComponent implements OnInit{
  @Input() room:any;
- constructor(private route:Router) {
 
+ @Input() filterType:string | undefined= "Default";
+ constructor(private route:Router) {
+  console.log(this.room)
  }
 
  ngOnInit(): void {
+  console.log(this.room)
  }
 
  getRoomId(id:any){

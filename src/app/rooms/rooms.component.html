@@ -43,7 +43,7 @@
               id="roomTypeId"
               formControlName="roomTypeId"
               [options]="types"
-              optionLabel="name"
+              optionLabel="typeName"
               placeholder="{{ 'roomtype' | translate }}"
             />
           </div>
@@ -126,6 +126,7 @@
     <app-room-card
       *ngFor="let room of filteredRooms"
       [room]="room"
+      [filterType]="filterType"
     ></app-room-card>
   </div>
 </div>

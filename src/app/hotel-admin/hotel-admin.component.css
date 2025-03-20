@@ -12,6 +12,21 @@
   display: grid;
   height: 100%; /* Fill their grid area */
 }
+label {
+  margin-top: 20px;
+}
+p-dropdown ::ng-deep  .p-dropdown{
+  width: 400px;
+  height: 35px;
+  margin: 20px 0;
+  text-align: center;
+  padding: 5px 0;
+}
+p-dropdown ::ng-deep p-dropdownitem .p-dropdown-item {
+  width: 400px;
+  height: 35px;
+}
+
 
 .add-hotel-form {
   grid-column: 1; /* Left side */
@@ -66,7 +81,25 @@
 .add-hotel-form .p-mt-3 {
   justify-self: start; /* Align button to the start */
 }
+#addHotelBtn{
+ height: 40px;
+  width: 400px !important;
+  background-color:#003b76;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 8px;
+}
 
+#AddRoomBtn{
+  height: 40px;
+  width: 400px !important;
+  background-color:#003b76;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 8px;
+}
 /* --- Room Form Specific --- */
 .add-room-form .p-dropdown,
 .add-room-form input[type="text"],
@@ -99,6 +132,7 @@
 }
 
 .hotel-card {
+  cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 15px;

@@ -32,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HotelAdminComponent } from './hotel-admin/hotel-admin.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HotelDetailsComponent } from './hotel-admin/hotel-details/hotel-details.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     HotelAdminComponent,
-    ProfileComponent
+    ProfileComponent,
+    HotelDetailsComponent
    
    
   ],

@@ -3,8 +3,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: 35px;
 }
-
+p-dropdown ::ng-deep .p-dropdown {
+width: 300px;
+height: 40px;
+text-align: center;
+padding: 5px 0px;
+}
 ::ng-deep .p-card-title {
   font-size: 17px;
 }
@@ -15,7 +21,9 @@
 ::ng-deep.p-card-title {
   margin-bottom: 15px;
 }
-
+.pointer {
+  cursor: pointer;
+}
 ::ng-deep.p-card-subtitle {
   margin-bottom: 15px;
 }

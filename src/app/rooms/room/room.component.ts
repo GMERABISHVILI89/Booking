@@ -6,10 +6,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../Services/booking.service';
 import { differenceInDays } from 'date-fns';
 import { HotelsService } from '../../Services/hotels.service';
-import { debounceTime, fromEvent, map } from 'rxjs';
+import { debounceTime, fromEvent, map, Subscription } from 'rxjs';
 import { MenuItem } from '../../Models/MenuItem';
 import { ServiceResponse } from '../../Models/ServiceResponse';
 import { Hotels } from '../../Models/Hotels';
+import { AuthServiceService } from '../../Services/auth-service.service';
+import { Booking } from '../../Models/Booking';
+import { RegisterBooking } from '../../Models/RegisterBooking';
 
 @Component({
   selector: 'app-room',
@@ -43,23 +46,37 @@ export class RoomComponent implements OnInit {
   showButton: boolean = false;
   threshold: number = 50;
   hotels: any[] = [];
+  isAuthenticated: boolean = false;
+  private authSubscription: Subscription | undefined;
+
+  userid:any | undefined;
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomsService,
     private fb: FormBuilder,
     private bookingService: BookingService,
     private rout: Router,
-    private hotelService: HotelsService
+    private hotelService: HotelsService,
+    private authService:AuthServiceService
   ) {
     this.roomId = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+    this.authService.getUserId().subscribe(data => {
+      this.userid = data;
+    })
+    this.authSubscription = this.authService.isAuthenticated.subscribe(
+      (status) => {
+          this.isAuthenticated = status;
+      }
+    );
     window.scrollTo(0, 0);
      this.hotelService.GetAll().subscribe(
          (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
            if (response && response.success && response.data) {
-             this.hotels = response.data;  // Assign the hotel data to the hotels array
+             this.hotels = response.data;
+             console.log(this.hotels)  // Assign the hotel data to the hotels array
            } else {
              console.error('Failed to retrieve hotels:', response.message);
              // Optionally handle the failure, e.g., display a message to the user
@@ -119,6 +136,11 @@ export class RoomComponent implements OnInit {
     );
     scroll$.subscribe((isScrolled) => (this.showButton = isScrolled));
   }
+  ngOnDestroy(): void {
+    if (this.authSubscription) {
+        this.authSubscription.unsubscribe();
+    }
+  }
   scrollToTop() {
     window.scroll({ top: 0, behavior: 'smooth' });
   }
@@ -155,28 +177,44 @@ export class RoomComponent implements OnInit {
     this.rout.navigateByUrl(`/hotel/${id}`);
   }
   onSubmit() {
+    if (!this.isAuthenticated){
+      alert("გთოხვთ ჯავშნისთვის გაიაროთ ავტორიზაცია. /  Please Login For Reservation ")
+      return;
+    } 
     if (this.bookingForm.valid) {
       this.bookData = {
-        id: 111,
-        roomID: Number(this.roomId),
-        checkInDate: this.bookingForm.controls['checkInDate'].value,
-        checkOutDate: this.bookingForm.controls['checkOutDate'].value,
-        totalPrice: this.totalPrice,
+   
+        RoomId: Number(this.roomId),
+        CheckInDate: this.bookingForm.controls['checkInDate'].value,
+        CheckOutDate: this.bookingForm.controls['checkOutDate'].value,
+        TotalPrice: this.totalPrice,
         isConfirmed: true,
         customerName: this.bookingForm.controls['customerName'].value,
-        customerId: '45678',
+        customerId: this.userid,
         customerPhone: this.bookingForm.controls['customerPhone'].value,
       };
-      this.bookingService.addBooking(this.bookData).subscribe((data) => {
-        this.bookingForm.reset();
+
+      this.bookingService.addBooking(this.bookData).subscribe( (response:ServiceResponse<RegisterBooking>)  => {
+        if(response.success){
+          this.bookingForm.reset();
+          console.log("success!")
+          alert("დაჯავშნა წარმატებით განხორციელდა.")
+          this.rout.navigateByUrl(`/bookings`);
+        }else{
+          this.bookingForm.reset();
+          console.log("დაჯავშნა წარუმატებელია !")
+          alert("დაჯავშნა შეუძლებელია, მოცემულ თარიღებში უკვე დაჯავშნილია ოთახი!")
+
+        }
       });
-      alert('ოთახი წარმატებით დაიჯავშნა ! გისრუვებთ ბედნიერ დასვენებას');
-      this.bookingForm.reset();
+
     } else {
       alert('გთხოვთ შეავსოთ შეავსოთ სავალდებულო ველები !');
     }
   }
-
- 
   
 }
+function uuidv4() {
+  throw new Error('Function not implemented.');
+}
+

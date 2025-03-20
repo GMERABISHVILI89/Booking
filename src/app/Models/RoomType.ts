@@ -1,6 +1,6 @@
 export class RoomType {
     id?: number;
-    name?: string;
+    TypeName?: string;
 }
 
 export class GuestQuantity {

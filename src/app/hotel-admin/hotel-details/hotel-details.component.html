@@ -1,0 +1,39 @@
+<div class="card">
+    <h2>🏨 Edit Hotel</h2>
+    <form (ngSubmit)="updateHotel()" #hotelForm="ngForm" enctype="multipart/form-data">
+      <div class="p-fluid">
+        <!-- Hotel Name -->
+        <div class="p-field">
+          <label for="hotelName">Hotel Name</label>
+          <input type="text" pInputText id="hotelName" [(ngModel)]="hotel.name" name="name" required />
+        </div>
+  
+        <!-- Address -->
+        <div class="p-field">
+          <label for="address">Address</label>
+          <input type="text" pInputText id="address" [(ngModel)]="hotel.address" name="address" required />
+        </div>
+  
+        <!-- City -->
+        <div class="p-field">
+          <label for="city">City</label>
+          <input type="text" pInputText id="city" [(ngModel)]="hotel.city" name="city" required />
+        </div>
+  
+        <!-- Hotel Image -->
+        <div class="p-field">
+          <label for="hotelImage">Change Featured Image</label>
+          <input type="file" id="hotelImage" (change)="onHotelImageSelected($event)" accept="image/*" />
+        </div>
+  
+        <!-- Buttons -->
+        <button type="submit" id="updateHotelBtn" class="p-mt-3" [disabled]="!hotelForm.form.valid">
+          Update Hotel
+        </button>
+        <button type="button" id="deleteHotelBtn" class="p-mt-3 p-button-danger" (click)="deleteHotel()">
+          Delete Hotel
+        </button>
+      </div>
+    </form>
+  </div>
+  

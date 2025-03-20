@@ -30,7 +30,9 @@
     >
       <ng-template pTemplate="header">
         <tr>
+          <th style="width: 15%">{{"roomImage" | translate}}</th>
           <th style="width: 15%">{{"customername" | translate}}</th>
+
           <th style="width: 15%">{{"totalprice" | translate}}</th>
           <th style="width: 15%">{{"customerphone" | translate}}</th>
           <th style="width: 15%">{{"Check-in Date" | translate}}</th>
@@ -40,7 +42,9 @@
       </ng-template>
       <ng-template pTemplate="body" let-customer>
         <tr>
+          <td><img [src]="customer.roomImage" alt="" style="padding:20px; border-radius: 50px;"></td>
           <td>{{ customer.customerName }}</td>
+
           <td>{{ customer.totalPrice }}</td>
           <td>{{ customer.customerPhone }}</td>
           <td>{{ customer.checkInDate  | date:'shortDate'}}</td>

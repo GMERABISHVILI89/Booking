@@ -13,9 +13,15 @@ import { CreateRoomDTO } from '../Models/CreateRoomDTO';
 export class RoomsService {
 
   API_URL = environment.apiBaseUrl + "Room";
+  
+  
   constructor(private http: HttpClient) { }
 
- GetAll(): Observable<ServiceResponse<Rooms[]>> {
+ 
+ 
+ 
+ 
+  GetAll(): Observable<ServiceResponse<Rooms[]>> {
   return this.http.get<ServiceResponse<Rooms[]>>(this.API_URL + `/all`);
 }
 
@@ -36,11 +42,6 @@ GetRoomsByHotelId(id: number):  Observable<ServiceResponse<Rooms[]>> {
   GetRoomTypes(){
     return this.http.get<Rooms>(`${this.API_URL}/GetRoomTypes`);
   }
-
-  getFiltered(data:Filter){
-    return this.http.post<Rooms[]>(this.API_URL + `/getFiltered/`,data);
-  }
-
 
 
 addRoom(roomData: FormData): Observable<ServiceResponse<Rooms>> {
