@@ -27,6 +27,9 @@ export class RoomsComponent implements OnInit {
   home: MenuItem | undefined;
   roomForm!: FormGroup;
   rooms?: Rooms[];
+  Allrooms?: Rooms[];
+
+  
   filterType?:string = "Default";
   guestQuantity?: GuestQuantity[] | undefined;
   filterData?: any = {};
@@ -55,6 +58,8 @@ export class RoomsComponent implements OnInit {
       { val: 4 },
       { val: 5 },
       { val: 6 },
+      { val: 7 },
+      { val: 8 },
     ];
   }
 
@@ -63,12 +68,20 @@ export class RoomsComponent implements OnInit {
       (response:ServiceResponse<RoomType[]>) => {
         if(response && response.success && response.data){
           this.types = response.data;
-          console.log(response.data)
         }else{
           console.error('Failed to retrieve roomTypes:', response.message);
         }
 
     });
+
+    this.roomService.GetAll().subscribe((response: ServiceResponse<Rooms[]>)=> {
+
+      if (response.success){
+        this.Allrooms = response.data;
+      }else{
+        alert("Cant fetch Rooms, try again later.")
+      }
+    })
     this.roomForm = this.fb.group({
       roomTypeId: [0], // Defaulting to 0
       priceFrom: [0],
@@ -84,7 +97,6 @@ export class RoomsComponent implements OnInit {
        (response: ServiceResponse<Hotels[]>) => {  // Ensure the response is of type ServiceResponse<Hotels[]>
          if (response && response.success && response.data) {
            this.hotels = response.data; 
-           console.log(response.data)
            this.hotelImages = response.data // Assign the hotel data to the hotels array
          } else {
            console.error('Failed to retrieve hotels:', response.message);
@@ -156,10 +168,18 @@ export class RoomsComponent implements OnInit {
       console.log(this.roomForm)
       // this.rooms?.push(<Rooms>data)
       this.filterService.getFiltered(this.filterData).subscribe((response: ServiceResponse<any[]>) => {
-        this.rooms = response.data;
-        console.log(response.data);
-        this.filterType = "Filtered";
-        this.filteredRooms = response.data;
+       
+        if(response.data.length > 0 && response.success){
+
+          this.rooms = response.data;
+          console.log(response.data);
+          this.filterType = "Filtered";
+          this.filteredRooms = response.data;
+          console.log(response.data)
+        }else{
+          alert('ასეთი მონაცემებით ოთახები არ იძებნება !');
+        }
+   
       });
     } else {
       alert('გთხოვთ შეავსოთ ფილტრი !');
@@ -169,14 +189,18 @@ export class RoomsComponent implements OnInit {
   filterRooms(param: number) {
     if (param != 0) {
       this.filteredRooms = [];
-      this.rooms?.map((el) => {
+      console.log(this.rooms)
+      console.log(param)
+
+      this.Allrooms?.map((el) => {
         if (el.roomTypeId == param) {
           this.filteredRooms?.push(el);
+
           this.filterType = "Default";
         }
       });
     } else {
-      this.filteredRooms = [...this.rooms!];
+      this.filteredRooms = [...this.Allrooms!];
       this.filterType = "Default";
     }
   }
@@ -202,7 +226,6 @@ export class RoomsComponent implements OnInit {
     this.roomService.GetRoomsByHotelId(Number(id)).subscribe((response) => {
 
       if(response.success){
-        console.log(response.data)
         this.filteredRooms = [...response.data];
         this.filterType = "Default";
       }

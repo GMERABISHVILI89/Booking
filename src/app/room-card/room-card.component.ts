@@ -11,11 +11,10 @@ export class RoomCardComponent implements OnInit{
 
  @Input() filterType:string | undefined= "Default";
  constructor(private route:Router) {
-  console.log(this.room)
+
  }
 
  ngOnInit(): void {
-  console.log(this.room)
  }
 
  getRoomId(id:any){
