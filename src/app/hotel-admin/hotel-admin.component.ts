@@ -80,24 +80,25 @@ export class HotelAdminComponent implements OnInit {
   }
 
 onSubmit(): void {
-  console.log(this.roomForm.valid)
   if (this.roomForm.valid) {
     const formData = new FormData();
 
-    // Append basic form values
-    formData.append('hotelId', this.roomForm.value.hotelId);
-    formData.append('name', this.roomForm.value.name);
-    formData.append('pricePerNight', this.roomForm.value.pricePerNight);
-    formData.append('maximumGuests', this.roomForm.value.maximumGuests);
-    formData.append('roomTypeId', this.roomForm.value.roomTypeId);
-
-    // Append images
     this.selectedImages.forEach(image => {
       formData.append('roomImages', image, image.name);
     });
 
-    // Call the service method
-    this.roomService.addRoom(formData).subscribe({
+    const roomData = {
+      hotelId: String(this.roomForm.value.hotelId),
+      name: String(this.roomForm.value.name),
+      pricePerNight: String(this.roomForm.value.pricePerNight),
+      maximumGuests: String(this.roomForm.value.maximumGuests),
+      roomTypeId: String(this.roomForm.value.roomTypeId),
+    };
+
+
+
+
+    this.roomService.addRoom(roomData,this.selectedImages).subscribe({
       next: (response) => {
         console.log('Room added successfully!', response);
         alert('Room added successfully!');
