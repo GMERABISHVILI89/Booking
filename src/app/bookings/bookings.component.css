@@ -46,6 +46,7 @@ img{
     color: white;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 ::ng-deep .p-paginator-rpp-options span{

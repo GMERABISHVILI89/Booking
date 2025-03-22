@@ -62,7 +62,7 @@ export class HotelsComponent implements OnInit {
       { label: 'Hotels', route: '/hotels' },
     ];
 
-    // Scroll logic for the button visibility
+
     const scroll$ = fromEvent(window, 'scroll').pipe(
       debounceTime(50),
       map(() => {
@@ -79,21 +79,22 @@ export class HotelsComponent implements OnInit {
   populateCities(hotels: Hotels[]) {
     if (hotels && hotels.length > 0) {
       const uniqueCities = new Set<string>();
+      this.cities.push({ name:"All", code: "" });
       hotels.forEach(hotel => {
         if (hotel.city && !uniqueCities.has(hotel.city)) {
           uniqueCities.add(hotel.city);
           this.cities.push({ name: hotel.city, code: hotel.city });
         }
       });
-      this.filterHotels(); // Call filterHotels after populating cities
+      this.filterHotels(); 
     }
   }
-  // Navigate to a specific hotel page
+
   goToHotel(id: any) {
     this.route.navigateByUrl(`/hotel/${id}`);
   }
 
-  // Scroll to the top of the page
+
   scrollToTop() {
     window.scroll({ top: 0, behavior: 'smooth' });
   }
@@ -102,7 +103,7 @@ export class HotelsComponent implements OnInit {
     if (this.selectedCity) {
       this.filteredHotels = this.hotels!.filter(hotel => hotel.city === this.selectedCity);
     } else {
-      this.filteredHotels = [...this.hotels!]; // Show all hotels if no city is selected
+      this.filteredHotels = [...this.hotels!]; 
     }
   }
 }
