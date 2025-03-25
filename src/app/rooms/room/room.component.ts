@@ -198,7 +198,7 @@ export class RoomComponent implements OnInit {
         if(response.success){
           this.bookingForm.reset();
           console.log("success!")
-          alert("დაჯავშნა წარმატებით განხორციელდა.")
+          alert("დაჯავშნა წარმატებით განხორციელდა. გთხოვთ შეამოწმოთ საიტზე მითითებული ელ-ფოსტა")
           this.rout.navigateByUrl(`/bookings`);
         }else{
           this.bookingForm.reset();

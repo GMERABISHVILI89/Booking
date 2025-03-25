@@ -145,11 +145,12 @@ h3 {
 .image-container img {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 700px;
   object-fit: cover;
   transition: transform 0.5s ease;
   border-radius: 10px;
 }
+
 
 .prev-button,
 .next-button {

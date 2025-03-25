@@ -42,10 +42,13 @@
       </ng-template>
       <ng-template pTemplate="body" let-customer>
         <tr>
-          <td><img [src]="customer.roomImage" alt="" style="padding:20px; border-radius: 50px;"></td>
+          <td>
+            <img [src]="customer.roomImage" alt="" 
+                 style="max-height: 150px; width: auto; object-fit: cover; border-radius: 50px; padding: 20px;">
+          </td>
           <td>{{ customer.customerName }}</td>
 
-          <td>{{ customer.totalPrice }}</td>
+          <td>{{ customer.totalPrice }}  {{"GEL"}}</td>
           <td>{{ customer.customerPhone }}</td>
           <td>{{ customer.checkInDate  | date:'shortDate'}}</td>
           <td>{{ customer.checkOutDate | date:'shortDate'}}</td>
