@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../Models/Enviroment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Rooms } from '../Models/Rooms';
 import { Filter } from '../Models/Filter';
 import { Observable } from 'rxjs';
@@ -60,10 +60,14 @@ GetRoomsByHotelId(id: number):  Observable<ServiceResponse<Rooms[]>> {
     });
   
     // Debugging: Log FormData
-  
+     // Get the JWT token from localStorage (assuming you stored it there during login)
+      const token = localStorage.getItem('jwtToken');
+      
+      // Set the Authorization header if the token exists
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     // Make API request
-    return this.http.post<ServiceResponse<Rooms>>(`${this.API_URL}/add-room`, formData);
+    return this.http.post<ServiceResponse<Rooms>>(`${this.API_URL}/add-room`, formData, { headers });
   }
 
  
